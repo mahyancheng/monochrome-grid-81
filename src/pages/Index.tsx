@@ -1,142 +1,55 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import Footer from "@/components/Footer";
-import { FullScreenScrollFX, FullScreenFXAPI } from "@/components/ui/full-screen-scroll-fx";
+import { FeaturedSpotlight } from "@/components/ui/feature-spotlight";
 import { projects } from "@/data/projects";
 
-import heroImg1 from "@/Archive/HomePage/courtyard-house_11-1.jpg";
-import heroImg2 from "@/Archive/Projects/emw_01-min.jpg";
-import heroImg3 from "@/Archive/Projects/langkawi-kitchen_01-min.jpg";
-
-const heroSections = [
-  {
-    leftLabel: "Architecture",
-    title: "Designed For Living",
-    background: heroImg1,
-  },
-  {
-    leftLabel: "Interior",
-    title: "Attentive Craft",
-    background: heroImg2,
-  },
-  {
-    leftLabel: "Hospitality",
-    title: "Enthralling Space",
-    background: heroImg3,
-  },
-];
-
+import heroImg from "@/Archive/HomePage/courtyard-house_11-1.jpg";
 import ctaImg from "@/Archive/HomePage/01.jpg";
 
 const Index = () => {
   const [ctaHovered, setCtaHovered] = useState(false);
-  const apiRef = useRef<FullScreenFXAPI>(null);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Hero — Full-screen scroll FX (left side only) */}
-      <div className="relative">
-        <FullScreenScrollFX
-          sections={heroSections}
-          header={
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-px bg-primary-foreground/50" />
-                <span
-                  className="text-primary-foreground/70"
-                  style={{
-                    fontSize: "10px",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    fontFamily: "'Space Grotesk', sans-serif",
-                  }}
-                >
-                  Tectone Design
-                </span>
-              </div>
-              <nav className="hidden md:flex gap-6">
-                {[
-                  { label: "Projects", href: "/" },
-                  { label: "About", href: "/about" },
-                  { label: "Services", href: "/services" },
-                  { label: "Contact", href: "/contact" },
-                ].map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    style={{
-                      fontSize: "10px",
-                      letterSpacing: "0.25em",
-                      textTransform: "uppercase",
-                      fontFamily: "'Space Grotesk', sans-serif",
-                    }}
-                    className="text-primary-foreground/50 hover:text-primary-foreground transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          }
-          footer={
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-3"
-            >
-              <div
-                className="w-8 h-8 border flex items-center justify-center transition-colors duration-300 group-hover:bg-primary-foreground"
-                style={{ borderColor: "hsl(var(--primary-foreground) / 0.3)" }}
-              >
-                <ArrowUpRight
-                  size={14}
-                  className="text-primary-foreground transition-colors duration-300 group-hover:text-primary"
-                />
-              </div>
-              <span
-                className="text-primary-foreground/70"
-                style={{
-                  fontSize: "10px",
-                  letterSpacing: "0.3em",
-                  textTransform: "uppercase",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                }}
-              >
-                View Projects
-              </span>
-            </a>
-          }
-          showProgress
-          durations={{ change: 0.7, snap: 800 }}
-          apiRef={apiRef}
-        />
-      </div>
-
-      {/* Sticky Header for rest of page */}
       <Header />
+      <main className="flex-1">
+        {/* Hero Spotlight */}
+        <FeaturedSpotlight
+          label="Established 1989"
+          title={["Designed", "For Living"]}
+          description="Redefining living with architectural design precision and interior design craftsmanship, delivering spaces that balance form, function, and timeless aesthetics."
+          ctaText="View Projects"
+          ctaHref="#projects"
+          imageSrc={heroImg}
+          imageAlt="Courtyard House by Tectone Design"
+          index="01"
+        />
 
-      {/* Section divider */}
-      <div className="border-y border-border py-6 px-6">
-        <div className="flex items-center justify-between max-w-5xl mx-auto">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-px bg-foreground" />
-            <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-              Our Project Gallery
+        {/* Section divider with text */}
+        <div className="border-y border-border py-6 px-6">
+          <div className="flex items-center justify-between max-w-5xl mx-auto">
+            <div className="flex items-center gap-3">
+              <div className="w-6 h-px bg-foreground" />
+              <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                Our Project Gallery
+              </span>
+            </div>
+            <span className="text-[10px] tracking-[0.2em] text-muted-foreground">
+              {projects.length} Projects
             </span>
           </div>
-          <span className="text-[10px] tracking-[0.2em] text-muted-foreground">
-            {projects.length} Projects
-          </span>
         </div>
-      </div>
 
-      {/* Project Grid */}
-      <main className="flex-1" id="projects">
-        <ProjectGrid />
+        {/* Project Grid */}
+        <div id="projects">
+          <ProjectGrid />
+        </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA Spotlight */}
         <div
           className="relative grid grid-cols-1 md:grid-cols-2 w-full border-t border-border"
           onMouseEnter={() => setCtaHovered(true)}
@@ -153,6 +66,7 @@ const Index = () => {
               className="absolute inset-0 bg-foreground/10 transition-opacity duration-500"
               style={{ opacity: ctaHovered ? 0 : 1 }}
             />
+            {/* Corner accents */}
             <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-background/50" />
             <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-background/50" />
             <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-background/50" />

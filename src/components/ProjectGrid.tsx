@@ -20,20 +20,32 @@ const ProjectTile = ({
 }) => {
   const images = [project.cover, ...project.images];
   const [currentImg, setCurrentImg] = useState(0);
+  const [prevImg, setPrevImg] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Each tile gets a different interval offset so they don't all change at once
   const intervalMs = 3000 + (index % 5) * 400;
 
   useEffect(() => {
     if (images.length <= 1) return;
     intervalRef.current = setInterval(() => {
+      setPrevImg((prev) => {
+        // prev is the old currentImg before we update
+        return currentImg;
+      });
+      setIsTransitioning(true);
       setCurrentImg((prev) => (prev + 1) % images.length);
+
+      // Reset transition state after animation completes
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setPrevImg(null);
+      }, 800);
     }, intervalMs);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [images.length, intervalMs]);
+  }, [images.length, intervalMs, currentImg]);
 
   return (
     <Link
@@ -42,22 +54,40 @@ const ProjectTile = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Stacked images with crossfade */}
-      {images.map((img, imgIdx) => (
+      {/* Outgoing image — slides left and out */}
+      {prevImg !== null && (
         <img
-          key={imgIdx}
-          src={img}
+          src={images[prevImg]}
           alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out"
+          className="absolute inset-0 w-full h-full object-cover z-[1]"
           style={{
-            opacity: imgIdx === currentImg ? 1 : 0,
-            transform: isHovered ? "scale(1.05)" : "scale(1)",
+            transform: isTransitioning ? "translateX(-100%)" : "translateX(0)",
+            transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
           }}
           loading="lazy"
         />
-      ))}
+      )}
 
-      {/* Hover overlay */}
+      {/* Incoming image — slides in from right */}
+      <img
+        src={images[currentImg]}
+        alt={project.title}
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
+        style={{
+          transform:
+            isTransitioning && prevImg !== null
+              ? "translateX(0)"
+              : prevImg !== null
+              ? "translateX(100%)"
+              : "translateX(0)",
+          transition:
+            isTransitioning
+              ? "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)"
+              : "none",
+          ...(isHovered ? { scale: "1.05" } : {}),
+        }}
+        loading="lazy"
+      />
       <div
         className="absolute inset-0 bg-primary/70 flex flex-col items-center justify-center transition-opacity duration-500 z-10"
         style={{ opacity: isHovered ? 1 : 0 }}

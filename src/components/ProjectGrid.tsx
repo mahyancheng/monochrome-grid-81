@@ -18,7 +18,7 @@ const ProjectTile = ({
   onHover: () => void;
   onLeave: () => void;
 }) => {
-  const images = [project.cover, ...project.gallery];
+  const images = [project.cover, ...project.images];
   const [currentImg, setCurrentImg] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 

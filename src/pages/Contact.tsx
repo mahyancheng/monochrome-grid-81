@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 
-import heroImg from "@/Archive/Contact/2030.png";
+import heroImg from "@/Archive/Projects/courtyard-house_60.jpg";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),

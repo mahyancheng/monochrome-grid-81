@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { FeaturedSpotlight, CornerAccents, AnimatedLabel } from "@/components/ui/feature-spotlight";
 
 import hidiPhoto from "@/Archive/AboutPage/untitled-design-2.png";
-import weisingPhoto from "@/Archive/AboutPage/untitled-design-1.png";
+
 import journeyImg from "@/Archive/AboutPage/01.jpg";
 import spaceImg from "@/Archive/AboutPage/emw_17-1.jpg";
 import awardImg1 from "@/Archive/AboutPage/t1.jpg";
@@ -26,7 +26,6 @@ const values = [
 
 const About = () => {
   const [hidiHover, setHidiHover] = useState(false);
-  const [weisingHover, setWeisingHover] = useState(false);
   const [journeyHover, setJourneyHover] = useState(false);
   const [valuesHover, setValuesHover] = useState(false);
 
@@ -89,48 +88,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Wei Sing section */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-border"
-          onMouseEnter={() => setWeisingHover(true)}
-          onMouseLeave={() => setWeisingHover(false)}
-        >
-          <div className="aspect-square flex flex-col justify-center px-8 lg:px-16 md:order-1 order-2">
-            <AnimatedLabel text="Design Director" isActive={weisingHover} />
-            <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-1">
-              Lau Wei
-            </h2>
-            <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mb-2">
-              Sing
-            </h2>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-6">
-              Studio Master & Design Director
-            </p>
-            <p className="text-xs leading-6 text-muted-foreground font-light max-w-sm">
-              WeiSing is an Architectural Designer based in Hong Kong. He holds a
-              Master degree from University College London (Bartlett) and bachelor
-              degree from RMIT University Australia. He works for world renowned
-              architecture practice Snøhetta on projects across Asia Pacific
-              regions.
-            </p>
-          </div>
-          <div className="relative aspect-square overflow-hidden md:order-2 order-1">
-            <img
-              src={weisingPhoto}
-              alt="Lau Wei Sing"
-              className="w-full h-full object-cover transition-transform duration-700"
-              style={{ transform: weisingHover ? "scale(1.03)" : "scale(1)" }}
-            />
-            <div
-              className="absolute inset-0 bg-foreground/5 transition-opacity duration-500"
-              style={{ opacity: weisingHover ? 0 : 1 }}
-            />
-            <CornerAccents className="opacity-40" />
-            <span className="absolute bottom-4 right-6 text-[10px] tracking-[0.3em] text-background/60">
-              02
-            </span>
-          </div>
-        </div>
 
         {/* Awards images with corner accents */}
         <div className="grid grid-cols-2 w-full border-t border-border">

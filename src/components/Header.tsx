@@ -11,10 +11,10 @@ const Header = () => {
           </h1>
         </div>
         <nav className="flex gap-8">
-          <a href="#" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
             Projects
           </a>
-          <a href="#" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/about" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
             About
           </a>
           <a href="#" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">

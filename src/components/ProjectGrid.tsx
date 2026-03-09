@@ -4,7 +4,6 @@ import { projects } from "@/data/projects";
 
 const categories = ["All", "Residential", "Commercial", "Hospitality"];
 
-/** A single grid tile that auto-cycles through gallery images */
 const ProjectTile = ({
   project,
   index,
@@ -20,32 +19,15 @@ const ProjectTile = ({
 }) => {
   const images = [project.cover, ...project.images];
   const [currentImg, setCurrentImg] = useState(0);
-  const [prevImg, setPrevImg] = useState<number | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
   const intervalMs = 3000 + (index % 5) * 400;
 
   useEffect(() => {
     if (images.length <= 1) return;
-    intervalRef.current = setInterval(() => {
-      setPrevImg((prev) => {
-        // prev is the old currentImg before we update
-        return currentImg;
-      });
-      setIsTransitioning(true);
+    const id = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % images.length);
-
-      // Reset transition state after animation completes
-      setTimeout(() => {
-        setIsTransitioning(false);
-        setPrevImg(null);
-      }, 800);
     }, intervalMs);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [images.length, intervalMs, currentImg]);
+    return () => clearInterval(id);
+  }, [images.length, intervalMs]);
 
   return (
     <Link
@@ -54,40 +36,32 @@ const ProjectTile = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Outgoing image — slides left and out */}
-      {prevImg !== null && (
-        <img
-          src={images[prevImg]}
-          alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
-          style={{
-            transform: isTransitioning ? "translateX(-100%)" : "translateX(0)",
-            transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
-          }}
-          loading="lazy"
-        />
-      )}
-
-      {/* Incoming image — slides in from right */}
-      <img
-        src={images[currentImg]}
-        alt={project.title}
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
+      {/* Sliding strip of images */}
+      <div
+        className="absolute inset-0 flex h-full"
         style={{
-          transform:
-            isTransitioning && prevImg !== null
-              ? "translateX(0)"
-              : prevImg !== null
-              ? "translateX(100%)"
-              : "translateX(0)",
-          transition:
-            isTransitioning
-              ? "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)"
-              : "none",
-          ...(isHovered ? { scale: "1.05" } : {}),
+          width: `${images.length * 100}%`,
+          transform: `translateX(-${(currentImg * 100) / images.length}%)`,
+          transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
         }}
-        loading="lazy"
-      />
+      >
+        {images.map((img, imgIdx) => (
+          <img
+            key={imgIdx}
+            src={img}
+            alt={project.title}
+            className="h-full object-cover transition-transform duration-700"
+            style={{
+              width: `${100 / images.length}%`,
+              flexShrink: 0,
+              transform: isHovered ? "scale(1.05)" : "scale(1)",
+            }}
+            loading="lazy"
+          />
+        ))}
+      </div>
+
+      {/* Hover overlay */}
       <div
         className="absolute inset-0 bg-primary/70 flex flex-col items-center justify-center transition-opacity duration-500 z-10"
         style={{ opacity: isHovered ? 1 : 0 }}

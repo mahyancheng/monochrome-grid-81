@@ -27,7 +27,6 @@ const values = [
 const About = () => {
   const [hidiHover, setHidiHover] = useState(false);
   const [journeyHover, setJourneyHover] = useState(false);
-  const [journeyHover, setJourneyHover] = useState(false);
   const [valuesHover, setValuesHover] = useState(false);
 
   return (

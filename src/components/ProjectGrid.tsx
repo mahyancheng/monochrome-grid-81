@@ -4,7 +4,6 @@ import { projects } from "@/data/projects";
 
 const categories = ["All", "Residential", "Commercial", "Hospitality"];
 
-/** A single grid tile that auto-cycles through gallery images */
 const ProjectTile = ({
   project,
   index,
@@ -20,19 +19,14 @@ const ProjectTile = ({
 }) => {
   const images = [project.cover, ...project.images];
   const [currentImg, setCurrentImg] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // Each tile gets a different interval offset so they don't all change at once
   const intervalMs = 3000 + (index % 5) * 400;
 
   useEffect(() => {
     if (images.length <= 1) return;
-    intervalRef.current = setInterval(() => {
+    const id = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % images.length);
     }, intervalMs);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    return () => clearInterval(id);
   }, [images.length, intervalMs]);
 
   return (
@@ -42,20 +36,30 @@ const ProjectTile = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Stacked images with crossfade */}
-      {images.map((img, imgIdx) => (
-        <img
-          key={imgIdx}
-          src={img}
-          alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out"
-          style={{
-            opacity: imgIdx === currentImg ? 1 : 0,
-            transform: isHovered ? "scale(1.05)" : "scale(1)",
-          }}
-          loading="lazy"
-        />
-      ))}
+      {/* Sliding strip of images */}
+      <div
+        className="absolute inset-0 flex h-full"
+        style={{
+          width: `${images.length * 100}%`,
+          transform: `translateX(-${(currentImg * 100) / images.length}%)`,
+          transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
+        }}
+      >
+        {images.map((img, imgIdx) => (
+          <img
+            key={imgIdx}
+            src={img}
+            alt={project.title}
+            className="h-full object-cover transition-transform duration-700"
+            style={{
+              width: `${100 / images.length}%`,
+              flexShrink: 0,
+              transform: isHovered ? "scale(1.05)" : "scale(1)",
+            }}
+            loading="lazy"
+          />
+        ))}
+      </div>
 
       {/* Hover overlay */}
       <div

@@ -17,7 +17,7 @@ const Header = () => {
           <a href="/about" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
             About
           </a>
-          <a href="#" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/services" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
             Services
           </a>
           <a href="#" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">

@@ -93,7 +93,7 @@ const Index = () => {
               team help you visualize your house design, transforming ideas into
               a well-crafted living space.
             </p>
-            <Link to="/about" className="group flex items-center gap-3">
+            <Link to="/contact" className="group flex items-center gap-3">
               <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
                 <ArrowUpRight
                   size={14}

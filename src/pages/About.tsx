@@ -8,8 +8,6 @@ import hidiPhoto from "@/Archive/AboutPage/untitled-design-2.png";
 
 import journeyImg from "@/Archive/AboutPage/01.jpg";
 import spaceImg from "@/Archive/AboutPage/emw_17-1.jpg";
-import awardImg1 from "@/Archive/AboutPage/t1.jpg";
-import awardImg2 from "@/Archive/AboutPage/t12.jpg";
 
 const values = [
   "We are committed and passionate about our work.",

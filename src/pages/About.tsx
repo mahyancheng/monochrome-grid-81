@@ -87,27 +87,6 @@ const About = () => {
         </div>
 
 
-        {/* Awards images with corner accents */}
-        <div className="grid grid-cols-2 w-full border-t border-border">
-          <div className="relative aspect-square overflow-hidden group">
-            <img
-              src={awardImg1}
-              alt="KLAF DATUM 2023"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-all duration-500" />
-            <CornerAccents className="opacity-30 group-hover:opacity-60 transition-opacity" />
-          </div>
-          <div className="relative aspect-square overflow-hidden group">
-            <img
-              src={awardImg2}
-              alt="PAM Silver Award"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-all duration-500" />
-            <CornerAccents className="opacity-30 group-hover:opacity-60 transition-opacity" />
-          </div>
-        </div>
 
         {/* Awards text strip */}
         <div className="grid grid-cols-1 md:grid-cols-3 w-full border-y border-border">

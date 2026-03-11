@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import bottomLogo from "@/Archive/HomePage/bottomlogo.jpg";
+import bottomLogo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -11,8 +11,8 @@ const Footer = () => {
         <div className="px-6 py-10 md:border-r border-b md:border-b-0 border-border">
           <img
             src={bottomLogo}
-            alt="Tectone Design"
-            className="h-10 object-contain mb-6"
+            alt="HIDI Lau Architect"
+            className="h-12 object-contain mb-6 mix-blend-multiply dark:invert"
           />
           <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground leading-5">
             Architecture · Interior · Design
@@ -72,7 +72,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-border px-6 py-4 flex items-center justify-between">
         <span className="text-[10px] tracking-[0.15em] text-muted-foreground">
-          © 2026 Tectone Design Sdn Bhd 1109014-V
+          © 2026 HIDI Lau Architect
         </span>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 border border-foreground" />

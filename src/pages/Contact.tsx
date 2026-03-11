@@ -66,7 +66,7 @@ const Contact = () => {
         <div className="absolute inset-0">
           <img
             src={heroImg}
-            alt="Tectone Design"
+            alt="HIDI Lau Architect"
             className="w-full h-full object-cover transition-transform duration-700 ease-out"
             style={{ transform: isHovered ? "scale(1.02)" : "scale(1)" }}
           />

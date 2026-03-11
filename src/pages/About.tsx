@@ -125,7 +125,7 @@ const About = () => {
         <FeaturedSpotlight
           label="Since 1989"
           title={["Our", "Journey"]}
-          description="Tectone Design Sdn Bhd is a multi-disciplinary architectural design studio established in 1989, delivering excellence for over three decades. Led by multiple award-winning architects, our team brings unique perspectives into every crafted space."
+          description="HIDI Lau Architect is a multi-disciplinary architectural design studio established in 1989, delivering excellence for over three decades. Led by multiple award-winning architects, our team brings unique perspectives into every crafted space."
           ctaText="Our Services"
           ctaHref="/services"
           imageSrc={journeyImg}

@@ -74,7 +74,7 @@ const Services = () => {
               And Dedication
             </h2>
             <p className="text-xs leading-6 text-muted-foreground font-light max-w-sm mb-8">
-              Tectone Design Sdn. Bhd believes that a comfortable living
+              HIDI Lau Architect believes that a comfortable living
               environment is key to happiness. Guided by our knowledge and
               experience in architectural design and interior design services, we
               are committed to designing and crafting a home that truly reflects

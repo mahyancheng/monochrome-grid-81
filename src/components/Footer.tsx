@@ -72,7 +72,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-border px-6 py-4 flex items-center justify-between">
         <span className="text-[10px] tracking-[0.15em] text-muted-foreground">
-          © 2026 Tectone Design Sdn Bhd 1109014-V
+          © 2026 HIDI Lau Architect
         </span>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 border border-foreground" />

@@ -20,11 +20,11 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-3 group">
           <img
             src={logo}
-            alt="Tectone Design"
-            className="h-8 object-contain"
+            alt="HIDI Lau Architect"
+            className="h-10 object-contain mix-blend-multiply dark:invert"
           />
           <h1 className="text-sm tracking-[0.3em] uppercase font-light text-foreground">
-            Tectone Design
+            HIDI Lau Architect
           </h1>
         </Link>
 

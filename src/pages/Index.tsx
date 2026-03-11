@@ -25,7 +25,7 @@ const Index = () => {
           ctaText="View Projects"
           ctaHref="#projects"
           imageSrc={heroImg}
-          imageAlt="Courtyard House by Tectone Design"
+          imageAlt="Courtyard House by HIDI Lau Architect"
           index="01"
         />
 

@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import bottomLogo from "@/Archive/HomePage/bottomlogo.jpg";
+import bottomLogo from "@/assets/logo.png";
 
 const Footer = () => {
   return (

@@ -139,13 +139,13 @@ const Contact = () => {
                     icon: MapPin,
                     label: "Address",
                     value:
-                      "1, Jalan Biru 2, Taman Pelangi,\n80400 Johor Bahru, Johor, Malaysia.",
+                      "1, Jalan Biru 2, Taman Pelangi,\n80400 JB, Johor.",
                   },
-                  { icon: Phone, label: "Telephone", value: "+607-339 1199" },
+                  { icon: Phone, label: "Telephone", value: "+6016-7442330 | +607-339 1199" },
                   {
                     icon: Mail,
                     label: "Email",
-                    value: "admin@tectonedesign.com",
+                    value: "hidilin@gmail.com",
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4">

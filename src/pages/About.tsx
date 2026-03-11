@@ -65,15 +65,18 @@ const About = () => {
             </span>
           </div>
           <div className="aspect-square flex flex-col justify-center px-8 lg:px-16">
-            <AnimatedLabel text="Lead Architect" isActive={hidiHover} />
+            <AnimatedLabel text="Principal" isActive={hidiHover} />
             <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-1">
               Ar. Hidi Lau
             </h2>
             <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mb-2">
-              Wei Lin
+              Wei Lir
             </h2>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-6">
-              Lead Architect & Lead Interior Designer
+            <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
+              A/L 465 · Principal
+            </p>
+            <p className="text-[10px] tracking-[0.15em] text-muted-foreground mb-6">
+              B. Env. Design (UWA, Aus), M. Arch (Univ. Melb, Aus)
             </p>
             <p className="text-xs leading-6 text-muted-foreground font-light max-w-sm">
               Ar. Hidi Lau graduated with Master of Architecture from the

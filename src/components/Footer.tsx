@@ -57,13 +57,13 @@ const Footer = () => {
             <p className="text-xs leading-5 text-muted-foreground">
               1, Jalan Biru 2, Taman Pelangi,
               <br />
-              80400 Johor Bahru, Johor, Malaysia.
+              80400 JB, Johor.
             </p>
             <p className="text-xs text-muted-foreground">
-              Tel : +607-339 1199
+              Tel : +6016-7442330 | +607-339 1199
             </p>
             <p className="text-xs text-muted-foreground">
-              Email : admin@tectonedesign.com
+              Email : hidilin@gmail.com
             </p>
           </div>
         </div>

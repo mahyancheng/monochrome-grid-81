@@ -11,8 +11,8 @@ const Footer = () => {
         <div className="px-6 py-10 md:border-r border-b md:border-b-0 border-border">
           <img
             src={bottomLogo}
-            alt="Tectone Design"
-            className="h-10 object-contain mb-6"
+            alt="HIDI Lau Architect"
+            className="h-12 object-contain mb-6 mix-blend-multiply dark:invert"
           />
           <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground leading-5">
             Architecture · Interior · Design

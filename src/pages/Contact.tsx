@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 
+import SEO from "@/components/SEO";
 import heroImg from "@/Archive/Projects/courtyard-house_60.jpg";
 
 const contactSchema = z.object({

@@ -12,7 +12,7 @@ const SITE_URL = "https://clean-slate-stream.lovable.app";
 const DEFAULT_IMAGE = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/84df6b3f-5a56-4f92-bfdf-f4cfaa7ade91/id-preview-3c6f1729--3adb8532-99e5-4d8a-be68-712ad0137d14.lovable.app-1773107455671.png";
 
 const SEO = ({ title, description, path, image, type = "website" }: SEOProps) => {
-  const fullTitle = path === "/" ? title : `${title} | HIDI Lau Architect`;
+  const fullTitle = title;
   const url = `${SITE_URL}${path}`;
   const img = image || DEFAULT_IMAGE;
 

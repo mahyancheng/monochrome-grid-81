@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { ServiceAccordion } from "@/components/ui/service-accordion";
 import { FeaturedSpotlight, AnimatedLabel, CornerAccents } from "@/components/ui/feature-spotlight";
 
+import SEO from "@/components/SEO";
 import img1 from "@/Archive/Services/07aor-min.jpg";
 import img2 from "@/Archive/Services/08aor-min.png";
 import img3 from "@/Archive/Projects/courtyard-house_01.jpg";

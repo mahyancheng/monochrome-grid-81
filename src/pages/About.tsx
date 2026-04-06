@@ -31,7 +31,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title="About Us"
+        title="Top Architecture Firms in Malaysia | About Us | HIDI LAU ARCHITECTURE"
         description="Meet Ar. Hidi Lau Wei Lir, principal architect at HIDI Lau Architect. Award-winning architectural and interior design studio established in 1989 in Johor Bahru."
         path="/about"
       />

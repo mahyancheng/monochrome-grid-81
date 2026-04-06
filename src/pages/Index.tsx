@@ -16,6 +16,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="HIDI Lau Architect — Architecture · Interior · Design"
+        description="Multi-disciplinary architectural design studio in Johor Bahru, Malaysia. Architecture, interior design and passionate craftsmanship since 1989."
+        path="/"
+      />
       <Header />
       <main className="flex-1">
         {/* Hero Spotlight */}

@@ -28,6 +28,11 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title={project.title}
+        description={project.description || `${project.title} — ${project.category} project by HIDI Lau Architect, Johor Bahru.`}
+        path={`/project/${project.id}`}
+      />
       <Header />
       <main className="flex-1">
         {/* Title bar with spotlight styling */}

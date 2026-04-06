@@ -7,6 +7,15 @@ import { AnimatedLabel, CornerAccents } from "@/components/ui/feature-spotlight"
 import SEO from "@/components/SEO";
 import { projects } from "@/data/projects";
 
+const getCategoryLabel = (category: string) => {
+  switch (category) {
+    case "Residential": return "Residential Architect Malaysia";
+    case "Commercial": return "Commercial Interior Design";
+    case "Hospitality": return "Hospitality Interior Design";
+    default: return category;
+  }
+};
+
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const project = projects.find((p) => p.id === id);

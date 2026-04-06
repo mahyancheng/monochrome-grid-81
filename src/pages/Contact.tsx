@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 
+import SEO from "@/components/SEO";
 import heroImg from "@/Archive/Projects/courtyard-house_60.jpg";
 
 const contactSchema = z.object({
@@ -54,6 +55,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <SEO
+        title="Contact"
+        description="Get in touch with HIDI Lau Architect. Located at 1, Jalan Biru 2, Taman Pelangi, 80400 JB, Johor. Tel: +6016-7442330."
+        path="/contact"
+      />
       <Header />
 
       {/* Spotlight layout — image background with floating content */}

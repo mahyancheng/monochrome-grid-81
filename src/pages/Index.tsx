@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { FeaturedSpotlight } from "@/components/ui/feature-spotlight";
 import { projects } from "@/data/projects";
 
+import SEO from "@/components/SEO";
 import heroImg from "@/Archive/HomePage/courtyard-house_11-1.jpg";
 import ctaImg from "@/Archive/HomePage/01.jpg";
 
@@ -15,6 +16,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="HIDI Lau Architect — Architecture · Interior · Design"
+        description="Multi-disciplinary architectural design studio in Johor Bahru, Malaysia. Architecture, interior design and passionate craftsmanship since 1989."
+        path="/"
+      />
       <Header />
       <main className="flex-1">
         {/* Hero Spotlight */}

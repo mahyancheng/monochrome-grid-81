@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ServiceAccordion } from "@/components/ui/service-accordion";
 import { FeaturedSpotlight, AnimatedLabel, CornerAccents } from "@/components/ui/feature-spotlight";
 
+import SEO from "@/components/SEO";
 import img1 from "@/Archive/Services/07aor-min.jpg";
 import img2 from "@/Archive/Services/08aor-min.png";
 import img3 from "@/Archive/Projects/courtyard-house_01.jpg";
@@ -46,6 +48,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Services"
+        description="Architectural design, interior design, authority submissions and passionate craftsmanship. HIDI Lau Architect delivers excellence from concept to completion."
+        path="/services"
+      />
       <Header />
       <main className="flex-1">
         {/* Title */}
@@ -80,7 +87,7 @@ const Services = () => {
               are committed to designing and crafting a home that truly reflects
               your lifestyle and personality.
             </p>
-            <a href="/contact" className="group flex items-center gap-3">
+            <Link to="/contact" className="group flex items-center gap-3">
               <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
                 <ArrowUpRight
                   size={14}
@@ -90,7 +97,7 @@ const Services = () => {
               <span className="text-[10px] tracking-[0.3em] uppercase text-foreground">
                 Get A Quote
               </span>
-            </a>
+            </Link>
           </div>
           <div className="relative aspect-square overflow-hidden">
             <img
@@ -152,8 +159,8 @@ const Services = () => {
             help you visualize your house design, transforming ideas into a
             well-crafted living space.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="group inline-flex items-center gap-3 mx-auto"
           >
             <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
@@ -165,7 +172,7 @@ const Services = () => {
             <span className="text-[10px] tracking-[0.3em] uppercase text-foreground">
               Contact Us
             </span>
-          </a>
+          </Link>
         </div>
       </main>
       <Footer />

@@ -6,6 +6,7 @@ import { FeaturedSpotlight, CornerAccents, AnimatedLabel } from "@/components/ui
 
 import hidiPhoto from "@/Archive/AboutPage/untitled-design-2.png";
 
+import SEO from "@/components/SEO";
 import journeyImg from "@/Archive/AboutPage/01.jpg";
 import spaceImg from "@/Archive/AboutPage/emw_17-1.jpg";
 
@@ -29,6 +30,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="About Us"
+        description="Meet Ar. Hidi Lau Wei Lir, principal architect at HIDI Lau Architect. Award-winning architectural and interior design studio established in 1989 in Johor Bahru."
+        path="/about"
+      />
       <Header />
       <main className="flex-1">
         {/* Title */}

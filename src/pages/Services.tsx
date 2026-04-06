@@ -86,7 +86,7 @@ const Services = () => {
               are committed to designing and crafting a home that truly reflects
               your lifestyle and personality.
             </p>
-            <a href="/contact" className="group flex items-center gap-3">
+            <Link to="/contact" className="group flex items-center gap-3">
               <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
                 <ArrowUpRight
                   size={14}
@@ -96,7 +96,7 @@ const Services = () => {
               <span className="text-[10px] tracking-[0.3em] uppercase text-foreground">
                 Get A Quote
               </span>
-            </a>
+            </Link>
           </div>
           <div className="relative aspect-square overflow-hidden">
             <img

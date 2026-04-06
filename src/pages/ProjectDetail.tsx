@@ -29,7 +29,7 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title={project.title}
+        title={`${getCategoryLabel(project.category)} | Project | HIDI LAU ARCHITECTURE`}
         description={project.description || `${project.title} — ${project.category} project by HIDI Lau Architect, Johor Bahru.`}
         path={`/project/${project.id}`}
       />

@@ -47,6 +47,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Services"
+        description="Architectural design, interior design, authority submissions and passionate craftsmanship. HIDI Lau Architect delivers excellence from concept to completion."
+        path="/services"
+      />
       <Header />
       <main className="flex-1">
         {/* Title */}

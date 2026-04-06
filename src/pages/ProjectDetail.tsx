@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnimatedLabel, CornerAccents } from "@/components/ui/feature-spotlight";
+import SEO from "@/components/SEO";
 import { projects } from "@/data/projects";
 
 const ProjectDetail = () => {

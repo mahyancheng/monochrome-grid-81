@@ -158,8 +158,8 @@ const Services = () => {
             help you visualize your house design, transforming ideas into a
             well-crafted living space.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="group inline-flex items-center gap-3 mx-auto"
           >
             <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
@@ -171,7 +171,7 @@ const Services = () => {
             <span className="text-[10px] tracking-[0.3em] uppercase text-foreground">
               Contact Us
             </span>
-          </a>
+          </Link>
         </div>
       </main>
       <Footer />

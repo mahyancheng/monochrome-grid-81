@@ -87,7 +87,7 @@ async function prerender() {
     await page.goto(url, { waitUntil: "networkidle0", timeout: 30000 });
 
     // Wait a bit for any animations/lazy content
-    await page.waitForTimeout(1000);
+    await new Promise((r) => setTimeout(r, 1000));
 
     const html = await page.content();
 

@@ -49,7 +49,7 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title="Services"
+        title="Interior Design and Build Malaysia | Service | HIDI LAU ARCHITECTURE | GET A INSTANT QUOTE NOW"
         description="Architectural design, interior design, authority submissions and passionate craftsmanship. HIDI Lau Architect delivers excellence from concept to completion."
         path="/services"
       />

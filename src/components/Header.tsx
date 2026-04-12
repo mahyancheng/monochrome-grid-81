@@ -94,12 +94,12 @@ const Header = ({ transparent = false }: HeaderProps) => {
             </button>
           </div>
           {/* Dark body with nav links */}
-          <div className="flex-1 bg-[#1a1a1a] px-6 pt-8">
+          <div className="flex-1 bg-[#1a1a1a] px-6 pt-8 flex flex-col gap-3">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className="block py-3 font-futura font-bold text-sm tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors"
+                className="block w-fit border border-white/70 px-5 py-2.5 font-futura font-bold text-xs tracking-[0.2em] uppercase text-white/70 hover:text-white hover:border-white transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}

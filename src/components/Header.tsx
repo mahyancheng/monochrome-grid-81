@@ -15,7 +15,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-border relative">
+    <header className="w-full relative z-20">
       <div className="flex items-center justify-between px-6 md:px-8 py-5 md:py-6">
         <Link to="/" className="flex items-center gap-4 md:gap-5 group">
           <span className="inline-flex shrink-0 items-center justify-center bg-[#8d8d8d] px-3 py-2.5 md:px-4 md:py-3">

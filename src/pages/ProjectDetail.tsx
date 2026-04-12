@@ -122,14 +122,17 @@ const ProjectDetail = () => {
         {/* Image grid with corner accents */}
         <div className="grid grid-cols-2 md:grid-cols-3 w-full">
           {project.images.map((img, i) => (
-            <div key={i} className="relative aspect-square overflow-hidden group">
+            <div
+              key={i}
+              className="relative aspect-square overflow-hidden group cursor-pointer"
+              onClick={() => setLightboxIndex(i)}
+            >
               <img
                 src={img}
                 alt={`${project.title} ${i + 1}`}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-foreground/5 group-hover:bg-transparent transition-all duration-500" />
-              {/* Corner accents on hover */}
               <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
               <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
               <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
@@ -140,6 +143,46 @@ const ProjectDetail = () => {
             </div>
           ))}
         </div>
+
+        {/* Lightbox */}
+        <Dialog open={lightboxIndex !== null} onOpenChange={() => setLightboxIndex(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-black/95 flex items-center justify-center">
+            {lightboxIndex !== null && (
+              <>
+                <img
+                  src={project.images[lightboxIndex]}
+                  alt={`${project.title} ${lightboxIndex + 1}`}
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+                {project.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setLightboxIndex((lightboxIndex - 1 + project.images.length) % project.images.length);
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setLightboxIndex((lightboxIndex + 1) % project.images.length);
+                      }}
+                      className="absolute right-12 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </>
+                )}
+                <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.3em] text-white/50">
+                  {String(lightboxIndex + 1).padStart(2, "0")} / {String(project.images.length).padStart(2, "0")}
+                </span>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </main>
       <Footer />
     </div>

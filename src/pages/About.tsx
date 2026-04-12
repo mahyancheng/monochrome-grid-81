@@ -85,11 +85,7 @@ const About = () => {
           </div>
         </div>
       </main>
-      <div className="py-8 text-center" style={{ backgroundColor: '#262626' }}>
-        <span className="text-[10px] tracking-[0.15em] text-white">
-          HIDI LAU ARCHITECT © 2026 All Rights Reserved
-        </span>
-      </div>
+     <Footer />
     </div>
   );
 };

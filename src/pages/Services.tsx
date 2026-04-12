@@ -55,54 +55,20 @@ const Services = () => {
       />
       <Header />
       <main className="flex-1">
+      <div className="py-10 border-b border-border">
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-8 h-px bg-foreground" />
+            <h1 className="text-xs tracking-[0.5em] uppercase text-foreground">
+              Services
+            </h1>
+            <div className="w-8 h-px bg-foreground" />
+          </div>
+        </div>
         <div
           className="grid grid-cols-1 md:grid-cols-2 w-full"
           onMouseEnter={() => setIntroHover(true)}
           onMouseLeave={() => setIntroHover(false)}
         >
-          <div className="flex flex-col justify-center px-8 lg:px-16 py-16 md:py-0 md:aspect-square">
-            <AnimatedLabel text="Our Expertise" isActive={introHover} />
-            <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-2">
-              With Passion
-            </h2>
-            <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mb-6">
-              And Dedication
-            </h2>
-            <p className="text-xs leading-6 text-muted-foreground font-light max-w-sm mb-8">
-              HIDI Lau Architect believes that a comfortable living
-              environment is key to happiness. Guided by our knowledge and
-              experience in architectural design and interior design services, we
-              are committed to designing and crafting a home that truly reflects
-              your lifestyle and personality.
-            </p>
-            <Link to="/contact" className="group flex items-center gap-3">
-              <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
-                <ArrowUpRight
-                  size={14}
-                  className="text-foreground transition-colors duration-300 group-hover:text-background"
-                />
-              </div>
-              <span className="text-[10px] tracking-[0.3em] uppercase text-foreground">
-                Get A Quote
-              </span>
-            </Link>
-          </div>
-          <div className="relative aspect-square overflow-hidden">
-            <img
-              src={img1}
-              alt="Our Expertise"
-              className="w-full h-full object-cover transition-transform duration-700"
-              style={{ transform: introHover ? "scale(1.05)" : "scale(1)" }}
-            />
-            <div
-              className="absolute inset-0 bg-foreground/10 transition-opacity duration-500"
-              style={{ opacity: introHover ? 0 : 1 }}
-            />
-            <CornerAccents className="opacity-40" />
-            <span className="absolute bottom-4 right-6 text-[10px] tracking-[0.3em] text-background/60">
-              01
-            </span>
-          </div>
         </div>
 
         {/* Interactive accordion */}
@@ -131,36 +97,6 @@ const Services = () => {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* CTA section */}
-        <div className="py-16 px-6 text-center relative">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-6 h-px bg-foreground" />
-            <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-              For Your Better Lifestyle
-            </span>
-            <div className="w-6 h-px bg-foreground" />
-          </div>
-          <p className="text-xs leading-6 text-muted-foreground font-light max-w-lg mx-auto mb-8">
-            Speak to us today and let our architectural and interior design team
-            help you visualize your house design, transforming ideas into a
-            well-crafted living space.
-          </p>
-          <Link
-            to="/contact"
-            className="group inline-flex items-center gap-3 mx-auto"
-          >
-            <div className="w-8 h-8 border border-foreground flex items-center justify-center transition-colors duration-300 group-hover:bg-foreground">
-              <ArrowUpRight
-                size={14}
-                className="text-foreground transition-colors duration-300 group-hover:text-background"
-              />
-            </div>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-foreground">
-              Contact Us
-            </span>
-          </Link>
         </div>
       </main>
       <Footer />

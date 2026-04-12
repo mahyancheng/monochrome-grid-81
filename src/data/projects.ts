@@ -224,7 +224,7 @@ export const projects: Project[] = [
     title: "The Iconic Terrace",
     category: "Residential",
     cover: it1,
-    images: [it1, it2, it3, it4, it5, it6, it7, it8, it9, it10],
+    images: [it1, it2, it3, it6, it7, it8, it9, it10],
   },
   {
     id: "sutera-terrace",
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     title: "CHICHA San Chen Puchong",
     category: "Commercial",
     cover: cc2,
-    images: [cc1, cc2, cc3, cc4, cc5, cc6, cc7],
+    images: [cc1, cc3, cc4, cc5, cc6, cc7],
   },
   {
     id: "winter-pavillion",
@@ -266,7 +266,7 @@ export const projects: Project[] = [
     title: "Founders Penang",
     category: "Commercial",
     cover: fp1,
-    images: [fp1, fp2, fp3, fp4, fp5, fp6, fp7, fp8, fp9, fp10, fp11, fp12, fp13],
+    images: [fp1, fp2, fp3, fp4, fp7, fp8, fp9, fp10, fp11, fp12, fp13],
   },
   {
     id: "aor-house",

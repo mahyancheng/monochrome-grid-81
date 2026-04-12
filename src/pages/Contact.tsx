@@ -99,45 +99,8 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             {/* Left: Title + Contact Info */}
             <div className="flex flex-col justify-center">
-              {/* Animated label */}
-              <div className="flex items-center gap-3 mb-8">
-                <div
-                  className="h-px bg-foreground transition-all duration-700 ease-out"
-                  style={{ width: isHovered ? "3rem" : "1.5rem" }}
-                />
-                <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-                  Get In Touch
-                </span>
-              </div>
-
               {/* Title with hover shift */}
-              <div className="mb-8">
-                {["Let's Build", "Together"].map((line, i) => (
-                  <h1
-                    key={i}
-                    className={`text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] ${
-                      i === 1
-                        ? "italic font-light text-muted-foreground"
-                        : "font-extralight"
-                    }`}
-                    style={{
-                      transform: isHovered
-                        ? `translateX(${i * 8}px)`
-                        : "translateX(0)",
-                      transition: `transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.05}s`,
-                    }}
-                  >
-                    {line}
-                  </h1>
-                ))}
-              </div>
-
-              <p className="text-xs leading-6 text-muted-foreground font-light max-w-sm mb-12">
-                Speak to us today and let our architectural and interior design
-                team help you visualize your house design, transforming ideas
-                into a well-crafted living space.
-              </p>
-
+              
               {/* Contact details */}
               <div className="space-y-6">
                 {[
@@ -169,11 +132,6 @@ const Contact = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Index number */}
-              <span className="mt-12 text-[10px] tracking-[0.3em] text-muted-foreground">
-                01
-              </span>
             </div>
 
             {/* Right: Lead Form */}

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import HeroSlider from "@/components/HeroSlider";
 import SEO from "@/components/SEO";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -25,13 +26,7 @@ const Index = () => {
         <div id="projects">
           <ProjectGrid />
         </div>
-
-        {/* Footer */}
-        <div className="py-8 text-center" style={{ backgroundColor: '#262626' }}>
-          <span className="text-[10px] tracking-[0.15em] text-white">
-            HIDI LAU ARCHITECT © 2026 All Rights Reserved
-          </span>
-        </div>
+        <Footer />
       </main>
     </div>
   );

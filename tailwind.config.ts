@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],
+        futura: ['"Futura Light BT"', "Futura", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -16,20 +16,22 @@ const Header = () => {
 
   return (
     <header className="w-full border-b border-border relative">
-      <div className="flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3 group">
-          <img
-            src={logo}
-            alt="HIDI Lau Architect"
-            className="h-10 object-contain mix-blend-multiply dark:invert"
-          />
-          <h1 className="text-sm tracking-[0.3em] uppercase font-light text-foreground">
-            HIDI Lau Architect
+      <div className="flex items-center justify-between px-6 md:px-8 py-5 md:py-6">
+        <Link to="/" className="flex items-center gap-4 md:gap-5 group">
+          <span className="inline-flex shrink-0 items-center justify-center bg-[#8d8d8d] px-3 py-2.5 md:px-4 md:py-3">
+            <img
+              src={logo}
+              alt="HIDI LAU ARCHITECT"
+              className="h-11 md:h-14 w-auto object-contain"
+            />
+          </span>
+          <h1 className="text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-light leading-tight text-[#4872c6]">
+            HIDI LAU ARCHITECT
           </h1>
         </Link>
-
+    
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-8 items-center">
+        <nav className="hidden md:flex gap-8 items-center font-futura">
           {navItems.map((item) => {
             const isActive = location.pathname === item.href;
             return (
@@ -39,11 +41,10 @@ const Header = () => {
                 className="relative group"
               >
                 <span
-                  className={`text-xs tracking-[0.2em] uppercase transition-colors ${
-                    isActive
+                  className={`font-bold text-xs tracking-[0.2em] uppercase transition-colors ${isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </span>
@@ -73,7 +74,7 @@ const Header = () => {
             <Link
               key={item.href}
               to={item.href}
-              className="block px-6 py-4 border-b border-border text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+              className="block px-6 py-4 border-b border-border font-futura font-bold text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {item.label}

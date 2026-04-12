@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import Footer from "@/components/Footer";
-import { FeaturedSpotlight } from "@/components/ui/feature-spotlight";
+import HeroSlider from "@/components/HeroSlider";
 import { projects } from "@/data/projects";
 
 import SEO from "@/components/SEO";
-import heroImg from "@/Archive/HomePage/courtyard-house_11-1.jpg";
 import ctaImg from "@/Archive/HomePage/01.jpg";
 
 const Index = () => {

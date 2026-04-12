@@ -24,13 +24,13 @@ const HeroSlider = () => {
     [current, isTransitioning]
   );
 
-  // Auto-advance every 5s
+  // Auto-advance every 5s, reset on manual navigation
   useEffect(() => {
     const id = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [current]);
 
   return (
     <div className="relative w-full h-[50vh] md:h-[50vh] overflow-hidden">

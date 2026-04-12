@@ -76,19 +76,36 @@ const Header = ({ transparent = false }: HeaderProps) => {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile fullscreen menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-white/20 bg-black/80 backdrop-blur-sm">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="block px-6 py-4 border-b border-white/10 font-futura font-bold text-xs tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.label}
+        <div className="md:hidden fixed inset-0 z-50 flex flex-col">
+          {/* White header bar with logo and close */}
+          <div className="flex items-center justify-between px-6 py-5 bg-white">
+            <Link to="/" className="flex items-center gap-4 group" onClick={() => setMobileOpen(false)}>
+              <span className="inline-flex shrink-0 items-center justify-center bg-[#8d8d8d] px-3 py-2.5">
+                <img src={logo} alt="HIDI LAU ARCHITECT" className="h-11 w-auto object-contain" />
+              </span>
+              <span className="text-base tracking-[0.28em] uppercase font-light leading-tight text-[#4872c6]">
+                HIDI LAU ARCHITECT
+              </span>
             </Link>
-          ))}
+            <button onClick={() => setMobileOpen(false)} className="text-foreground">
+              <X size={20} />
+            </button>
+          </div>
+          {/* Dark body with nav links */}
+          <div className="flex-1 bg-[#1a1a1a] px-6 pt-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="block py-3 font-futura font-bold text-sm tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </header>

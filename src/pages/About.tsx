@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FeaturedSpotlight, CornerAccents, AnimatedLabel } from "@/components/ui/feature-spotlight";
 
-import hidiPhoto from "@/Archive/AboutPage/untitled-design-2.png";
+import hidiPhoto from "@/Archive/AboutPage/IMG_0520.jpg";
 
 import SEO from "@/components/SEO";
 import journeyImg from "@/Archive/AboutPage/01.jpg";
@@ -37,16 +37,6 @@ const About = () => {
       />
       <Header />
       <main className="flex-1">
-        {/* Title */}
-        <div className="py-10 border-b border-border">
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-8 h-px bg-foreground" />
-            <h1 className="text-xs tracking-[0.5em] uppercase text-foreground">
-              About Us
-            </h1>
-            <div className="w-8 h-px bg-foreground" />
-          </div>
-        </div>
 
         {/* Hidi section */}
         <div
@@ -70,27 +60,27 @@ const About = () => {
               01
             </span>
           </div>
-          <div className="aspect-square flex flex-col justify-center px-8 lg:px-16">
+          <div className="aspect-square flex flex-col justify-center px-8 lg:px-16 font-futura">
             <AnimatedLabel text="Principal" isActive={hidiHover} />
             <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-1">
               Ar. Hidi Lau
             </h2>
             <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mb-2">
-              Wei Lir
+              Wei Lin
             </h2>
             <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
-              A/L 465 · Principal
+              A/L 465 · Principal · LAM Registered Architect
+            </p>
+            <p className="text-[10px] tracking-[0.15em] text-muted-foreground mb-1">
+              B. Env. Design (UWA) · M. Arch (Univ. Melb) · Corporate Member of PAM
             </p>
             <p className="text-[10px] tracking-[0.15em] text-muted-foreground mb-6">
-              B. Env. Design (UWA, Aus), M. Arch (Univ. Melb, Aus)
+              10+ Years Experience · PAM Silver Award Winner (2019)
             </p>
-            <p className="text-xs leading-6 text-muted-foreground font-light max-w-sm">
-              Ar. Hidi Lau graduated with Master of Architecture from the
-              University of Melbourne in 2014 and Bachelor of Environments from
-              the University of Western Australia in 2011. She has worked at
-              established architectural offices in Melbourne and Johor Bahru,
-              handling international resorts and hotels, residential and interior
-              projects for more than 8 years.
+            <p className="text-xs leading-6 text-muted-foreground font-light max-w-lg">
+              Ar. Hidi Lau Wei Lin is a practicing Architect registered with Lembaga Arkitek Malaysia (LAM) —Board of Architects Malaysia. She is a corporate member of the Pertubuhan Akitek Malaysia (PAM) — Malaysian Institute of Architects.
+              Hidi Lau Architect is a design-focused architectural firm in Johor Bahru, Malaysia known for creating well-crafted contemporary homes and spaces suited for tropical and modern living. The practice was established by Ar. Hidi Lau Wei Lin, who graduated with Master of Architecture from the University of Melbourne in 2014 and Bachelor of Environments from the University of Western Australia in 2011. She has worked at established architectural offices in Melbourne and Johor Bahru, handling international resorts and hotels, residential and interior projects for more than 10 years before starting her practice. Ar. Hidi Lau has extensive experience in both the architecture and interior design on residential landed house and exclusively in contemporary luxury homes, tropical luxury resort, commercial spaces and more.
+              Over the years, Ar. Hidi Lau has been involved in numerous award-winning projects and the projects have been featured in prominent publications such as Architecture Malaysia (AM), published by PAM (Pertubuhan Akitek Malaysia). She has also been heavily involved in the Ritz Carlton Langkawi, which has been awarded PAM Silver Award project under Commercial Low Rise Category in 2019.
             </p>
           </div>
         </div>

@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import HeroSlider from "@/components/HeroSlider";
 import SEO from "@/components/SEO";
-import SEO from "@/components/SEO";
 
 const Index = () => {
   return (

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnimatedLabel, CornerAccents } from "@/components/ui/feature-spotlight";
 import SEO from "@/components/SEO";
 import { projects } from "@/data/projects";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const getCategoryLabel = (category: string) => {
   switch (category) {

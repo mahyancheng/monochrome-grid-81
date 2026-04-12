@@ -3,6 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
+interface HeaderProps {
+  transparent?: boolean;
+}
+
 const navItems = [
   { label: "Projects", href: "/" },
   { label: "About", href: "/about" },

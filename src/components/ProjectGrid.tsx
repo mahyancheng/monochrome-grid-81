@@ -32,55 +32,39 @@ const ProjectTile = ({
   return (
     <Link
       to={`/project/${project.id}`}
-      className="relative aspect-square overflow-hidden cursor-pointer block group"
+      className="block group"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Sliding strip of images */}
-      <div
-        className="absolute inset-0 flex h-full"
-        style={{
-          width: `${images.length * 100}%`,
-          transform: `translateX(-${(currentImg * 100) / images.length}%)`,
-          transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
-        }}
-      >
-        {images.map((img, imgIdx) => (
-          <img
-            key={imgIdx}
-            src={img}
-            alt={project.title}
-            className="h-full object-cover transition-transform duration-700"
-            style={{
-              width: `${100 / images.length}%`,
-              flexShrink: 0,
-              transform: isHovered ? "scale(1.05)" : "scale(1)",
-            }}
-            loading="lazy"
-          />
-        ))}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        {/* Sliding strip of images */}
+        <div
+          className="absolute inset-0 flex h-full"
+          style={{
+            width: `${images.length * 100}%`,
+            transform: `translateX(-${(currentImg * 100) / images.length}%)`,
+            transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
+          }}
+        >
+          {images.map((img, imgIdx) => (
+            <img
+              key={imgIdx}
+              src={img}
+              alt={project.title}
+              className="h-full object-cover transition-transform duration-700"
+              style={{
+                width: `${100 / images.length}%`,
+                flexShrink: 0,
+                transform: isHovered ? "scale(1.05)" : "scale(1)",
+              }}
+              loading="lazy"
+            />
+          ))}
+        </div>
       </div>
-
-      {/* Hover overlay */}
-      <div
-        className="absolute inset-0 bg-primary/70 flex flex-col items-center justify-center transition-opacity duration-500 z-10"
-        style={{ opacity: isHovered ? 1 : 0 }}
-      >
-        <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-primary-foreground/50" />
-        <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-primary-foreground/50" />
-        <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-primary-foreground/50" />
-        <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-primary-foreground/50" />
-
-        <span className="text-primary-foreground text-sm tracking-[0.3em] uppercase font-light text-center px-4">
-          {project.title}
-        </span>
-        <span className="text-primary-foreground/60 text-xs tracking-[0.2em] mt-2">
-          {project.category}
-        </span>
-        <span className="text-primary-foreground/30 text-[10px] tracking-[0.3em] absolute bottom-4 right-6">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
+      <p className="text-xs tracking-[0.15em] text-muted-foreground mt-3 text-center">
+        {project.title}
+      </p>
     </Link>
   );
 };
@@ -122,7 +106,7 @@ const ProjectGrid = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 px-6 md:px-10 py-8">
         {filtered.map((project, i) => (
           <ProjectTile
             key={project.id}

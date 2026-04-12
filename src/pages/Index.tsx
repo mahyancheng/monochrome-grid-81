@@ -23,16 +23,7 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         {/* Hero Spotlight */}
-        <FeaturedSpotlight
-          label="Established 1989"
-          title={["Designed", "For Living"]}
-          description="Redefining living with architectural design precision and interior design craftsmanship, delivering spaces that balance form, function, and timeless aesthetics."
-          ctaText="View Projects"
-          ctaHref="#projects"
-          imageSrc={heroImg}
-          imageAlt="Courtyard House by HIDI Lau Architect"
-          index="01"
-        />
+        <HeroSlider />
 
         {/* Section divider with text */}
         <div className="border-y border-border py-6 px-6">

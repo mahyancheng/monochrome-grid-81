@@ -119,29 +119,49 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        {/* Image grid with corner accents */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 px-6 md:px-10 py-8">
-          {project.images.map((img, i) => (
-            <div
-              key={i}
-              className="relative aspect-square overflow-hidden group cursor-pointer"
-              onClick={() => setLightboxIndex(i)}
-            >
-              <img
-                src={img}
-                alt={`${project.title} ${i + 1}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-foreground/5 group-hover:bg-transparent transition-all duration-500" />
-              <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
-              <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
-              <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
-              <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-foreground/0 group-hover:border-foreground/30 transition-all duration-500" />
-              <span className="absolute bottom-3 right-4 text-[9px] tracking-[0.2em] text-foreground/0 group-hover:text-foreground/30 transition-all duration-500">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
-          ))}
+        {/* Image gallery — alternating 1-up / 2-up rows */}
+        <div className="flex flex-col gap-4 md:gap-6 px-6 md:px-10 py-8">
+          {(() => {
+            const rows: React.ReactNode[] = [];
+            let i = 0;
+            let rowIdx = 0;
+            while (i < project.images.length) {
+              const isWideRow = rowIdx % 2 === 0;
+              if (isWideRow) {
+                // Full-width landscape image
+                const img = project.images[i];
+                rows.push(
+                  <div
+                    key={i}
+                    className="relative w-full aspect-[16/9] overflow-hidden group cursor-pointer"
+                    onClick={() => setLightboxIndex(i)}
+                  >
+                    <img src={img} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  </div>
+                );
+                i += 1;
+              } else {
+                // Two side-by-side images
+                const imgs = project.images.slice(i, i + 2);
+                rows.push(
+                  <div key={i} className="grid grid-cols-2 gap-4 md:gap-6">
+                    {imgs.map((img, j) => (
+                      <div
+                        key={i + j}
+                        className="relative aspect-[4/5] overflow-hidden group cursor-pointer"
+                        onClick={() => setLightboxIndex(i + j)}
+                      >
+                        <img src={img} alt={`${project.title} ${i + j + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      </div>
+                    ))}
+                  </div>
+                );
+                i += imgs.length;
+              }
+              rowIdx++;
+            }
+            return rows;
+          })()}
         </div>
 
         {/* Lightbox */}

@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import HeroSlider from "@/components/HeroSlider";
-import { projects } from "@/data/projects";
 import SEO from "@/components/SEO";
 
 const Index = () => {
@@ -21,20 +20,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Section divider with text */}
-        <div className="border-y border-border py-6 px-6">
-          <div className="flex items-center justify-between max-w-5xl mx-auto">
-            <div className="flex items-center gap-3">
-              <div className="w-6 h-px bg-foreground" />
-              <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-                Our Project Gallery
-              </span>
-            </div>
-            <span className="text-[10px] tracking-[0.2em] text-muted-foreground">
-              {projects.length} Projects
-            </span>
-          </div>
-        </div>
 
         {/* Project Grid */}
         <div id="projects">

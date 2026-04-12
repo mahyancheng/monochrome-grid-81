@@ -36,7 +36,7 @@ const ProjectTile = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[3/2] overflow-hidden">
         {/* Sliding strip of images */}
         <div
           className="absolute inset-0 flex h-full"

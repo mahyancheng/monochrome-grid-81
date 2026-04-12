@@ -84,97 +84,12 @@ const About = () => {
             </p>
           </div>
         </div>
-
-
-
-        {/* Awards text strip */}
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full border-y border-border">
-          {[
-            {
-              title: "Speaker of KLAF DATUM 2023",
-              desc: "Invited by PAM as the Speaker of KLAM DATUM 2023 Annual National Architectural Conference.",
-            },
-            {
-              title: "PAM Silver Award",
-              desc: "Won PAM Silver Award 2019 under Low-Rise Commercial Category for The Langkawi Kitchen of the Ritz-Carlton Langkawi.",
-            },
-            {
-              title: "Jury — TV2 Arkitek Junior",
-              desc: "Invited by TV2 as judge and professor for the Architectural Education and Competition programme 'Arkitek Junior'.",
-            },
-          ].map((award, i) => (
-            <div
-              key={i}
-              className={`py-8 px-6 ${i < 2 ? "md:border-r border-b md:border-b-0 border-border" : ""}`}
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-3 h-px bg-foreground" />
-                <h3 className="text-[10px] tracking-[0.2em] uppercase text-foreground">
-                  {award.title}
-                </h3>
-              </div>
-              <p className="text-[10px] leading-5 text-muted-foreground font-light pl-5">
-                {award.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Our Journey — Spotlight style */}
-        <FeaturedSpotlight
-          label="Since 1989"
-          title={["Our", "Journey"]}
-          description="HIDI Lau Architect is a multi-disciplinary architectural design studio established in 1989, delivering excellence for over three decades. Led by multiple award-winning architects, our team brings unique perspectives into every crafted space."
-          ctaText="Our Services"
-          ctaHref="/services"
-          imageSrc={journeyImg}
-          imageAlt="Our Journey"
-          index="03"
-        />
-
-        {/* Values section */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-border"
-          onMouseEnter={() => setValuesHover(true)}
-          onMouseLeave={() => setValuesHover(false)}
-        >
-          <div className="aspect-auto md:aspect-square flex flex-col justify-center px-8 lg:px-16 py-12">
-            <AnimatedLabel text="Philosophy" isActive={valuesHover} />
-            <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-8">
-              Our Values
-            </h2>
-            <div className="space-y-3">
-              {values.map((v, i) => (
-                <div key={i} className="flex gap-3">
-                  <span className="text-[10px] text-muted-foreground/40 shrink-0 mt-0.5">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-[10px] leading-5 text-muted-foreground font-light">
-                    {v}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative aspect-square overflow-hidden">
-            <img
-              src={spaceImg}
-              alt="A Space For Living"
-              className="w-full h-full object-cover transition-transform duration-700"
-              style={{ transform: valuesHover ? "scale(1.03)" : "scale(1)" }}
-            />
-            <div
-              className="absolute inset-0 bg-foreground/10 transition-opacity duration-500"
-              style={{ opacity: valuesHover ? 0 : 1 }}
-            />
-            <CornerAccents className="opacity-40" />
-            <span className="absolute bottom-4 right-6 text-[10px] tracking-[0.3em] text-background/60">
-              04
-            </span>
-          </div>
-        </div>
       </main>
-      <Footer />
+      <div className="py-8 text-center" style={{ backgroundColor: '#262626' }}>
+        <span className="text-[10px] tracking-[0.15em] text-white">
+          HIDI LAU ARCHITECT © 2026 All Rights Reserved
+        </span>
+      </div>
     </div>
   );
 };

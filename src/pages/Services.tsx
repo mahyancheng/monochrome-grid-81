@@ -55,18 +55,6 @@ const Services = () => {
       />
       <Header />
       <main className="flex-1">
-        {/* Title */}
-        <div className="py-10 border-b border-border">
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-8 h-px bg-foreground" />
-            <h1 className="text-xs tracking-[0.5em] uppercase text-foreground">
-              Services
-            </h1>
-            <div className="w-8 h-px bg-foreground" />
-          </div>
-        </div>
-
-        {/* Intro — Spotlight style */}
         <div
           className="grid grid-cols-1 md:grid-cols-2 w-full"
           onMouseEnter={() => setIntroHover(true)}

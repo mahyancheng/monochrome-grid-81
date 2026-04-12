@@ -40,6 +40,13 @@ const Index = () => {
         <div id="projects">
           <ProjectGrid />
         </div>
+
+        {/* Footer */}
+        <div className="border-t border-border py-8 text-center">
+          <span className="text-[10px] tracking-[0.15em] text-muted-foreground">
+            HIDI LAU ARCHITECT © 2026 All Rights Reserved
+          </span>
+        </div>
       </main>
     </div>
   );

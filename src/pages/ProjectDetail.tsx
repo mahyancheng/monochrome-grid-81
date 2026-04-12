@@ -120,7 +120,7 @@ const ProjectDetail = () => {
         )}
 
         {/* Image grid with corner accents */}
-        <div className="grid grid-cols-2 md:grid-cols-3 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 px-6 md:px-10 py-8">
           {project.images.map((img, i) => (
             <div
               key={i}

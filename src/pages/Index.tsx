@@ -25,7 +25,7 @@ const Index = () => {
         <div className="relative">
           <HeroSlider />
           <div className="absolute top-0 left-0 w-full z-20">
-            <Header />
+            <Header transparent />
           </div>
         </div>
 

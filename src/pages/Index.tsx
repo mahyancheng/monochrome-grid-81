@@ -42,8 +42,8 @@ const Index = () => {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-border py-8 text-center">
-          <span className="text-[10px] tracking-[0.15em] text-muted-foreground">
+        <div className="py-8 text-center" style={{ backgroundColor: '#262626' }}>
+          <span className="text-[10px] tracking-[0.15em] text-white">
             HIDI LAU ARCHITECT © 2026 All Rights Reserved
           </span>
         </div>

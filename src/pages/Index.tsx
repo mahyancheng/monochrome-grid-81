@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import Footer from "@/components/Footer";
-import { FeaturedSpotlight } from "@/components/ui/feature-spotlight";
+import HeroSlider from "@/components/HeroSlider";
 import { projects } from "@/data/projects";
 
 import SEO from "@/components/SEO";
-import heroImg from "@/Archive/HomePage/courtyard-house_11-1.jpg";
 import ctaImg from "@/Archive/HomePage/01.jpg";
 
 const Index = () => {
@@ -24,16 +23,7 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         {/* Hero Spotlight */}
-        <FeaturedSpotlight
-          label="Established 1989"
-          title={["Designed", "For Living"]}
-          description="Redefining living with architectural design precision and interior design craftsmanship, delivering spaces that balance form, function, and timeless aesthetics."
-          ctaText="View Projects"
-          ctaHref="#projects"
-          imageSrc={heroImg}
-          imageAlt="Courtyard House by HIDI Lau Architect"
-          index="01"
-        />
+        <HeroSlider />
 
         {/* Section divider with text */}
         <div className="border-y border-border py-6 px-6">

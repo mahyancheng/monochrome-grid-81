@@ -20,10 +20,14 @@ const Index = () => {
         description="Multi-disciplinary architectural design studio in Johor Bahru, Malaysia. Architecture, interior design and passionate craftsmanship since 1989."
         path="/"
       />
-      <Header />
       <main className="flex-1">
-        {/* Hero Spotlight */}
-        <HeroSlider />
+        {/* Hero with overlaid header */}
+        <div className="relative">
+          <HeroSlider />
+          <div className="absolute top-0 left-0 w-full z-20">
+            <Header transparent />
+          </div>
+        </div>
 
         {/* Section divider with text */}
         <div className="border-y border-border py-6 px-6">

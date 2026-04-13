@@ -313,8 +313,8 @@ export const projects: Project[] = [
   {
     id: "kluang-resort-farmhouse",
     title: "Kluang Resort Farmhouse",
-    category: "Hospitality",
-    cover: "kr1",
+    category: "Residential",
+    cover: kr1,
     images: [kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8, kr9],
   },
 ];

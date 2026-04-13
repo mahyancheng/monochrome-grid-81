@@ -182,6 +182,7 @@ export interface Project {
   location?: string;
   duration?: string;
   leadArchitect?: string;
+  carouselImages?: string[];
 }
 
 export const projects: Project[] = [

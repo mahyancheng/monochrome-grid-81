@@ -131,41 +131,24 @@ const ProjectDetail = () => {
         {/* Hero carousel — only for projects with carouselImages */}
         {project.carouselImages && project.carouselImages.length > 1 && (
           <div className="py-12 md:py-16">
-            <div className="relative flex items-center justify-center overflow-hidden" style={{ height: "55vh" }}>
-              {/* Previous image peek */}
+            <div className="relative overflow-hidden" style={{ height: "55vh" }}>
               <div
-                className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[8%] h-[80%] overflow-hidden cursor-pointer opacity-40 hover:opacity-60 transition-opacity z-10"
-                onClick={() => setCarouselIndex((carouselIndex - 1 + project.carouselImages!.length) % project.carouselImages!.length)}
+                className="flex h-full transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
               >
-                <img
-                  src={project.carouselImages[(carouselIndex - 1 + project.carouselImages.length) % project.carouselImages.length]}
-                  alt="Previous"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Main centered image */}
-              <div
-                className="relative h-full w-[85%] md:w-[70%] cursor-pointer overflow-hidden"
-                onClick={() => setLightboxIndex(carouselIndex)}
-              >
-                <img
-                  src={project.carouselImages[carouselIndex]}
-                  alt={`${project.title} ${carouselIndex + 1}`}
-                  className="w-full h-full object-contain transition-all duration-500"
-                />
-              </div>
-
-              {/* Next image peek */}
-              <div
-                className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[8%] h-[80%] overflow-hidden cursor-pointer opacity-40 hover:opacity-60 transition-opacity z-10"
-                onClick={() => setCarouselIndex((carouselIndex + 1) % project.carouselImages!.length)}
-              >
-                <img
-                  src={project.carouselImages[(carouselIndex + 1) % project.carouselImages.length]}
-                  alt="Next"
-                  className="w-full h-full object-cover"
-                />
+                {project.carouselImages.map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="min-w-full h-full flex items-center justify-center cursor-pointer"
+                    onClick={() => setLightboxIndex(idx)}
+                  >
+                    <img
+                      src={img}
+                      alt={`${project.title} ${idx + 1}`}
+                      className="max-w-[85%] md:max-w-[70%] h-full object-contain"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 

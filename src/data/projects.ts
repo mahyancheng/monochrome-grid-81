@@ -97,6 +97,14 @@ import cc5 from "@/Archive/Projects/04.jpg";
 import cc6 from "@/Archive/Projects/05.jpg";
 import cc7 from "@/Archive/Projects/06.jpg";
 
+// CHICHA San Chen renders (carousel)
+import ccr1 from "@/Archive/Projects/CHICHASANCHEN/01-minchicharender.png";
+import ccr2 from "@/Archive/Projects/CHICHASANCHEN/02-minchicharender.png";
+import ccr3 from "@/Archive/Projects/CHICHASANCHEN/03-minchicharender.png";
+import ccr4 from "@/Archive/Projects/CHICHASANCHEN/04-minchicharender.png";
+import ccr5 from "@/Archive/Projects/CHICHASANCHEN/05-minchicharender.png";
+import ccr6 from "@/Archive/Projects/CHICHASANCHEN/06-minchicharender.png";
+
 // Winter Pavillion (original uses sd_ prefix files)
 import wp1 from "@/Archive/Projects/sd_15-min.jpg";
 import wp2 from "@/Archive/Projects/sd_16-min.jpg";

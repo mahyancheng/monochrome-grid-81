@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 
-import img1 from "@/Archive/HomePage/courtyard-house_11-1.jpg";
-import img2 from "@/Archive/HomePage/EXTERIOR_600x600.jpeg";
-import img3 from "@/Archive/HomePage/Living_Room.jpg";
-import img4 from "@/Archive/HomePage/Foyer-_600x600.jpg";
-import img5 from "@/Archive/HomePage/Master_Bedroom.jpg";
-import img6 from "@/Archive/HomePage/INTERIOR_600x600.jpg";
-import img7 from "@/Archive/HomePage/Dining_Room-min_600x600.jpg";
+import img1 from "@/Archive/HomePage/Image Rotation/1.jpg";
+import img2 from "@/Archive/HomePage/Image Rotation/2.jpg";
+import img3 from "@/Archive/HomePage/Image Rotation/3.jpg";
+import img4 from "@/Archive/HomePage/Image Rotation/4.jpg";
+import img5 from "@/Archive/HomePage/Image Rotation/5.jpg";
+import img6 from "@/Archive/HomePage/Image Rotation/6.jpg";
+import img7 from "@/Archive/HomePage/Image Rotation/7.jpg";
 
 const slides = [img1, img2, img3, img4, img5, img6, img7];
 

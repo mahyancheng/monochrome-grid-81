@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],
         futura: ['"Futura Light BT"', "Futura", "sans-serif"],
+        fiona: ['"Kiona"', "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

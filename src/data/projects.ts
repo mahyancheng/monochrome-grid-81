@@ -262,6 +262,7 @@ export const projects: Project[] = [
     category: "Commercial",
     cover: cc2,
     images: [cc1, cc3, cc4, cc5, cc6, cc7],
+    carouselImages: [ccr1, ccr2, ccr3, ccr4, ccr5, ccr6],
   },
   {
     id: "winter-pavillion",

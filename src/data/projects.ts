@@ -171,6 +171,16 @@ import bg7 from "@/Archive/Projects/bg_02.jpg";
 import bg8 from "@/Archive/Projects/bg_03.jpg";
 import bg9 from "@/Archive/Projects/bg_04.jpg";
 
+import kr1 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_01.jpg";
+import kr2 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_02.jpg";
+import kr3 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_03.jpg";
+import kr4 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_04.jpg";
+import kr5 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_05.jpg";
+import kr6 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_06.jpg";
+import kr7 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_07.jpg";
+import kr8 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_08.jpg";
+import kr9 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_09.jpg";
+
 export interface Project {
   id: string;
   title: string;
@@ -299,5 +309,12 @@ export const projects: Project[] = [
     category: "Hospitality",
     cover: bg6,
     images: [bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9],
+  },
+  {
+    id: "kluang-resort-farmhouse",
+    title: "Kluang Resort Farmhouse",
+    category: "Hospitality",
+    cover: "kr1",
+    images: [kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8, kr9],
   },
 ];

@@ -120,17 +120,17 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        {/* Hero carousel — only for projects with heroCarousel flag */}
-        {project.id === "chicha-san-chen" && project.images.length > 1 && (
+        {/* Hero carousel — only for projects with carouselImages */}
+        {project.carouselImages && project.carouselImages.length > 1 && (
           <div className="py-12 md:py-16">
             <div className="relative flex items-center justify-center overflow-hidden" style={{ height: "55vh" }}>
               {/* Previous image peek */}
               <div
                 className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[8%] h-[80%] overflow-hidden cursor-pointer opacity-40 hover:opacity-60 transition-opacity z-10"
-                onClick={() => setCarouselIndex((carouselIndex - 1 + project.images.length) % project.images.length)}
+                onClick={() => setCarouselIndex((carouselIndex - 1 + project.carouselImages!.length) % project.carouselImages!.length)}
               >
                 <img
-                  src={project.images[(carouselIndex - 1 + project.images.length) % project.images.length]}
+                  src={project.carouselImages[(carouselIndex - 1 + project.carouselImages.length) % project.carouselImages.length]}
                   alt="Previous"
                   className="w-full h-full object-cover"
                 />
@@ -142,7 +142,7 @@ const ProjectDetail = () => {
                 onClick={() => setLightboxIndex(carouselIndex)}
               >
                 <img
-                  src={project.images[carouselIndex]}
+                  src={project.carouselImages[carouselIndex]}
                   alt={`${project.title} ${carouselIndex + 1}`}
                   className="w-full h-full object-contain transition-all duration-500"
                 />
@@ -151,10 +151,10 @@ const ProjectDetail = () => {
               {/* Next image peek */}
               <div
                 className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[8%] h-[80%] overflow-hidden cursor-pointer opacity-40 hover:opacity-60 transition-opacity z-10"
-                onClick={() => setCarouselIndex((carouselIndex + 1) % project.images.length)}
+                onClick={() => setCarouselIndex((carouselIndex + 1) % project.carouselImages!.length)}
               >
                 <img
-                  src={project.images[(carouselIndex + 1) % project.images.length]}
+                  src={project.carouselImages[(carouselIndex + 1) % project.carouselImages.length]}
                   alt="Next"
                   className="w-full h-full object-cover"
                 />
@@ -163,7 +163,7 @@ const ProjectDetail = () => {
 
             {/* Dot indicators */}
             <div className="flex items-center justify-center gap-2 mt-8">
-              {project.images.map((_, idx) => (
+              {project.carouselImages.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCarouselIndex(idx)}

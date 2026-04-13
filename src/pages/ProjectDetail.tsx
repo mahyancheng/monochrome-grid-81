@@ -181,15 +181,17 @@ const ProjectDetail = () => {
             const rows: React.ReactNode[] = [];
             let i = 0;
             let rowIdx = 0;
+            const carouselOffset = project.carouselImages?.length || 0;
             while (i < project.images.length) {
               const isWideRow = rowIdx % 2 === 0;
               if (isWideRow) {
                 const img = project.images[i];
+                const imgIndex = i;
                 rows.push(
                   <div
                     key={i}
                     className="relative w-full aspect-[16/9] overflow-hidden group cursor-pointer"
-                    onClick={() => setLightboxIndex(i)}
+                    onClick={() => setLightboxIndex(carouselOffset + imgIndex)}
                   >
                     <img src={img} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
@@ -197,15 +199,16 @@ const ProjectDetail = () => {
                 i += 1;
               } else {
                 const imgs = project.images.slice(i, i + 2);
+                const startI = i;
                 rows.push(
                   <div key={i} className="grid grid-cols-2 gap-4 md:gap-6">
                     {imgs.map((img, j) => (
                       <div
-                        key={i + j}
+                        key={startI + j}
                         className="relative aspect-[4/5] overflow-hidden group cursor-pointer"
-                        onClick={() => setLightboxIndex(i + j)}
+                        onClick={() => setLightboxIndex(carouselOffset + startI + j)}
                       >
-                        <img src={img} alt={`${project.title} ${i + j + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <img src={img} alt={`${project.title} ${startI + j + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                       </div>
                     ))}
                   </div>
@@ -224,16 +227,16 @@ const ProjectDetail = () => {
             {lightboxIndex !== null && (
               <>
                 <img
-                  src={project.images[lightboxIndex]}
+                  src={allImages[lightboxIndex]}
                   alt={`${project.title} ${lightboxIndex + 1}`}
                   className="max-w-full max-h-[90vh] object-contain"
                 />
-                {project.images.length > 1 && (
+                {allImages.length > 1 && (
                   <>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setLightboxIndex((lightboxIndex - 1 + project.images.length) % project.images.length);
+                        setLightboxIndex((lightboxIndex - 1 + allImages.length) % allImages.length);
                       }}
                       className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
                     >
@@ -242,7 +245,7 @@ const ProjectDetail = () => {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setLightboxIndex((lightboxIndex + 1) % project.images.length);
+                        setLightboxIndex((lightboxIndex + 1) % allImages.length);
                       }}
                       className="absolute right-12 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
                     >
@@ -251,7 +254,7 @@ const ProjectDetail = () => {
                   </>
                 )}
                 <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.3em] text-white/50">
-                  {String(lightboxIndex + 1).padStart(2, "0")} / {String(project.images.length).padStart(2, "0")}
+                  {String(lightboxIndex + 1).padStart(2, "0")} / {String(allImages.length).padStart(2, "0")}
                 </span>
               </>
             )}

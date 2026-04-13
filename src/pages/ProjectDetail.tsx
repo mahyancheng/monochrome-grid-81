@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";

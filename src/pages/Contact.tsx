@@ -236,10 +236,11 @@ const Contact = () => {
                   <Button
                     type="submit"
                     variant="outline"
+                    disabled={isSubmitting}
                     className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background text-[10px] tracking-[0.3em] uppercase px-8 py-5 transition-colors duration-300 w-full"
                   >
-                    Send Message
-                    <ArrowUpRight size={12} className="ml-2" />
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {!isSubmitting && <ArrowUpRight size={12} className="ml-2" />}
                   </Button>
                 </form>
               </div>

@@ -36,7 +36,9 @@ const Contact = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
@@ -48,9 +50,26 @@ const Contact = () => {
       setErrors(fieldErrors);
       return;
     }
-    toast({ title: "Message sent", description: "We'll get back to you shortly." });
-    setForm({ name: "", phone: "", email: "", message: "" });
-    setErrors({});
+
+    setIsSubmitting(true);
+    try {
+      await fetch(
+        "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjUwNTZkMDYzZjA0Mzc1MjZiNTUzMiI_3D_pc/IjU3NjcwNTZmMDYzZjA0MzA1MjY5NTUzNTUxMzYi_pc",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(result.data),
+          mode: "no-cors",
+        }
+      );
+      toast({ title: "Message sent", description: "We'll get back to you shortly." });
+      setForm({ name: "", phone: "", email: "", message: "" });
+      setErrors({});
+    } catch {
+      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -217,10 +236,11 @@ const Contact = () => {
                   <Button
                     type="submit"
                     variant="outline"
+                    disabled={isSubmitting}
                     className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background text-[10px] tracking-[0.3em] uppercase px-8 py-5 transition-colors duration-300 w-full"
                   >
-                    Send Message
-                    <ArrowUpRight size={12} className="ml-2" />
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {!isSubmitting && <ArrowUpRight size={12} className="ml-2" />}
                   </Button>
                 </form>
               </div>

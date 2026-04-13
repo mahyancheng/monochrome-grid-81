@@ -7,8 +7,13 @@ import img4 from "@/Archive/HomePage/Image Rotation/4.jpg";
 import img5 from "@/Archive/HomePage/Image Rotation/5.jpg";
 import img6 from "@/Archive/HomePage/Image Rotation/6.jpg";
 import img7 from "@/Archive/HomePage/Image Rotation/7.jpg";
+import img8 from "@/Archive/HomePage/Image Rotation/8.jpg";
+import img9 from "@/Archive/HomePage/Image Rotation/9.jpg";
+import img10 from "@/Archive/HomePage/Image Rotation/10.jpg";
+import img11 from "@/Archive/HomePage/Image Rotation/11.jpg";
 
-const slides = [img1, img2, img3, img4, img5, img6, img7];
+
+const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);

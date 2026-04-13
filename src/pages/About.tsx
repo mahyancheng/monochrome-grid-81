@@ -63,10 +63,7 @@ const About = () => {
           <div className="aspect-square flex flex-col justify-center px-8 lg:px-16 font-futura">
             <AnimatedLabel text="Principal" isActive={hidiHover} />
             <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-1">
-              Ar. Hidi Lau
-            </h2>
-            <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mb-2">
-              Wei Lin
+              Ar. Hidi Lau Wei Lin
             </h2>
             <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
               A/L 465 · Principal · LAM Registered Architect

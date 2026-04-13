@@ -27,14 +27,14 @@ const Header = ({ transparent = false }: HeaderProps) => {
     <header className={`w-full relative z-20 ${transparent ? "" : "border-b border-border"}`}>
       <div className="flex items-center justify-between px-6 md:px-8 py-5 md:py-6">
         <Link to="/" className="flex items-center gap-4 md:gap-5 group">
-          <span className="inline-flex shrink-0 items-center justify-center bg-[#8d8d8d] px-3 py-2.5 md:px-4 md:py-3">
+          <span className="inline-flex shrink-0 items-center justify-center  px-3 py-2.5 md:px-4 md:py-3">
             <img
               src={logo}
               alt="HIDI LAU ARCHITECT"
               className="h-11 md:h-14 w-auto object-contain"
             />
           </span>
-          <h1 className="font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight text-[#4872c6]">
+          <h1 className="font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight">
             HIDI LAU ARCHITECT
           </h1>
         </Link>
@@ -78,14 +78,14 @@ const Header = ({ transparent = false }: HeaderProps) => {
 
       {/* Mobile fullscreen menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-50 flex flex-col">
+        <div className="md:hidden fixed inset-0 z-50 flex flex-col bg-white">
           {/* White header bar with logo and close */}
-          <div className="flex items-center justify-between px-6 py-5 bg-white">
+          <div className="flex items-center justify-between px-6 py-5">
             <Link to="/" className="flex items-center gap-4 group" onClick={() => setMobileOpen(false)}>
-              <span className="inline-flex shrink-0 items-center justify-center bg-[#8d8d8d] px-3 py-2.5">
+              <span className="inline-flex shrink-0 items-center justify-center px-3 py-2.5">
                 <img src={logo} alt="HIDI LAU ARCHITECT" className="h-11 w-auto object-contain" />
               </span>
-              <span className="text-base tracking-[0.28em] uppercase font-light leading-tight text-[#4872c6]">
+              <span className="text-base tracking-[0.28em] uppercase font-light leading-tight">
                 HIDI LAU ARCHITECT
               </span>
             </Link>

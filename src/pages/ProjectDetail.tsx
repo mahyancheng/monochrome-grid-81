@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
@@ -24,6 +24,14 @@ const ProjectDetail = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
+  // Auto-advance carousel
+  useEffect(() => {
+    if (!project?.carouselImages || project.carouselImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setCarouselIndex((prev) => (prev + 1) % project.carouselImages!.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [project?.carouselImages]);
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex flex-col">

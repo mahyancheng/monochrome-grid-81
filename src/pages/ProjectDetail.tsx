@@ -22,6 +22,7 @@ const ProjectDetail = () => {
   const project = projects.find((p) => p.id === id);
   const [headerHover, setHeaderHover] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
   if (!project) {
     return (

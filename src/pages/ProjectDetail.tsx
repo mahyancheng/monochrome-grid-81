@@ -24,6 +24,12 @@ const ProjectDetail = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
+  // Combined images for lightbox: carousel images first, then gallery images
+  const allImages = [
+    ...(project?.carouselImages || []),
+    ...(project?.images || []),
+  ];
+
   // Auto-advance carousel
   useEffect(() => {
     if (!project?.carouselImages || project.carouselImages.length <= 1) return;

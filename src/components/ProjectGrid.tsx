@@ -81,7 +81,7 @@ const ProjectGrid = () => {
   return (
     <div>
       {/* Filter bar */}
-      <div className="flex justify-center gap-8 py-6 border-b border-border">
+      <div className="flex justify-start md:justify-center gap-6 md:gap-8 py-6 px-4 md:px-0 border-b border-border overflow-x-auto scrollbar-hide">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -89,7 +89,7 @@ const ProjectGrid = () => {
             className="relative group"
           >
             <span
-              className={`text-xs tracking-[0.25em] uppercase transition-colors ${
+              className={`text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] uppercase transition-colors whitespace-nowrap ${
                 activeCategory === cat
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -106,7 +106,7 @@ const ProjectGrid = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 px-8 md:px-16 py-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-10 px-4 md:px-16 py-6 md:py-10">
         {filtered.map((project, i) => (
           <ProjectTile
             key={project.id}

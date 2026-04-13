@@ -34,11 +34,11 @@ const Header = ({ transparent = false }: HeaderProps) => {
               className="h-11 md:h-14 w-auto object-contain"
             />
           </span>
-          <h1 className={`text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-light leading-tight ${transparent ? "text-white" : "text-[#4872c6]"}`}>
+          <h1 className="text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-light leading-tight text-[#4872c6]">
             HIDI LAU ARCHITECT
           </h1>
         </Link>
-    
+
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-8 items-center font-futura">
           {navItems.map((item) => {
@@ -51,8 +51,8 @@ const Header = ({ transparent = false }: HeaderProps) => {
               >
                 <span
                   className={`font-bold text-xs tracking-[0.2em] uppercase transition-colors ${isActive
-                      ? activeTextClass
-                      : mutedTextClass
+                    ? activeTextClass
+                    : mutedTextClass
                     }`}
                 >
                   {item.label}

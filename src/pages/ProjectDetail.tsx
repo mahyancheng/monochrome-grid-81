@@ -22,6 +22,7 @@ const ProjectDetail = () => {
   const project = projects.find((p) => p.id === id);
   const [headerHover, setHeaderHover] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
   if (!project) {
     return (
@@ -119,6 +120,64 @@ const ProjectDetail = () => {
           </div>
         )}
 
+        {/* Hero carousel — only for projects with heroCarousel flag */}
+        {project.id === "chicha-san-chen" && project.images.length > 1 && (
+          <div className="py-12 md:py-16">
+            <div className="relative flex items-center justify-center overflow-hidden" style={{ height: "55vh" }}>
+              {/* Previous image peek */}
+              <div
+                className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[8%] h-[80%] overflow-hidden cursor-pointer opacity-40 hover:opacity-60 transition-opacity z-10"
+                onClick={() => setCarouselIndex((carouselIndex - 1 + project.images.length) % project.images.length)}
+              >
+                <img
+                  src={project.images[(carouselIndex - 1 + project.images.length) % project.images.length]}
+                  alt="Previous"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Main centered image */}
+              <div
+                className="relative h-full w-[85%] md:w-[70%] cursor-pointer overflow-hidden"
+                onClick={() => setLightboxIndex(carouselIndex)}
+              >
+                <img
+                  src={project.images[carouselIndex]}
+                  alt={`${project.title} ${carouselIndex + 1}`}
+                  className="w-full h-full object-contain transition-all duration-500"
+                />
+              </div>
+
+              {/* Next image peek */}
+              <div
+                className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[8%] h-[80%] overflow-hidden cursor-pointer opacity-40 hover:opacity-60 transition-opacity z-10"
+                onClick={() => setCarouselIndex((carouselIndex + 1) % project.images.length)}
+              >
+                <img
+                  src={project.images[(carouselIndex + 1) % project.images.length]}
+                  alt="Next"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Dot indicators */}
+            <div className="flex items-center justify-center gap-2 mt-8">
+              {project.images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCarouselIndex(idx)}
+                  className={`h-[3px] rounded-full transition-all duration-300 ${
+                    idx === carouselIndex
+                      ? "w-6 bg-primary"
+                      : "w-4 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Image gallery — alternating 1-up / 2-up rows */}
         <div className="flex flex-col gap-4 md:gap-6 px-6 md:px-10 py-8">
           {(() => {
@@ -128,7 +187,6 @@ const ProjectDetail = () => {
             while (i < project.images.length) {
               const isWideRow = rowIdx % 2 === 0;
               if (isWideRow) {
-                // Full-width landscape image
                 const img = project.images[i];
                 rows.push(
                   <div
@@ -141,7 +199,6 @@ const ProjectDetail = () => {
                 );
                 i += 1;
               } else {
-                // Two side-by-side images
                 const imgs = project.images.slice(i, i + 2);
                 rows.push(
                   <div key={i} className="grid grid-cols-2 gap-4 md:gap-6">

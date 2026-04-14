@@ -32,7 +32,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <WhatsAppChatWidget phoneE164="60123683670" />
+          <WhatsAppChatWidget phoneE164="60167442330" />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

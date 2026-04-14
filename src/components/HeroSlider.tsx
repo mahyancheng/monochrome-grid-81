@@ -60,14 +60,14 @@ const HeroSlider = ({ onBrightnessChange }: HeroSliderProps) => {
     if (!onBrightnessChange) return;
     const cached = brightnessCache.current.get(current);
     if (cached !== undefined) {
-      onBrightnessChange(cached > 160);
+      onBrightnessChange(cached > 120);
       return;
     }
     const img = imgRefs.current[current];
     if (img && img.complete && img.naturalWidth > 0) {
       const brightness = analyzeTopBrightness(img);
       brightnessCache.current.set(current, brightness);
-      onBrightnessChange(brightness > 160);
+      onBrightnessChange(brightness > 120);
     }
   }, [current, onBrightnessChange]);
 

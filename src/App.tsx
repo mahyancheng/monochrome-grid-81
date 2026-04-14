@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import WhatsAppChatWidget from "./components/WhatsAppChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <WhatsAppChatWidget phoneE164="60123683670" />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

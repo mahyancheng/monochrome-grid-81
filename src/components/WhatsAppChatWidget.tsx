@@ -71,7 +71,7 @@ export default function WhatsAppChatWidget({
 
       <button
         onClick={() => setOpen((v) => !v)}
-        className="h-14 w-14 rounded-full bg-[#25D366] text-white shadow-xl grid place-items-center hover:opacity-90"
+        className="h-14 w-14 rounded-full bg-black text-white shadow-xl grid place-items-center hover:opacity-90"
         aria-label={open ? "Close WhatsApp chat" : "Open WhatsApp chat"}
       >
         <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">

@@ -5,7 +5,6 @@ import logo from "@/assets/logo.png";
 
 interface HeaderProps {
   transparent?: boolean;
-  forceDarkText?: boolean;
 }
 
 const navItems = [
@@ -15,12 +14,11 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-const Header = ({ transparent = false, forceDarkText = false }: HeaderProps) => {
+const Header = ({ transparent = false }: HeaderProps) => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // If transparent but background is bright, use dark text
-  const useWhiteText = transparent && !forceDarkText;
+  const useWhiteText = transparent;
 
   const textClass = useWhiteText ? "text-white" : "text-foreground";
   const mutedTextClass = useWhiteText ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground";
@@ -38,7 +36,7 @@ const Header = ({ transparent = false, forceDarkText = false }: HeaderProps) => 
               className="h-11 md:h-14 w-auto object-contain"
             />
           </span>
-          <h1 className={`font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight transition-colors duration-500 ${useWhiteText ? "text-white" : "text-foreground"}`}>
+          <h1 className={`font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight transition-colors duration-500 ${transparent ? "text-white" : "text-foreground"}`}>
             HIDI LAU ARCHITECT
           </h1>
         </Link>

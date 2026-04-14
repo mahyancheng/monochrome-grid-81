@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import img1 from "@/Archive/HomePage/Image Rotation/1.jpg";
 import img2 from "@/Archive/HomePage/Image Rotation/2.jpg";
@@ -41,14 +41,11 @@ const HeroSlider = () => {
       {slides.map((src, i) => (
         <img
           key={i}
-          ref={(el) => { imgRefs.current[i] = el; }}
           src={src}
           alt={`Project showcase ${i + 1}`}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
           style={{ opacity: i === current ? 1 : 0 }}
           loading={i === 0 ? "eager" : "lazy"}
-          onLoad={(e) => handleImageLoad(i, e.currentTarget)}
-          crossOrigin="anonymous"
         />
       ))}
 

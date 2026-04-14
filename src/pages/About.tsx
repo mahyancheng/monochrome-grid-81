@@ -48,7 +48,7 @@ const About = () => {
             <img
               src={hidiPhoto}
               alt="Ar. Hidi Lau Wei Lin"
-              className="w-full h-full object-cover transition-transform duration-700"
+              className="w-full h-full object-cover transition-transform duration-700 grayscale"
               style={{ transform: hidiHover ? "scale(1.03)" : "scale(1)" }}
             />
             <div

@@ -5,6 +5,7 @@ import logo from "@/assets/logo.png";
 
 interface HeaderProps {
   transparent?: boolean;
+  forceDarkText?: boolean;
 }
 
 const navItems = [
@@ -14,14 +15,17 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-const Header = ({ transparent = false }: HeaderProps) => {
+const Header = ({ transparent = false, forceDarkText = false }: HeaderProps) => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const textClass = transparent ? "text-white" : "text-foreground";
-  const mutedTextClass = transparent ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground";
-  const activeTextClass = transparent ? "text-white" : "text-foreground";
-  const underlineClass = transparent ? "bg-white" : "bg-foreground";
+  // If transparent but background is bright, use dark text
+  const useWhiteText = transparent && !forceDarkText;
+
+  const textClass = useWhiteText ? "text-white" : "text-foreground";
+  const mutedTextClass = useWhiteText ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground";
+  const activeTextClass = useWhiteText ? "text-white" : "text-foreground";
+  const underlineClass = useWhiteText ? "bg-white" : "bg-foreground";
 
   return (
     <header className={`w-full relative z-20 ${transparent ? "" : "border-b border-border"}`}>
@@ -34,7 +38,7 @@ const Header = ({ transparent = false }: HeaderProps) => {
               className="h-11 md:h-14 w-auto object-contain"
             />
           </span>
-          <h1 className={`font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight ${transparent ? "text-white" : "text-foreground"}`}>
+          <h1 className={`font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight transition-colors duration-500 ${useWhiteText ? "text-white" : "text-foreground"}`}>
             HIDI LAU ARCHITECT
           </h1>
         </Link>

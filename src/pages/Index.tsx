@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import HeroSlider from "@/components/HeroSlider";
@@ -5,6 +6,8 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [isBrightBg, setIsBrightBg] = useState(false);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
@@ -13,16 +16,13 @@ const Index = () => {
         path="/"
       />
       <main className="flex-1">
-        {/* Hero with overlaid header */}
         <div className="relative">
-          <HeroSlider />
+          <HeroSlider onBrightnessChange={setIsBrightBg} />
           <div className="absolute top-0 left-0 w-full z-20">
-            <Header transparent />
+            <Header transparent forceDarkText={isBrightBg} />
           </div>
         </div>
 
-
-        {/* Project Grid */}
         <div id="projects">
           <ProjectGrid />
         </div>

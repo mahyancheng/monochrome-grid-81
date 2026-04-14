@@ -8,15 +8,15 @@ interface SEOProps {
   type?: string;
 }
 
-const SITE_URL = "https://clean-slate-stream.lovable.app";
-const DEFAULT_IMAGE = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/84df6b3f-5a56-4f92-bfdf-f4cfaa7ade91/id-preview-3c6f1729--3adb8532-99e5-4d8a-be68-712ad0137d14.lovable.app-1773107455671.png";
+  const SITE_URL = "https://hidilauarchitect.com";
+const DEFAULT_IMAGE = "https://hidilauarchitect.com/assets/logo-CP_OYl3M.png";
 
 const organizationSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "HIDI Lau Architect",
   "url": SITE_URL,
-  "logo": `${SITE_URL}/logo.png`,
+  "logo": `${SITE_URL}/assets/logo-CP_OYl3M.png`,
   "description": "Multi-disciplinary architectural design studio in Johor Bahru, Malaysia. Architecture, interior design and passionate craftsmanship since 1989.",
   "address": {
     "@type": "PostalAddress",

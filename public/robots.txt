@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://clean-slate-stream.lovable.app/sitemap.xml
+Sitemap: https://hidilauarchitect.com/sitemap.xml

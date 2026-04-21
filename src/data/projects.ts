@@ -226,7 +226,7 @@ export const projects: Project[] = [
   },
   {
     id: "eco-sanctuary",
-    title: "Eco Sanctuary",
+    title: "Eco Santuary",
     category: "Residential",
     cover: es6,
     images: [es1, es2, es3, es4, es5, es6, es7, es8, es9, es10],
@@ -254,7 +254,7 @@ export const projects: Project[] = [
   },
   {
     id: "indah-putra",
-    title: "Indah Putra Bungalow",
+    title: "Indah Putra Banglow",
     category: "Residential",
     cover: ip3,
     images: [ip1, ip2, ip3, ip4],
@@ -268,7 +268,7 @@ export const projects: Project[] = [
   },
   {
     id: "chicha-san-chen",
-    title: "CHICHA San Chen Puchong",
+    title: "Chica San Chen Puchong",
     category: "Commercial",
     cover: cc2,
     images: [cc1, cc3, cc4, cc5, cc6, cc7],
@@ -283,7 +283,7 @@ export const projects: Project[] = [
   },
   {
     id: "founders-penang",
-    title: "Founders Penang",
+    title: "Founder Penang",
     category: "Commercial",
     cover: fp1,
     images: [fp1, fp2, fp3, fp4, fp7, fp8, fp9, fp10, fp11, fp12, fp13],
@@ -305,7 +305,7 @@ export const projects: Project[] = [
   },
   {
     id: "beach-grill",
-    title: "Beach Grill Welcome Pavilion",
+    title: "Beach Grill Welcome Pavillion",
     category: "Hospitality",
     cover: bg6,
     images: [bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9],

@@ -62,7 +62,16 @@ const Contact = () => {
           mode: "no-cors",
         }
       );
+
       toast({ title: "Message sent", description: "We'll get back to you shortly." });
+
+      // Google Ads conversion tracking
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq",
+        });
+      }
+
       setForm({ name: "", phone: "", email: "", message: "" });
       setErrors({});
     } catch {
@@ -98,7 +107,7 @@ const Contact = () => {
           <div className="absolute inset-0 bg-background/80" />
         </div>
 
-        {/* Frame outline (from spotlight component) */}
+        {/* Frame outline */}
         <div
           className="absolute inset-4 md:inset-8 border border-border transition-all duration-700 pointer-events-none"
           style={{
@@ -116,25 +125,17 @@ const Contact = () => {
         {/* Floating content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 py-16 md:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            {/* Left: Title + Contact Info */}
+            {/* Left: Contact Info */}
             <div className="flex flex-col justify-center">
-              {/* Title with hover shift */}
-              
-              {/* Contact details */}
               <div className="space-y-6">
                 {[
                   {
                     icon: MapPin,
                     label: "Address",
-                    value:
-                      "1, Jalan Biru 2, Taman Pelangi,\n80400 JB, Johor.",
+                    value: "1, Jalan Biru 2, Taman Pelangi,\n80400 JB, Johor.",
                   },
                   { icon: Phone, label: "Telephone", value: "+6016-7442330 | +607-339 1199" },
-                  {
-                    icon: Mail,
-                    label: "Email",
-                    value: "hidilin@gmail.com",
-                  },
+                  { icon: Mail, label: "Email", value: "hidilin@gmail.com" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
                     <div className="w-8 h-8 border border-border flex items-center justify-center flex-shrink-0 mt-0.5 bg-background/50 backdrop-blur-sm">
@@ -175,9 +176,7 @@ const Contact = () => {
                       placeholder="Your name"
                     />
                     {errors.name && (
-                      <p className="text-[10px] text-destructive mt-1">
-                        {errors.name}
-                      </p>
+                      <p className="text-[10px] text-destructive mt-1">{errors.name}</p>
                     )}
                   </div>
 
@@ -192,9 +191,7 @@ const Contact = () => {
                       placeholder="+60"
                     />
                     {errors.phone && (
-                      <p className="text-[10px] text-destructive mt-1">
-                        {errors.phone}
-                      </p>
+                      <p className="text-[10px] text-destructive mt-1">{errors.phone}</p>
                     )}
                   </div>
 
@@ -210,9 +207,7 @@ const Contact = () => {
                       placeholder="you@example.com"
                     />
                     {errors.email && (
-                      <p className="text-[10px] text-destructive mt-1">
-                        {errors.email}
-                      </p>
+                      <p className="text-[10px] text-destructive mt-1">{errors.email}</p>
                     )}
                   </div>
 
@@ -227,9 +222,7 @@ const Contact = () => {
                       placeholder="Tell us about your project"
                     />
                     {errors.message && (
-                      <p className="text-[10px] text-destructive mt-1">
-                        {errors.message}
-                      </p>
+                      <p className="text-[10px] text-destructive mt-1">{errors.message}</p>
                     )}
                   </div>
 

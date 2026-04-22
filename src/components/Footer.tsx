@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="py-8 text-center" style={{ backgroundColor: '#262626' }}>
       <span className="text-[10px] tracking-[0.15em] text-white">
-        HIDI LAU ARCHITECT © 2026 All Rights Reserved
+        Hidi Lau Architect © 2026 All Rights Reserved
       </span>
     </div>
   );

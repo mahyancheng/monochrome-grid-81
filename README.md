@@ -1,4 +1,4 @@
-# HIDI Lau Architect — Official Website
+# Hidi Lau Architect — Official Website
 
 **Live Site**: [https://hidilauarchitect.com](https://hidilauarchitect.com)
 
@@ -80,29 +80,11 @@ npm run dev
 ```
 
 ---
-
-## How to Edit
-
-**Via Lovable (recommended)**
-Visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting. Changes are committed automatically.
-
-**Via your preferred IDE**
-Clone the repo, make changes locally, and push. Changes will reflect in Lovable.
-
 **Via GitHub**
 Navigate to the desired file → click the pencil (Edit) icon → commit changes directly.
 
 **Via GitHub Codespaces**
 Open the repo → click Code → Codespaces tab → New codespace → edit and push.
-
----
-
-## Deployment
-
-Open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click **Share → Publish**.
-
-To connect a custom domain, go to **Project → Settings → Domains → Connect Domain**.
-Read more: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
 
 ---
 

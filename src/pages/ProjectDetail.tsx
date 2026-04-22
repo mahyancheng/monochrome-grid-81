@@ -55,8 +55,8 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title={`${getCategoryLabel(project.category)} | Project | HIDI LAU ARCHITECTURE`}
-        description={project.description || `${project.title} — ${project.category} project by HIDI Lau Architect, Johor Bahru.`}
+        title={`${project.title} | ${getCategoryLabel(project.category)} | Hidi Lau Architect`}
+        description={project.description || `${project.title} — ${project.category} project by Hidi Lau Architect, Johor Bahru.`}
         path={`/project/${project.id}`}
       />
       <Header />
@@ -164,11 +164,10 @@ const ProjectDetail = () => {
                 <button
                   key={idx}
                   onClick={() => setCarouselIndex(idx)}
-                  className={`h-[3px] rounded-full transition-all duration-300 ${
-                    idx === carouselIndex
+                  className={`h-[3px] rounded-full transition-all duration-300 ${idx === carouselIndex
                       ? "w-6 bg-primary"
                       : "w-4 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                  }`}
+                    }`}
                 />
               ))}
             </div>

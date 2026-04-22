@@ -75,8 +75,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <SEO
-        title="Architecture and Interior Design | Contact | Interior Design Malaysia | Hidi Lau Architecture"
-        description="Get in touch with HIDI Lau Architect. Located at 1, Jalan Biru 2, Taman Pelangi, 80400 JB, Johor. Tel: +6016-7442330."
+        title="Architecture and Interior Design | Contact | Interior Design Malaysia | Hidi Lau Architect"
+        description="Get in touch with Hidi Lau Architect. Located at 1, Jalan Biru 2, Taman Pelangi, 80400 JB, Johor. Tel: +6016-7442330."
         path="/contact"
       />
       <Header />
@@ -91,7 +91,7 @@ const Contact = () => {
         <div className="absolute inset-0">
           <img
             src={heroImg}
-            alt="HIDI Lau Architect"
+            alt="Hidi Lau Architect"
             className="w-full h-full object-cover transition-transform duration-700 ease-out"
             style={{ transform: isHovered ? "scale(1.02)" : "scale(1)" }}
           />

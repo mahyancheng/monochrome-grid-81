@@ -62,6 +62,14 @@ const Contact = () => {
           mode: "no-cors",
         }
       );
+      
+      // Google Ads conversion tracking
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq",
+        });
+      }
+      
       toast({ title: "Message sent", description: "We'll get back to you shortly." });
       setForm({ name: "", phone: "", email: "", message: "" });
       setErrors({});

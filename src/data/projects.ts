@@ -98,12 +98,12 @@ import cc6 from "@/Archive/Projects/05.jpg";
 import cc7 from "@/Archive/Projects/06.jpg";
 
 // CHICHA San Chen renders (carousel)
-import ccr1 from "@/Archive/Projects/CHICHASANCHEN/01-minchicharender.png";
-import ccr2 from "@/Archive/Projects/CHICHASANCHEN/02-minchicharender.png";
-import ccr3 from "@/Archive/Projects/CHICHASANCHEN/03-minchicharender.png";
-import ccr4 from "@/Archive/Projects/CHICHASANCHEN/04-minchicharender.png";
-import ccr5 from "@/Archive/Projects/CHICHASANCHEN/05-minchicharender.png";
-import ccr6 from "@/Archive/Projects/CHICHASANCHEN/06-minchicharender.png";
+import ccr1 from "@/Archive/Projects/CHICHASANCHEN/01-minchicharender.jpg";
+import ccr2 from "@/Archive/Projects/CHICHASANCHEN/02-minchicharender.jpg";
+import ccr3 from "@/Archive/Projects/CHICHASANCHEN/03-minchicharender.jpg";
+import ccr4 from "@/Archive/Projects/CHICHASANCHEN/04-minchicharender.jpg";
+import ccr5 from "@/Archive/Projects/CHICHASANCHEN/05-minchicharender.jpg";
+import ccr6 from "@/Archive/Projects/CHICHASANCHEN/06-minchicharender.jpg";
 
 // Winter Pavillion (original uses sd_ prefix files)
 import wp1 from "@/Archive/Projects/sd_15-min.jpg";
@@ -140,9 +140,9 @@ import aor4 from "@/Archive/Projects/04aor-min.jpg";
 import aor5 from "@/Archive/Projects/05aor-min.jpg";
 import aor6 from "@/Archive/Projects/06aor-min.jpg";
 import aor7 from "@/Archive/Projects/07aor-min.jpg";
-import aor8 from "@/Archive/Projects/13aor-min.png";
-import aor9 from "@/Archive/Projects/14aor-min.png";
-import aor10 from "@/Archive/Projects/15aor-min.png";
+import aor8 from "@/Archive/Projects/13aor-min.jpg";
+import aor9 from "@/Archive/Projects/14aor-min.jpg";
+import aor10 from "@/Archive/Projects/15aor-min.jpg";
 
 // Langkawi Kitchen
 import lk1 from "@/Archive/Projects/langkawi-kitchen_08-min.jpg";

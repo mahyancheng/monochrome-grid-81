@@ -51,7 +51,7 @@ const HeroSlider = () => {
   const indicators = useMemo(() => slides.map((_, i) => i), []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-muted">
+    <div className="relative w-full aspect-[3/4] md:aspect-auto md:h-screen overflow-hidden bg-muted">
       {slides.map((src, i) => {
         // Only render images that have been mounted — cuts initial payload from ~17MB to ~1MB
         if (!mounted.has(i)) return null;

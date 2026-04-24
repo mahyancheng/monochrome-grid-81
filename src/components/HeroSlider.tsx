@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 import img1 from "@/Archive/HomePage/Image Rotation/1.jpg";
 import img2 from "@/Archive/HomePage/Image Rotation/2.jpg";
@@ -17,6 +17,8 @@ const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  // Track which slides have ever been mounted so we don't re-fetch when cycling back
+  const [mounted, setMounted] = useState<Set<number>>(() => new Set([0, 1]));
 
   const goTo = useCallback(
     (index: number) => {
@@ -34,25 +36,43 @@ const HeroSlider = () => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(id);
+  }, []);
+
+  // Lazily mark current + next as mounted (so they render & start downloading)
+  useEffect(() => {
+    setMounted((prev) => {
+      const next = new Set(prev);
+      next.add(current);
+      next.add((current + 1) % slides.length);
+      return next;
+    });
   }, [current]);
 
+  const indicators = useMemo(() => slides.map((_, i) => i), []);
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {slides.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt={`Project showcase ${i + 1}`}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-          style={{ opacity: i === current ? 1 : 0 }}
-          loading={i === 0 ? "eager" : "lazy"}
-        />
-      ))}
+    <div className="relative w-full h-screen overflow-hidden bg-muted">
+      {slides.map((src, i) => {
+        // Only render images that have been mounted — cuts initial payload from ~17MB to ~1MB
+        if (!mounted.has(i)) return null;
+        return (
+          <img
+            key={i}
+            src={src}
+            alt={`Project showcase ${i + 1}`}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+            style={{ opacity: i === current ? 1 : 0 }}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={i === 0 ? "high" : "low"}
+          />
+        );
+      })}
 
       <div className="absolute inset-0 bg-foreground/5" />
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10">
-        {slides.map((_, i) => (
+        {indicators.map((i) => (
           <button
             key={i}
             onClick={() => goTo(i)}

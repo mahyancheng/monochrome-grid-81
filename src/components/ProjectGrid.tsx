@@ -1,8 +1,14 @@
-import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 
 const categories = ["All", "Residential", "Commercial", "Hospitality"];
+
+// Detect coarse pointer (mobile/tablet) once at module level
+const isCoarsePointer =
+  typeof window !== "undefined" &&
+  window.matchMedia &&
+  window.matchMedia("(pointer: coarse)").matches;
 
 const ProjectTile = ({
   project,
@@ -21,36 +27,18 @@ const ProjectTile = ({
   const [currentImg, setCurrentImg] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const tileRef = useRef<HTMLDivElement>(null);
-  const stripRef = useRef<HTMLDivElement>(null);
-  const intervalMs = 3000 + (index % 5) * 400;
+  // Slower intervals on mobile to reduce decode/network churn
+  const intervalMs = (isCoarsePointer ? 6000 : 3000) + (index % 5) * 400;
 
-  // IntersectionObserver: 只在 viewport 内才轮播
+  // Only animate / preload when tile is in (or near) viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "200px" }
     );
     if (tileRef.current) observer.observe(tileRef.current);
     return () => observer.disconnect();
   }, []);
-
-  // 当 currentImg 变化时，先把 strip 瞬间跳到新位置（无动画），
-  // 再用 requestAnimationFrame 触发 CSS transition 滑回 0
-  useLayoutEffect(() => {
-    const strip = stripRef.current;
-    if (!strip || currentImg === 0) return;
-
-    // 1. 关闭 transition，瞬间跳到右边（新图在右侧外）
-    strip.style.transition = "none";
-    strip.style.transform = "translateX(100%)";
-
-    // 2. 强制浏览器重新计算 layout（flush），让上面的位置生效
-    strip.getBoundingClientRect();
-
-    // 3. 开启 transition，滑动到 0（滑入）
-    strip.style.transition = "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)";
-    strip.style.transform = "translateX(0)";
-  }, [currentImg]);
 
   useEffect(() => {
     if (!isVisible || images.length <= 1) return;
@@ -59,8 +47,6 @@ const ProjectTile = ({
     }, intervalMs);
     return () => clearInterval(id);
   }, [isVisible, images.length, intervalMs]);
-
-  const nextImg = (currentImg + 1) % images.length;
 
   return (
     <Link
@@ -73,33 +59,21 @@ const ProjectTile = ({
         ref={tileRef}
         className="relative aspect-[3/2] overflow-hidden bg-muted"
       >
-        {/* 当前图：绑 stripRef，由 useLayoutEffect 控制滑动 */}
         <img
-          ref={stripRef as React.RefObject<HTMLImageElement>}
           src={images[currentImg]}
           alt={project.title}
           width={600}
           height={400}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           style={{
-            zIndex: 2,
             transform: isHovered ? "scale(1.05)" : undefined,
-            transition: isHovered ? "transform 0.7s ease" : undefined,
+            transition: isHovered
+              ? "transform 0.7s ease, opacity 0.5s ease"
+              : "opacity 0.5s ease",
           }}
           loading={index < 3 ? "eager" : "lazy"}
           decoding="async"
-        />
-
-        {/* 下一张静默预加载，完全不显示 */}
-        <img
-          src={images[nextImg]}
-          alt=""
-          aria-hidden
-          width={600}
-          height={400}
-          style={{ display: "none" }}
-          loading="lazy"
-          decoding="async"
+          fetchPriority={index < 3 ? "high" : "low"}
         />
       </div>
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 
@@ -19,15 +19,48 @@ const ProjectTile = ({
 }) => {
   const images = [project.cover, ...project.images];
   const [currentImg, setCurrentImg] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const tileRef = useRef<HTMLDivElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
   const intervalMs = 3000 + (index % 5) * 400;
 
+  // IntersectionObserver: 只在 viewport 内才轮播
   useEffect(() => {
-    if (images.length <= 1) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (tileRef.current) observer.observe(tileRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // 当 currentImg 变化时，先把 strip 瞬间跳到新位置（无动画），
+  // 再用 requestAnimationFrame 触发 CSS transition 滑回 0
+  useLayoutEffect(() => {
+    const strip = stripRef.current;
+    if (!strip || currentImg === 0) return;
+
+    // 1. 关闭 transition，瞬间跳到右边（新图在右侧外）
+    strip.style.transition = "none";
+    strip.style.transform = "translateX(100%)";
+
+    // 2. 强制浏览器重新计算 layout（flush），让上面的位置生效
+    strip.getBoundingClientRect();
+
+    // 3. 开启 transition，滑动到 0（滑入）
+    strip.style.transition = "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)";
+    strip.style.transform = "translateX(0)";
+  }, [currentImg]);
+
+  useEffect(() => {
+    if (!isVisible || images.length <= 1) return;
     const id = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % images.length);
     }, intervalMs);
     return () => clearInterval(id);
-  }, [images.length, intervalMs]);
+  }, [isVisible, images.length, intervalMs]);
+
+  const nextImg = (currentImg + 1) % images.length;
 
   return (
     <Link
@@ -36,32 +69,40 @@ const ProjectTile = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      <div className="relative aspect-[3/2] overflow-hidden">
-        {/* Sliding strip of images */}
-        <div
-          className="absolute inset-0 flex h-full"
+      <div
+        ref={tileRef}
+        className="relative aspect-[3/2] overflow-hidden bg-muted"
+      >
+        {/* 当前图：绑 stripRef，由 useLayoutEffect 控制滑动 */}
+        <img
+          ref={stripRef as React.RefObject<HTMLImageElement>}
+          src={images[currentImg]}
+          alt={project.title}
+          width={600}
+          height={400}
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
-            width: `${images.length * 100}%`,
-            transform: `translateX(-${(currentImg * 100) / images.length}%)`,
-            transition: "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)",
+            zIndex: 2,
+            transform: isHovered ? "scale(1.05)" : undefined,
+            transition: isHovered ? "transform 0.7s ease" : undefined,
           }}
-        >
-          {images.map((img, imgIdx) => (
-            <img
-              key={imgIdx}
-              src={img}
-              alt={project.title}
-              className="h-full object-cover transition-transform duration-700"
-              style={{
-                width: `${100 / images.length}%`,
-                flexShrink: 0,
-                transform: isHovered ? "scale(1.05)" : "scale(1)",
-              }}
-              loading="lazy"
-            />
-          ))}
-        </div>
+          loading={index < 3 ? "eager" : "lazy"}
+          decoding="async"
+        />
+
+        {/* 下一张静默预加载，完全不显示 */}
+        <img
+          src={images[nextImg]}
+          alt=""
+          aria-hidden
+          width={600}
+          height={400}
+          style={{ display: "none" }}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
+
       <p className="text-xs tracking-[0.15em] text-muted-foreground mt-3 text-center">
         {project.title}
       </p>
@@ -73,6 +114,9 @@ const ProjectGrid = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
 
+  const handleHover = useCallback((id: string) => () => setHoveredId(id), []);
+  const handleLeave = useCallback(() => setHoveredId(null), []);
+
   const filtered =
     activeCategory === "All"
       ? projects
@@ -80,7 +124,6 @@ const ProjectGrid = () => {
 
   return (
     <div>
-      {/* Filter bar */}
       <div className="flex justify-start md:justify-center gap-6 md:gap-8 py-6 px-4 md:px-0 border-b border-border overflow-x-auto scrollbar-hide">
         {categories.map((cat) => (
           <button
@@ -105,7 +148,6 @@ const ProjectGrid = () => {
         ))}
       </div>
 
-      {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-10 px-4 md:px-16 py-6 md:py-10">
         {filtered.map((project, i) => (
           <ProjectTile
@@ -113,8 +155,8 @@ const ProjectGrid = () => {
             project={project}
             index={i}
             isHovered={hoveredId === project.id}
-            onHover={() => setHoveredId(project.id)}
-            onLeave={() => setHoveredId(null)}
+            onHover={handleHover(project.id)}
+            onLeave={handleLeave}
           />
         ))}
       </div>

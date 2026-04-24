@@ -51,7 +51,7 @@ const HeroSlider = () => {
   const indicators = useMemo(() => slides.map((_, i) => i), []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-muted">
+    <div className="relative w-full aspect-[3/4] md:aspect-auto md:h-screen overflow-hidden bg-muted">
       {slides.map((src, i) => {
         // Only render images that have been mounted — cuts initial payload from ~17MB to ~1MB
         if (!mounted.has(i)) return null;
@@ -60,7 +60,7 @@ const HeroSlider = () => {
             key={i}
             src={src}
             alt={`Project showcase ${i + 1}`}
-            className="absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-700 ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
             style={{ opacity: i === current ? 1 : 0 }}
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"

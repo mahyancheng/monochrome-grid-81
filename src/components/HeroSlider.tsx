@@ -60,7 +60,7 @@ const HeroSlider = () => {
             key={i}
             src={src}
             alt={`Project showcase ${i + 1}`}
-            className="absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-700 ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
             style={{ opacity: i === current ? 1 : 0 }}
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"

@@ -1,4 +1,4 @@
-# Hidi Lau Architect — Official Website
+# HIDI LAU ARCHITECT — Official Website
 
 **Live Site**: [https://hidilauarchitect.com](https://hidilauarchitect.com)
 
@@ -24,40 +24,38 @@ Specialising in contemporary luxury homes, tropical luxury resorts, and commerci
 
 ---
 
-## Project Pages
+## Project Portfolio
 
-The site includes the following project pages:
-
-| Project | Category |
-|--------|----------|
-| The Ritz-Carlton Langkawi | Hospitality |
-| The Rabbit Hole KL | Hospitality |
-| The Courtyard House | Residential |
-| Eco Sanctuary | Residential |
-| The East Meets West | Residential |
-| The Iconic Terrace | Residential |
-| Sutera Terrace Corner | Residential |
-| Indah Putra Bungalow | Residential |
-| Horizon Hills | Residential |
-| CHICHA San Chen Puchong | Commercial |
-| Winter Pavillion | Commercial |
-| Founders Penang | Commercial |
-| AOR House | Residential |
-| Langkawi Kitchen | Hospitality |
-| Beach Grill Welcome Pavilion | Hospitality |
-| Kluang Resort Farmhouse | Hospitality |
+| # | Project | Category |
+|---|---------|----------|
+| 1 | Chica San Chen PuchoPavillion | Commercial |
+| 2 | Eco Santuary | Residential |
+| 3 | The East Meets West | Residential |
+| 4 | The Iconic Terrace | Residential |
+| 5 | Sutera Terrace Corner | Residential |
+| 6 | Indah Putra Banglow | Residential |
+| 7 | Horizon Hills | Residential |
+| 8 | Winter Pavillion | Residential |
+| 9 | AOR House | Residential |
+| 10 | The Rabbit Hole KL | Commercial |
+| 11 | Chica San Chen Puchong | Commercial |
+| 12 | Founder Penang | Commercial |
+| 13 | The Ritz-Carlton Langkawi | Hospitality |
+| 14 | Langkawi Kitchen | Hospitality |
+| 15 | Beach Grill Welcome Pavillion | Hospitality |
 
 ---
 
 ## Tech Stack
 
-- [Vite](https://vitejs.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [React](https://react.dev/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/) — Build tool
+- [TypeScript](https://www.typescriptlang.org/) — Type safety
+- [React](https://react.dev/) — UI framework
+- [shadcn/ui](https://ui.shadcn.com/) — Component library
+- [Tailwind CSS](https://tailwindcss.com/) — Styling
+- [react-helmet-async](https://github.com/staylor/react-helmet-async) — SEO management
 
-The site uses **SSG (Static Site Generation)** via prerender — each route is exported as a standalone `index.html` file.
+The site uses **SSG (Static Site Generation)** via prerender — each route is exported as a standalone `index.html` file for optimal SEO performance.
 
 ---
 
@@ -80,6 +78,9 @@ npm run dev
 ```
 
 ---
+
+## Deployment
+
 **Via GitHub**
 Navigate to the desired file → click the pencil (Edit) icon → commit changes directly.
 
@@ -88,9 +89,15 @@ Open the repo → click Code → Codespaces tab → New codespace → edit and p
 
 ---
 
-## Analytics
+## Analytics & Tracking
 
-The site uses Google Analytics (GA4) and Google Ads conversion tracking, configured in `index.html`.
+The site uses the following Google services:
+
+- **Google Analytics 4** (GA4) — `G-5PBQHDG583`
+- **Google Ads** — `AW-18088543111`, `AW-11342839562`
+- **Conversion Tracking** — Lead form submission on Contact page
+
+Configured in `index.html` with conversion event firing on successful form submission.
 
 ---
 

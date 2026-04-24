@@ -62,7 +62,6 @@ const Contact = () => {
           mode: "no-cors",
         }
       );
-
       toast({ title: "Message sent", description: "We'll get back to you shortly." });
 
       // Google Ads conversion tracking

@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import ProjectGrid from "@/components/ProjectGrid";
 import HeroSlider from "@/components/HeroSlider";
+import ResidentialFeature from "@/components/ResidentialFeature";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 
@@ -19,6 +20,8 @@ const Index = () => {
             <Header transparent />
           </div>
         </div>
+
+        <ResidentialFeature />
 
         <div id="projects">
           <ProjectGrid />

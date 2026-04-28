@@ -3,6 +3,7 @@ import ProjectGrid from "@/components/ProjectGrid";
 import HeroSlider from "@/components/HeroSlider";
 import ResidentialFeature from "@/components/ResidentialFeature";
 import BespokeDesign from "@/components/BespokeDesign";
+import ConnectWithUs from "@/components/ConnectWithUs";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 
@@ -29,6 +30,9 @@ const Index = () => {
         <div id="projects">
           <ProjectGrid />
         </div>
+
+        <ConnectWithUs />
+
         <Footer />
       </main>
     </div>

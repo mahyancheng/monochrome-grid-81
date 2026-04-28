@@ -127,13 +127,12 @@ const BlogDetail = () => {
           </div>
         </div>
 
-        {/* Cover image */}
         {post.image && (
-          <div className="w-full aspect-[16/7] overflow-hidden">
+          <div className="max-w-3xl mx-auto px-6 py-8">
             <img
               src={post.image}
               alt={post.title || ""}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-auto object-contain rounded-none"
             />
           </div>
         )}

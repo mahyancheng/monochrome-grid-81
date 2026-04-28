@@ -17,6 +17,8 @@ const getCategoryLabel = (category: string) => {
   }
 };
 
+const SITE_URL = "https://hidilauarchitect.com";
+
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const project = projects.find((p) => p.id === id);
@@ -24,13 +26,11 @@ const ProjectDetail = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
-  // Combined images for lightbox: carousel images first, then gallery images
   const allImages = [
     ...(project?.carouselImages || []),
     ...(project?.images || []),
   ];
 
-  // Auto-advance carousel
   useEffect(() => {
     if (!project?.carouselImages || project.carouselImages.length <= 1) return;
     const timer = setInterval(() => {
@@ -38,6 +38,7 @@ const ProjectDetail = () => {
     }, 4000);
     return () => clearInterval(timer);
   }, [project?.carouselImages]);
+
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex flex-col">
@@ -52,16 +53,51 @@ const ProjectDetail = () => {
     );
   }
 
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "description": project.description || `${project.title} — ${project.category} project by HIDI Lau Architect, Johor Bahru.`,
+    "url": `${SITE_URL}/project/${project.id}`,
+    "image": project.cover,
+    "author": {
+      "@type": "Organization",
+      "name": "HIDI Lau Architect",
+      "url": SITE_URL
+    },
+    ...(project.client && {
+      "contributor": {
+        "@type": "Organization",
+        "name": project.client
+      }
+    }),
+    ...(project.location && {
+      "locationCreated": {
+        "@type": "Place",
+        "name": project.location
+      }
+    }),
+    ...(project.leadArchitect && {
+      "creator": {
+        "@type": "Person",
+        "name": project.leadArchitect
+      }
+    })
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
         title={`${project.title} | ${getCategoryLabel(project.category)} | Hidi Lau Architect`}
         description={project.description || `${project.title} — ${project.category} project by Hidi Lau Architect, Johor Bahru.`}
         path={`/project/${project.id}`}
+        image={project.cover}
+        type="article"
+        schema={projectSchema}
       />
       <Header />
       <main className="flex-1">
-        {/* Title bar with spotlight styling */}
+        {/* Title bar */}
         <div
           className="border-b border-border py-10 px-6"
           onMouseEnter={() => setHeaderHover(true)}
@@ -74,10 +110,7 @@ const ProjectDetail = () => {
                 {project.title}
               </h1>
             </div>
-            <Link
-              to="/"
-              className="group flex items-center gap-2"
-            >
+            <Link to="/" className="group flex items-center gap-2">
               <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground group-hover:text-foreground transition-colors">
                 All Projects
               </span>
@@ -91,7 +124,7 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Project info — spotlight layout */}
+        {/* Project info */}
         {(project.description || project.client) && (
           <div className="border-b border-border py-10 px-6">
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -134,7 +167,7 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        {/* Hero carousel — only for projects with carouselImages */}
+        {/* Hero carousel */}
         {project.carouselImages && project.carouselImages.length > 1 && (
           <div className="py-12 md:py-16">
             <div className="relative overflow-hidden" style={{ height: "55vh" }}>
@@ -150,31 +183,30 @@ const ProjectDetail = () => {
                   >
                     <img
                       src={img}
-                      alt={`${project.title} ${idx + 1}`}
+                      alt={`${project.title} — view ${idx + 1}`}
                       className="max-w-[85%] md:max-w-[70%] h-full object-contain"
                     />
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Dot indicators */}
             <div className="flex items-center justify-center gap-2 mt-8">
               {project.carouselImages.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCarouselIndex(idx)}
-                  className={`h-[3px] rounded-full transition-all duration-300 ${idx === carouselIndex
+                  className={`h-[3px] rounded-full transition-all duration-300 ${
+                    idx === carouselIndex
                       ? "w-6 bg-primary"
                       : "w-4 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
+                  }`}
                 />
               ))}
             </div>
           </div>
         )}
 
-        {/* Image gallery — alternating 1-up / 2-up rows */}
+        {/* Image gallery */}
         <div className="flex flex-col gap-4 md:gap-6 px-6 md:px-10 py-8">
           {(() => {
             const rows: React.ReactNode[] = [];
@@ -192,7 +224,11 @@ const ProjectDetail = () => {
                     className="relative w-full aspect-[16/9] overflow-hidden group cursor-pointer"
                     onClick={() => setLightboxIndex(carouselOffset + imgIndex)}
                   >
-                    <img src={img} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img
+                      src={img}
+                      alt={`${project.title} — photo ${i + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
                 );
                 i += 1;
@@ -207,7 +243,11 @@ const ProjectDetail = () => {
                         className="relative aspect-[4/5] overflow-hidden group cursor-pointer"
                         onClick={() => setLightboxIndex(carouselOffset + startI + j)}
                       >
-                        <img src={img} alt={`${project.title} ${startI + j + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <img
+                          src={img}
+                          alt={`${project.title} — photo ${startI + j + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
                       </div>
                     ))}
                   </div>
@@ -227,7 +267,7 @@ const ProjectDetail = () => {
               <>
                 <img
                   src={allImages[lightboxIndex]}
-                  alt={`${project.title} ${lightboxIndex + 1}`}
+                  alt={`${project.title} — photo ${lightboxIndex + 1}`}
                   className="max-w-full max-h-[90vh] object-contain"
                 />
                 {allImages.length > 1 && (

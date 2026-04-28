@@ -10,8 +10,11 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
+import BlogPost from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import NotFound from "./pages/NotFound";
 import WhatsAppChatWidget from "./components/WhatsAppChatWidget";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,8 @@ const App = () => (
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="/blog" element={<BlogPost />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

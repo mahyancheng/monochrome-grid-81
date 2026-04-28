@@ -49,7 +49,7 @@ import emw8 from "@/Archive/Projects/emw_03.jpg";
 import emw9 from "@/Archive/Projects/emw_04-min.jpg";
 import emw10 from "@/Archive/Projects/emw_05-min.jpg";
 
-// The Iconic Terrace (original uses numbered files with suffix 1)
+// The Iconic Terrace
 import it1 from "@/Archive/Projects/81.jpg";
 import it2 from "@/Archive/Projects/91.jpg";
 import it3 from "@/Archive/Projects/101.jpg";
@@ -73,13 +73,13 @@ import st8 from "@/Archive/Projects/sutera_03-min.jpg";
 import st9 from "@/Archive/Projects/sutera_04-min.jpg";
 import st10 from "@/Archive/Projects/sutera_05-min.jpg";
 
-// Indah Putra Bungalow (original: only 4 images)
+// Indah Putra Bungalow
 import ip1 from "@/Archive/Projects/3-min.jpg";
 import ip2 from "@/Archive/Projects/4-min.jpg";
 import ip3 from "@/Archive/Projects/1-min.jpg";
 import ip4 from "@/Archive/Projects/2-min.jpg";
 
-// Horizon Hills (original includes 1-min1.jpg)
+// Horizon Hills
 import hh1 from "@/Archive/Projects/10-horizon-hills--min.jpg";
 import hh2 from "@/Archive/Projects/13-horizon-hills--min.jpg";
 import hh3 from "@/Archive/Projects/12-horizon-hills--min.jpg";
@@ -88,7 +88,7 @@ import hh5 from "@/Archive/Projects/1-min1.jpg";
 import hh6 from "@/Archive/Projects/7-horizon-hills--min.jpg";
 import hh7 from "@/Archive/Projects/8-horizon-hills--min.jpg";
 
-// CHICHA San Chen (original: 07.jpg, 01(1)-06, NO 08/09 which are Founders)
+// CHICHA San Chen
 import cc1 from "@/Archive/Projects/07.jpg";
 import cc2 from "@/Archive/Projects/01(1).jpg";
 import cc3 from "@/Archive/Projects/02.jpg";
@@ -105,7 +105,7 @@ import ccr4 from "@/Archive/Projects/CHICHASANCHEN/04-minchicharender.jpg";
 import ccr5 from "@/Archive/Projects/CHICHASANCHEN/05-minchicharender.jpg";
 import ccr6 from "@/Archive/Projects/CHICHASANCHEN/06-minchicharender.jpg";
 
-// Winter Pavillion (original uses sd_ prefix files)
+// Winter Pavillion
 import wp1 from "@/Archive/Projects/sd_15-min.jpg";
 import wp2 from "@/Archive/Projects/sd_16-min.jpg";
 import wp3 from "@/Archive/Projects/sd_44-min.jpg";
@@ -117,7 +117,7 @@ import wp8 from "@/Archive/Projects/sd_07-min.jpg";
 import wp9 from "@/Archive/Projects/sd_08-min.jpg";
 import wp10 from "@/Archive/Projects/sd_11-min.jpg";
 
-// Founders Penang (original uses numbered files + 01-min through 06-min)
+// Founders Penang
 import fp1 from "@/Archive/Projects/071.jpg";
 import fp2 from "@/Archive/Projects/08.jpg";
 import fp3 from "@/Archive/Projects/09.jpg";
@@ -171,6 +171,7 @@ import bg7 from "@/Archive/Projects/bg_02.jpg";
 import bg8 from "@/Archive/Projects/bg_03.jpg";
 import bg9 from "@/Archive/Projects/bg_04.jpg";
 
+// Kluang Resort Farmhouse
 import kr1 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_01.jpg";
 import kr2 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_02.jpg";
 import kr3 from "@/Archive/Projects/KLUANGRESORTFARMHOUSE/bg_03.jpg";
@@ -223,13 +224,19 @@ export const projects: Project[] = [
     category: "Residential",
     cover: ch1,
     images: [ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A contemporary residential home designed around a central courtyard that draws natural light and cross-ventilation deep into the living spaces. The design strikes a balance between privacy and openness, with lush greenery and clean architectural lines creating a calm, tropical retreat in the heart of Johor Bahru.",
   },
   {
     id: "eco-sanctuary",
-    title: "Eco Santuary",
+    title: "Eco Sanctuary",
     category: "Residential",
     cover: es6,
     images: [es1, es2, es3, es4, es5, es6, es7, es8, es9, es10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A nature-integrated residential sanctuary that blends contemporary architecture with its lush tropical surroundings. Generous overhangs, layered landscaping, and carefully considered material choices work in harmony to create a home that breathes with its environment — a private retreat that feels both grounded and serene.",
   },
   {
     id: "east-meets-west",
@@ -237,6 +244,9 @@ export const projects: Project[] = [
     category: "Residential",
     cover: emw6,
     images: [emw1, emw2, emw3, emw4, emw5, emw6, emw7, emw8, emw9, emw10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A refined residential design that bridges Eastern spatial philosophy with Western contemporary aesthetics. The interior spaces are thoughtfully composed with warm timber accents, neutral tones, and curated furnishings that reflect a sophisticated, cross-cultural sensibility — resulting in a home that feels both cosmopolitan and deeply personal.",
   },
   {
     id: "iconic-terrace",
@@ -244,6 +254,9 @@ export const projects: Project[] = [
     category: "Residential",
     cover: it1,
     images: [it1, it2, it3, it6, it7, it8, it9, it10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A terrace house transformed through bold architectural intervention into a distinctive modern home. The design redefines the conventional terrace typology with striking facade detailing, generous interior volumes, and a refined material palette — elevating everyday living into something truly memorable.",
   },
   {
     id: "sutera-terrace",
@@ -251,13 +264,19 @@ export const projects: Project[] = [
     category: "Residential",
     cover: st6,
     images: [st1, st2, st3, st4, st5, st6, st7, st8, st9, st10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A corner terrace home reimagined with a clean contemporary language that makes the most of its advantageous plot position. Expansive glazing, open-plan living areas, and a carefully curated interior palette come together to create a bright, airy residence that balances modern living with refined spatial comfort.",
   },
   {
     id: "indah-putra",
-    title: "Indah Putra Banglow",
+    title: "Indah Putra Bungalow",
     category: "Residential",
     cover: ip3,
     images: [ip1, ip2, ip3, ip4],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A bungalow residence defined by clean lines, considered proportions, and a warm material palette. The design prioritises spacious, naturally lit interiors that flow seamlessly to outdoor areas, crafting a home that embodies quiet luxury and everyday comfort in equal measure.",
   },
   {
     id: "horizon-hills",
@@ -265,14 +284,20 @@ export const projects: Project[] = [
     category: "Residential",
     cover: hh6,
     images: [hh1, hh2, hh3, hh4, hh5, hh6, hh7],
+    location: "Horizon Hills, Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A premium residential project nestled within the prestigious Horizon Hills township in Johor Bahru. The design responds to the gated community's elevated landscape with a contemporary home that features generous living spaces, refined finishes, and a seamless connection between indoor comfort and outdoor greenery.",
   },
   {
     id: "chicha-san-chen",
-    title: "Chica San Chen Puchong",
+    title: "CHICHA San Chen Puchong",
     category: "Commercial",
     cover: cc2,
     images: [cc1, cc3, cc4, cc5, cc6, cc7],
     carouselImages: [ccr1, ccr2, ccr3, ccr4, ccr5, ccr6],
+    location: "Puchong, Selangor, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "An immersive commercial interior for the renowned Taiwanese tea brand CHICHA San Chen, located in Puchong. The design captures the brand's artisanal tea culture through a warm, layered spatial experience — blending natural textures, bespoke joinery, and carefully considered lighting to create an inviting destination for tea connoisseurs.",
   },
   {
     id: "winter-pavillion",
@@ -280,13 +305,19 @@ export const projects: Project[] = [
     category: "Residential",
     cover: wp6,
     images: [wp1, wp2, wp3, wp4, wp5, wp6, wp7, wp8, wp9, wp10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A residential pavilion concept inspired by the quiet elegance of winter — pared-back materiality, restrained detailing, and soft, diffused light define the interior atmosphere. The design cultivates a sense of stillness and calm, offering its inhabitants a sanctuary that feels both refined and deeply restorative.",
   },
   {
     id: "founders-penang",
-    title: "Founder Penang",
+    title: "Founders Penang",
     category: "Commercial",
     cover: fp1,
     images: [fp1, fp2, fp3, fp4, fp7, fp8, fp9, fp10, fp11, fp12, fp13],
+    location: "Penang, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A character-rich commercial interior in the heart of Penang, designed to honour the spirit of the island's storied heritage. Raw textures, reclaimed elements, and a moody, atmospheric palette come together to create a space that feels both rooted in history and unmistakably contemporary.",
   },
   {
     id: "aor-house",
@@ -294,6 +325,9 @@ export const projects: Project[] = [
     category: "Residential",
     cover: aor1,
     images: [aor1, aor2, aor3, aor4, aor5, aor6, aor7, aor8, aor9, aor10],
+    location: "Johor Bahru, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A modern residential home conceived around bold architectural geometry and a restrained material palette. AOR House balances sculptural exterior massing with warm, carefully detailed interiors — creating a home that makes a confident architectural statement while remaining entirely liveable and personal.",
   },
   {
     id: "langkawi-kitchen",
@@ -301,14 +335,21 @@ export const projects: Project[] = [
     category: "Hospitality",
     cover: lk8,
     images: [lk1, lk2, lk3, lk4, lk5, lk6, lk7, lk8, lk9, lk10, lk11, lk12, lk13, lk14],
-    description: "The Langkawi Kitchen of the Ritz-Carlton Langkawi — winner of PAM Silver Award 2019 under Low-Rise Commercial Category.",
+    client: "The Ritz-Carlton Langkawi",
+    location: "Langkawi, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "The Langkawi Kitchen of the Ritz-Carlton Langkawi — winner of the PAM Silver Award 2019 under the Low-Rise Commercial Category. This award-winning dining pavilion celebrates tropical hospitality through a design that embraces its natural rainforest and beachfront setting, weaving local craft and materials into a world-class resort dining experience.",
   },
   {
     id: "beach-grill",
-    title: "Beach Grill Welcome Pavillion",
+    title: "Beach Grill Welcome Pavilion",
     category: "Hospitality",
     cover: bg6,
     images: [bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9],
+    client: "The Ritz-Carlton Langkawi",
+    location: "Langkawi, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A welcoming pavilion at the water's edge, designed as part of the Ritz-Carlton Langkawi resort experience. The structure embraces its beachfront setting with an open, breezy architecture that frames views of the sea — a graceful arrival point that sets the tone for the resort's signature tropical luxury.",
   },
   {
     id: "kluang-resort-farmhouse",
@@ -316,5 +357,8 @@ export const projects: Project[] = [
     category: "Residential",
     cover: kr1,
     images: [kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8, kr9],
+    location: "Kluang, Johor, Malaysia",
+    leadArchitect: "Ar. Hidi Lau Wei Lin",
+    description: "A resort farmhouse retreat set against the verdant landscape of Kluang, Johor. The design draws on rustic farmhouse sensibilities — pitched rooflines, natural timber, and an honest material palette — while delivering the comfort and refinement of a contemporary getaway deeply connected to its rural surroundings.",
   },
 ];

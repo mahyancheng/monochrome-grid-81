@@ -15,6 +15,8 @@ export default {
     extend: {
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],
+        futura: ['"Futura Light BT"', "Futura", "sans-serif"],
+        fiona: ['"Kiona"', "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -90,5 +92,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;

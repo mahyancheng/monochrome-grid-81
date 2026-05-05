@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -13,7 +14,7 @@ import Contact from "./pages/Contact";
 import BlogPost from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import NotFound from "./pages/NotFound";
-import WhatsAppChatWidget from "./components/WhatsAppChatWidget";
+const WhatsAppChatWidget = lazy(() => import("./components/WhatsAppChatWidget"));
 import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
@@ -37,7 +38,9 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <WhatsAppChatWidget phoneE164="60167442330" />
+          <Suspense fallback={null}>
+            <WhatsAppChatWidget phoneE164="60167442330" />
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

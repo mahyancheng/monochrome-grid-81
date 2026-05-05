@@ -1,25 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 
-import img1 from "@/Archive/HomePage/Image Rotation/1.jpg";
-import img2 from "@/Archive/HomePage/Image Rotation/2.jpg";
-import img3 from "@/Archive/HomePage/Image Rotation/3.jpg";
-import img4 from "@/Archive/HomePage/Image Rotation/4.jpg";
-import img5 from "@/Archive/HomePage/Image Rotation/5.jpg";
-import img6 from "@/Archive/HomePage/Image Rotation/6.jpg";
-import img7 from "@/Archive/HomePage/Image Rotation/7.jpg";
-import img8 from "@/Archive/HomePage/Image Rotation/8.jpg";
-import img9 from "@/Archive/HomePage/Image Rotation/9.jpg";
-import img10 from "@/Archive/HomePage/Image Rotation/10.jpg";
-import img11 from "@/Archive/HomePage/Image Rotation/11.jpg";
-
-const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
+const slides = Array.from({ length: 11 }, (_, i) => `/images/hero/${i + 1}.jpg`);
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  // Track which slides have ever been mounted so we don't re-fetch when cycling back
   const [mounted, setMounted] = useState<Set<number>>(() => new Set([0, 1]));
-
+  const slides = Array.from({ length: 11 }, (_, i) => `/images/hero/${i + 1}.webp`);
   const goTo = useCallback(
     (index: number) => {
       if (index === current || isTransitioning) return;
@@ -30,7 +17,6 @@ const HeroSlider = () => {
     [current, isTransitioning]
   );
 
-  // Auto-advance every 5s
   useEffect(() => {
     const id = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -38,7 +24,6 @@ const HeroSlider = () => {
     return () => clearInterval(id);
   }, []);
 
-  // Lazily mark current + next as mounted (so they render & start downloading)
   useEffect(() => {
     setMounted((prev) => {
       const next = new Set(prev);
@@ -53,7 +38,6 @@ const HeroSlider = () => {
   return (
     <div className="relative w-full aspect-[3/4] md:aspect-auto md:h-screen overflow-hidden bg-muted">
       {slides.map((src, i) => {
-        // Only render images that have been mounted — cuts initial payload from ~17MB to ~1MB
         if (!mounted.has(i)) return null;
         return (
           <img

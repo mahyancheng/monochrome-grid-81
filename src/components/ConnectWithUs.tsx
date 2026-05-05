@@ -33,6 +33,8 @@ const ConnectWithUs = () => {
             className="w-full h-full object-cover aspect-[3/4]"
             loading="lazy"
             decoding="async"
+            width="600"
+              height="800"
           />
           <img
             src={img2}
@@ -40,6 +42,8 @@ const ConnectWithUs = () => {
             className="w-full h-full object-cover aspect-[3/4]"
             loading="lazy"
             decoding="async"
+            width="600"
+            height="800"
           />
         </div>
       </div>

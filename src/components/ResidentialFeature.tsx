@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import featureImg from "@/Archive/HomePage/Image Rotation/1.jpg";
 
+const featureImg = "/images/hero.jpg";
 const ResidentialFeature = () => {
   return (
     <section className="w-full bg-background py-16 md:py-24">
@@ -8,24 +8,26 @@ const ResidentialFeature = () => {
         <div className="w-full">
           <img
             src={featureImg}
-            alt="Architect crafted residential interior"
+            alt="Architectural Design"
             className="w-full h-auto object-cover"
-            loading="lazy"
+            fetchPriority="high"
             decoding="async"
+            width="901"
+            height="507"
           />
         </div>
 
         <div className="flex flex-col">
-          <h2 className="font-futura font-light text-foreground leading-tight">
-            <span className="block text-2xl md:text-3xl lg:text-4xl mb-2">
+          <h2 className="font-fiona font-normal text-foreground/80 leading-tight">
+            <span className="block text-2xl md:text-3xl lg:text-4xl mb-1">
               Architect Crafted
             </span>
-            <span className="block text-3xl md:text-5xl lg:text-6xl font-bold tracking-[0.04em] uppercase">
+            <span className="block text-3xl md:text-5xl lg:text-6xl font-normal tracking-[0.04em] uppercase">
               Residential Designs
             </span>
           </h2>
 
-          <div className="mt-8 space-y-5 font-futura text-sm md:text-base text-foreground/80 leading-relaxed max-w-xl">
+          <div className="mt-8 space-y-5 font-futura text-sm md:text-base text-foreground/60 leading-relaxed max-w-xl">
             <p>
               Redefining living with architectural design precision and interior
               design craftmanship, delivering spaces that balance form, function,
@@ -40,7 +42,7 @@ const ResidentialFeature = () => {
 
           <Link
             to="/contact"
-            className="mt-10 inline-block w-fit border border-foreground px-7 py-3 font-futura font-bold text-xs tracking-[0.25em] uppercase text-foreground hover:bg-foreground hover:text-background transition-colors"
+            className="mt-10 inline-block w-fit border border-foreground/80 px-7 py-3 font-futura font-light text-xs tracking-[0.25em] uppercase text-foreground/80 hover:bg-foreground hover:text-background transition-colors"
           >
             Get Quote Now
           </Link>

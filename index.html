@@ -8,7 +8,14 @@
   <meta name="description"
     content="HIDI Lau Architect is a multi-disciplinary architectural design studio in Johor Bahru, Malaysia. Architecture, interior design and passionate craftsmanship since 1989.">
   <meta name="author" content="HIDI Lau Architect" />
-  <!-- JSON-LD Structured Data -->
+
+  <!-- 1. 性能优化：预加载首屏 LCP 图片 -->
+  <!-- 建议：将 1.jpg 转换为 1.webp 并放入 public/images 文件夹以获得最佳性能 -->
+  <link rel="preload" as="image" href="/images/hero/1.webp" fetchpriority="high">
+    <!-- 2. 网站图标：防止浏览器控制台 404 错误 -->
+  <link rel="icon" type="image/png" href="/assets/logo-CP_OYl3M.png">
+
+  <!-- JSON-LD 结构化数据：提升搜索引擎排名 (SEO) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,22 +54,59 @@
     }
     </script>
 
-  <!-- Google tag (gtag.js) -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PBQHDG583"></script>
+  <!-- Google 统计与广告追踪 (gtag.js) -->
+  <!-- 移除原本 head 里的同步脚本，改为动态加载 -->
+  <!-- index.html 中的修改建议 -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    window.addEventListener('load', function () {
+      // 1. 定义初始化函数
+      const initGTM = function () {
+        if (window.gtmInitialized) return;
+        window.gtmInitialized = true;
 
-    gtag('config', 'G-5PBQHDG583');
-    gtag('config', 'AW-18088543111');
-    gtag('config', 'AW-11342839562');  // ← 加这一行
+        const script = document.createElement('script');
+        script.async = true;
+        // 只需要加载一个基础库，其他的通过 config 触发
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-5PBQHDG583";
+        document.head.appendChild(script);
+
+        script.onload = function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+
+          // 关键：合并配置，减少主线程反复唤醒
+          gtag('config', 'G-5PBQHDG583', { 'send_page_view': true });
+          gtag('config', 'AW-18088543111');
+          gtag('config', 'AW-11342839562');
+        };
+      };
+
+      // 2. 更加智能的加载时机：要么浏览器空闲，要么用户开始操作
+      if ('requestIdleCallback' in window) {
+        // 浏览器空闲时加载，设定 3 秒的超时上限
+        requestIdleCallback(() => initGTM(), { timeout: 3000 });
+      } else {
+        // 备选方案：如果用户滚动或点击，立即加载
+        const triggerLoader = () => {
+          initGTM();
+          window.removeEventListener('scroll', triggerLoader);
+          window.removeEventListener('click', triggerLoader);
+        };
+        window.addEventListener('scroll', triggerLoader, { passive: true });
+        window.addEventListener('click', triggerLoader, { passive: true });
+        // 如果用户没操作，5 秒后保底加载
+        setTimeout(initGTM, 5000);
+      }
+    });
   </script>
 </head>
 
 <body>
+  <!-- React 18 挂载点 -->
   <div id="root"></div>
+
+  <!-- 主入口脚本 -->
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

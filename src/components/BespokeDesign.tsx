@@ -8,11 +8,14 @@ const BespokeDesign = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div className="w-full">
           <img
-            src={img2}
+            src={img2} // 换成 WebP 格式
             alt="Bespoke architectural interior design"
             className="w-full h-auto object-cover"
             loading="lazy"
             decoding="async"
+            /* 添加显式的宽高比，防止页面抖动 (CLS) */
+            width="728"
+            height="410"
           />
         </div>
         <div className="flex flex-col">

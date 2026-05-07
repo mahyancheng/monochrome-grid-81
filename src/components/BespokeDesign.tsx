@@ -27,7 +27,7 @@ const BespokeDesign = () => {
             Whatever your needs for a space may be, our team is ready to serve you with professional architectural design expertise and interior design solutions, thoughtfully tailored to meet — and exceed — your expectations.
           </p>
           <Link
-            to="/services"
+            to="/services/"
             className="mt-10 inline-flex items-center gap-3 font-futura font-bold text-xs tracking-[0.25em] uppercase text-foreground group"
           >
             More Services

@@ -41,7 +41,7 @@ const ResidentialFeature = () => {
           </div>
 
           <Link
-            to="/contact"
+            to="/contact/"
             className="mt-10 inline-block w-fit border border-foreground/80 px-7 py-3 font-futura font-light text-xs tracking-[0.25em] uppercase text-foreground/80 hover:bg-foreground hover:text-background transition-colors"
           >
             Get Quote Now

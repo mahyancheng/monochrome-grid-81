@@ -9,6 +9,7 @@ import hidiPhoto from "@/Archive/AboutPage/IMG_0520.jpg";
 import SEO from "@/components/SEO";
 import journeyImg from "@/Archive/AboutPage/01.jpg";
 import spaceImg from "@/Archive/AboutPage/emw_17-1.jpg";
+import { getAboutSchema } from "@/lib/schema";
 
 const values = [
   "We are committed and passionate about our work.",
@@ -33,7 +34,8 @@ const About = () => {
       <SEO
         title="Top Architecture Firms in Malaysia | About Us | Hidi Lau Architect"
         description="Meet Ar. Hidi Lau Wei Lir, principal architect at Hidi Lau Architect. Award-winning architectural and interior design studio established in 1989 in Johor Bahru."
-        path="/about"
+        path="/about/"
+        schema={getAboutSchema()} // 2. 这里传入动态生成的 Schema
       />
       <Header />
       <main className="flex-1">

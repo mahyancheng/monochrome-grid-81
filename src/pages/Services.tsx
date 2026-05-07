@@ -11,6 +11,7 @@ import img1 from "@/Archive/Services/07aor-min.jpg";
 import img2 from "@/Archive/Services/08aor-min.png";
 import img3 from "@/Archive/Projects/courtyard-house_01.jpg";
 import img4 from "@/Archive/Projects/emw_01-min.jpg";
+import { getServicesSchema } from "@/lib/schema";
 
 const services = [
   {
@@ -51,7 +52,8 @@ const Services = () => {
       <SEO
         title="Interior Design and Build Malaysia | Service | Hidi Lau Architect | GET A INSTANT QUOTE NOW"
         description="Architectural design, interior design, authority submissions and passionate craftsmanship. HIDI Lau Architect delivers excellence from concept to completion."
-        path="/services"
+        path="/services/"
+        schema={getServicesSchema()} // 2. 这里传入动态生成的 Schema
       />
       <Header />
       <main className="flex-1">

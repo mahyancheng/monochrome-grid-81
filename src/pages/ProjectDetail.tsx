@@ -7,6 +7,7 @@ import { AnimatedLabel, CornerAccents } from "@/components/ui/feature-spotlight"
 import SEO from "@/components/SEO";
 import { projects } from "@/data/projects";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { getProjectDetailSchema } from "@/lib/schema";
 
 const getCategoryLabel = (category: string) => {
   switch (category) {
@@ -53,38 +54,6 @@ const ProjectDetail = () => {
     );
   }
 
-  const projectSchema = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": project.title,
-    "description": project.description || `${project.title} — ${project.category} project by HIDI Lau Architect, Johor Bahru.`,
-    "url": `${SITE_URL}/project/${project.id}`,
-    "image": project.cover,
-    "author": {
-      "@type": "Organization",
-      "name": "HIDI Lau Architect",
-      "url": SITE_URL
-    },
-    ...(project.client && {
-      "contributor": {
-        "@type": "Organization",
-        "name": project.client
-      }
-    }),
-    ...(project.location && {
-      "locationCreated": {
-        "@type": "Place",
-        "name": project.location
-      }
-    }),
-    ...(project.leadArchitect && {
-      "creator": {
-        "@type": "Person",
-        "name": project.leadArchitect
-      }
-    })
-  };
-
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
@@ -93,8 +62,7 @@ const ProjectDetail = () => {
         path={`/project/${project.id}`}
         image={project.cover}
         type="article"
-        schema={projectSchema}
-      />
+        schema={getProjectDetailSchema(project)}      />
       <Header />
       <main className="flex-1">
         {/* Title bar */}

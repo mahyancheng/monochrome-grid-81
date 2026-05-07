@@ -17,7 +17,7 @@ const ConnectWithUs = () => {
             Speak to us today to have your house design visualized by our professional architectural and interior design team, bringing your ideas to life with clarity and precision.
           </p>
           <Link
-            to="/contact"
+            to="/contact/"
             className="mt-10 inline-flex items-center gap-3 font-futura font-bold text-xs tracking-[0.25em] uppercase text-foreground group"
           >
             Get In Touch

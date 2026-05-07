@@ -1,6 +1,8 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import { getProjectListSchema } from "@/lib/schema";
+import SEO from "./SEO";
 
 const categories = ["All", "Residential", "Commercial", "Hospitality"];
 
@@ -94,7 +96,7 @@ const ProjectTile = ({
 
   return (
     <Link
-      to={`/project/${project.id}`}
+      to={`/project/${project.id}/`}
       className="block group"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
@@ -160,6 +162,12 @@ const ProjectGrid = () => {
 
   return (
     <div>
+      <SEO 
+        title="Architecture Portfolio | Selected Works | HIDI Lau Architect"
+        description="Explore our portfolio of award-winning residential, commercial and hospitality projects."
+        path="/projects" // 或者根据你路由的实际情况
+        schema={getProjectListSchema(projects)} // 自动生成包含所有项目的列表索引
+      />
       <div className="flex justify-start md:justify-center gap-6 md:gap-8 py-6 px-4 md:px-0 border-b border-border overflow-x-auto scrollbar-hide">
         {categories.map((cat) => (
           <button key={cat} onClick={() => setActiveCategory(cat)} className="relative group">

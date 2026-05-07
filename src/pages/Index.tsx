@@ -6,6 +6,7 @@ import BespokeDesign from "@/components/BespokeDesign";
 import ConnectWithUs from "@/components/ConnectWithUs";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
+import { getHomeSchema } from "@/lib/schema";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
         title="Interior Architect Malaysia | Design and Build Company | GET A QUOTE NOW"
         description="Multi-disciplinary architectural design studio in Johor Bahru, Malaysia. Architecture, interior design and passionate craftsmanship since 1989."
         path="/"
+        schema={getHomeSchema()}
       />
       <main className="flex-1">
         <div className="relative">

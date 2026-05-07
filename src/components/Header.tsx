@@ -9,9 +9,9 @@ interface HeaderProps {
 
 const navItems = [
   { label: "Projects", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "/about/" },
+  { label: "Services", href: "/services/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 const Header = ({ transparent = false }: HeaderProps) => {

@@ -10,12 +10,14 @@ import { z } from "zod";
 
 import SEO from "@/components/SEO";
 import heroImg from "@/Archive/Projects/courtyard-house_60.jpg";
+import { getContactSchema } from "@/lib/schema";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   phone: z.string().trim().min(1, "Contact number is required").max(20),
   email: z.string().trim().email("Invalid email address").max(255),
   message: z.string().trim().min(1, "Message is required").max(2000),
+  submittedAt: z.string().optional(),
 });
 
 type ContactForm = z.infer<typeof contactSchema>;
@@ -52,18 +54,34 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
+    const now = new Date();
+    const submissionTime = now.toLocaleString('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
     try {
+      const payload = {
+        ...result.data,
+        submittedAt: submissionTime
+      };
       await fetch(
         "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjUwNTZkMDYzZjA0Mzc1MjZiNTUzMiI_3D_pc/IjU3NjcwNTZmMDYzZjA0MzA1MjY5NTUzNTUxMzYi_pc",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(result.data),
+          body: JSON.stringify(payload),
           mode: "no-cors",
         }
       );
-      toast({ title: "Message sent", description: "We'll get back to you shortly." });
-
+      toast({
+        title: "Message sent",
+        description: `Sent successfully at ${submissionTime}. We'll get back to you shortly.`
+      });
       // Google Ads conversion tracking
       if (typeof window !== "undefined" && (window as any).gtag) {
         (window as any).gtag("event", "conversion", {
@@ -85,7 +103,8 @@ const Contact = () => {
       <SEO
         title="Architecture and Interior Design | Contact | Interior Design Malaysia | Hidi Lau Architect"
         description="Get in touch with Hidi Lau Architect. Located at 1, Jalan Biru 2, Taman Pelangi, 80400 JB, Johor. Tel: +6016-7442330."
-        path="/contact"
+        path="/contact/"
+        schema={getContactSchema}
       />
       <Header />
 

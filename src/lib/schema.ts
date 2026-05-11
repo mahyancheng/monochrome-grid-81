@@ -3,7 +3,7 @@ import { Project } from "@/data/projects"; // 确保路径正确
 // 1. 定义基础的公司信息（单一样本源）
 export const BUSINESS_INFO = {
   name: "HIDI Lau Architect",
-  url: "https://hidilauarchitect.com",
+  url: "https://hidilauarchitect.com/",
   logo: "https://hidilauarchitect.com/assets/logo-CP_OYl3M.png",
   address: {
     "@type": "PostalAddress",
@@ -18,8 +18,22 @@ export const BUSINESS_INFO = {
   // 2. 生成首页 Schema 的函数
   export const getHomeSchema = () => ({
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    ...BUSINESS_INFO,
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${BUSINESS_INFO.url}/#website`,
+        "url": `${BUSINESS_INFO.url}/`,
+        "name": "HIDI Lau Architect", // 强制 Google 识别这个名字
+        "alternateName": ["HIDI Lau", "Hidi Lau Architect"],
+        "publisher": { "@id": `${BUSINESS_INFO.url}/#organization` }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${BUSINESS_INFO.url}/#organization`,
+        ...BUSINESS_INFO,
+        "url": `${BUSINESS_INFO.url}/` // 建议统一带上结尾斜杠
+      }
+    ]
   });
   
   // 3. 生成项目详情页 Schema 的函数 (支持动态关联)
@@ -36,7 +50,7 @@ export const BUSINESS_INFO = {
         "name": project.title,
         "description": project.description,
         "image": project.image,
-        "url": `${BUSINESS_INFO.url}${project.path}`,
+        "url": `${BUSINESS_INFO.url}${project.path}/`,
         "author": { "@id": `${BUSINESS_INFO.url}/#organization` },
         "locationCreated": {
           "@type": "Place",
@@ -237,7 +251,7 @@ export const getProjectDetailSchema = (project: any) => {
       },
       {
         "@type": "CreativeWork",
-        "@id": `${BUSINESS_INFO.url}/project/${project.id}`,
+        "@id": `${BUSINESS_INFO.url}/project/${project.id}/`,
         "name": project.title,
         "description": project.description || `${project.title} — ${project.category} project by HIDI Lau Architect.`,
         "url": `${BUSINESS_INFO.url}/project/${project.id}`,

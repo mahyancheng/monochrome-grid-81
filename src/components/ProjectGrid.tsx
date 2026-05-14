@@ -163,7 +163,7 @@ const ProjectGrid = () => {
   return (
     <div>
       <SEO 
-        title="Architecture Portfolio | Selected Works | HIDI Lau Architect"
+        title="Architect Firm | Interior Architect Malaysia | Hidi Lau Architect"
         description="Explore our portfolio of award-winning residential, commercial and hospitality projects."
         path="/projects" // 或者根据你路由的实际情况
         schema={getProjectListSchema(projects)} // 自动生成包含所有项目的列表索引

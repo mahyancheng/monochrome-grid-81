@@ -6,20 +6,8 @@ const BespokeDesign = () => {
   return (
     <section className="w-full bg-background py-16 md:py-24 border-t border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-        <div className="w-full">
-          <img
-            src={img2} // 换成 WebP 格式
-            alt="Bespoke architectural interior design"
-            className="w-full h-auto object-cover"
-            loading="lazy"
-            decoding="async"
-            /* 添加显式的宽高比，防止页面抖动 (CLS) */
-            width="728"
-            height="410"
-          />
-        </div>
-        <div className="flex flex-col">
-          <h2 className="font-futura font-light text-foreground leading-tight text-3xl md:text-4xl lg:text-5xl tracking-[0.02em]">
+      <div className="flex flex-col">
+          <h2 className="font-['Helvetica'] font-extralight text-foreground leading-tight text-3xl md:text-4xl lg:text-5xl tracking-[0.02em]">
             Bespoke Design<br />Based On<br />Your Expectations
           </h2>
           <div className="mt-6 w-16 h-px bg-foreground/60" />
@@ -33,6 +21,18 @@ const BespokeDesign = () => {
             More Services
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </Link>
+        </div>
+        <div className="w-full">
+          <img
+            src={img2} // 换成 WebP 格式
+            alt="Bespoke architectural interior design"
+            className="w-full h-auto object-cover"
+            loading="lazy"
+            decoding="async"
+            /* 添加显式的宽高比，防止页面抖动 (CLS) */
+            width="728"
+            height="410"
+          />
         </div>
       </div>
     </section>

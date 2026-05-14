@@ -12,6 +12,7 @@ import img2 from "@/Archive/Services/08aor-min.png";
 import img3 from "@/Archive/Projects/courtyard-house_01.jpg";
 import img4 from "@/Archive/Projects/emw_01-min.jpg";
 import { getServicesSchema } from "@/lib/schema";
+import ContactSection from "@/components/ContactSection";
 
 const services = [
   {
@@ -103,6 +104,7 @@ const Services = () => {
           ))}
         </div>
       </main>
+      <ContactSection />
       <Footer />
     </div>
   );

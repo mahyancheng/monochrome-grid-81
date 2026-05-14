@@ -10,6 +10,7 @@ import SEO from "@/components/SEO";
 import journeyImg from "@/Archive/AboutPage/01.jpg";
 import spaceImg from "@/Archive/AboutPage/emw_17-1.jpg";
 import { getAboutSchema } from "@/lib/schema";
+import ContactSection from "@/components/ContactSection";
 
 const values = [
   "We are committed and passionate about our work.",
@@ -84,6 +85,7 @@ const About = () => {
           </div>
         </div>
       </main>
+      <ContactSection />
      <Footer />
     </div>
   );

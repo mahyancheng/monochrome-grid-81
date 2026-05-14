@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+/* 引入 Futura Light */
+@font-face {
+  font-family: 'FuturaLight';
+  src: url('/font/futura light bt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 引入 Kiona */
+@font-face {
+  font-family: 'Kiona';
+  src: url('/font/Kiona-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

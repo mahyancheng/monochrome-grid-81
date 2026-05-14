@@ -8,6 +8,7 @@ import SEO from "@/components/SEO";
 import { projects } from "@/data/projects";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getProjectDetailSchema } from "@/lib/schema";
+import ContactSection from "@/components/ContactSection";
 
 const getCategoryLabel = (category: string) => {
   switch (category) {
@@ -268,6 +269,7 @@ const ProjectDetail = () => {
           </DialogContent>
         </Dialog>
       </main>
+      <ContactSection />
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ import ConnectWithUs from "@/components/ConnectWithUs";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { getHomeSchema } from "@/lib/schema";
-
+import ContactSection from "@/components/ContactSection"; // 导入刚才创建的组件
 const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -34,7 +34,7 @@ const Index = () => {
         </div>
 
         <ConnectWithUs />
-
+        <ContactSection /> 
         <Footer />
       </main>
     </div>

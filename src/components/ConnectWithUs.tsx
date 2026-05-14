@@ -9,7 +9,7 @@ const ConnectWithUs = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         {/* Left: copy */}
         <div className="flex flex-col">
-          <h2 className="font-futura font-light text-foreground leading-tight text-3xl md:text-4xl lg:text-5xl tracking-[0.02em]">
+          <h2 className="font-['Helvetica'] font-extralight text-foreground leading-tight text-3xl md:text-4xl lg:text-5xl tracking-[0.02em]">
             Connect With Us
           </h2>
           <div className="mt-6 w-16 h-px bg-foreground/60" />

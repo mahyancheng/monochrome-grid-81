@@ -85,7 +85,7 @@ const AuthoritySubmissions = () => {
             >
               Authority
               <br />
-              <em className="italic">Submissions</em>
+              <em className="">Submissions</em>
             </h1>
             <p
               className="text-white/60 font-fiona font-light leading-relaxed"
@@ -106,7 +106,7 @@ const AuthoritySubmissions = () => {
 
           {/* Left: body copy */}
           <div className="px-6 md:px-10 py-10 md:py-16 border-b md:border-b-0 md:border-r border-border flex flex-col gap-5 md:gap-7">
-            <p className="text-[14px] md:text-[17px] lg:text-[19px] font-display italic font-light leading-[1.85] md:leading-[1.9] text-foreground/80">
+            <p className="text-[14px] md:text-[17px] lg:text-[19px] font-fiona font-light leading-[1.85] md:leading-[1.9] text-foreground/80">
               Our authority submission service helps clients manage the technical
               and administrative side of architectural projects. This includes
               preparing the required drawings, documents, and coordination needed
@@ -115,7 +115,7 @@ const AuthoritySubmissions = () => {
 
             {/* Highlight callout */}
             <div className="border-l-[1.5px] border-foreground/20 pl-5 md:pl-6 py-1">
-              <p className="text-[12px] md:text-[13px] lg:text-[14px] font-display font-light leading-[1.8] md:leading-[1.85] text-foreground/60 italic">
+              <p className="text-[12px] md:text-[13px] lg:text-[14px] font-futura font-light leading-[1.8] md:leading-[1.85] text-foreground/60 italic">
                 Authority submissions can often feel complicated for property
                 owners — especially when dealing with renovation approvals, new
                 building plans, change of use, compliance requirements, or local
@@ -123,7 +123,7 @@ const AuthoritySubmissions = () => {
               </p>
             </div>
 
-            <p className="text-[11px] md:text-[12px] lg:text-[13px] font-display font-light tracking-[0.08em] md:tracking-[0.1em] leading-[1.85] md:leading-[1.9] text-muted-foreground">
+            <p className="text-[11px] md:text-[12px] lg:text-[13px] font-futura font-light tracking-[0.08em] md:tracking-[0.1em] leading-[1.85] md:leading-[1.9] text-muted-foreground">
               Hidi Lau Architect helps simplify this process by guiding clients
               through the necessary steps with professionalism and accuracy. By
               handling authority submissions carefully, we help reduce unnecessary
@@ -131,7 +131,7 @@ const AuthoritySubmissions = () => {
               foundation before moving forward.
             </p>
 
-            <p className="text-[11px] md:text-[12px] lg:text-[13px] font-display font-light tracking-[0.08em] md:tracking-[0.1em] leading-[1.85] md:leading-[1.9] text-muted-foreground">
+            <p className="text-[11px] md:text-[12px] lg:text-[13px] font-futura font-light tracking-[0.08em] md:tracking-[0.1em] leading-[1.85] md:leading-[1.9] text-muted-foreground">
               Our role is to bridge the gap between creative design and regulatory
               compliance — making sure the project is not only beautiful but also
               properly documented and professionally submitted.

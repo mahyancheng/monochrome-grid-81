@@ -92,7 +92,7 @@ const ArchitecturalDesign = () => {
             >
               Architectural
               <br />
-              <em className="italic">Design</em>
+              <em className="">Design</em>
             </h1>
 
             {/* Subtitle */}

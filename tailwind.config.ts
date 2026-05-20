@@ -15,8 +15,8 @@ export default {
     extend: {
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],
-        futura: ['"Futura Light BT"', "Futura", "sans-serif"],
-        fiona: ['"Kiona"', "sans-serif"],
+        futura: ['"Futura Light BT"', "Futura", "'Century Gothic'", "sans-serif"],
+        fiona: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -70,20 +70,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
@@ -94,4 +86,3 @@ export default {
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
-

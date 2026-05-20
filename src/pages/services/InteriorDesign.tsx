@@ -85,7 +85,7 @@ const InteriorDesign = () => {
             >
               Interior
               <br />
-              <em className="italic">Design</em>
+              Design
             </h1>
             <p
               className="text-white/60 font-fiona font-light leading-relaxed"

@@ -83,7 +83,7 @@ const PassionateCraftsmanship = () => {
             >
               Passionate
               <br />
-              <em className="italic">Craftsmanship</em>
+              <em className="">Craftsmanship</em>
             </h1>
             <p
               className="text-white/60 font-fiona font-light leading-relaxed"

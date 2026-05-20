@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 
-const slides = Array.from({ length: 11 }, (_, i) => `/images/hero/${i + 1}.jpg`);
-
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [mounted, setMounted] = useState<Set<number>>(() => new Set([0, 1]));
+
   const slides = Array.from({ length: 11 }, (_, i) => `/images/hero/${i + 1}.webp`);
+
   const goTo = useCallback(
     (index: number) => {
       if (index === current || isTransitioning) return;
@@ -53,8 +53,71 @@ const HeroSlider = () => {
         );
       })}
 
-      <div className="absolute inset-0 bg-foreground/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
+      {/* Title overlay */}
+      <div
+        className="absolute left-32 top-1/2 -translate-y-1/2 z-10 max-w-3xl md:left-40 lg:left-48 font-futura"
+      >
+        {/* Premier */}
+        <p
+          className="text-3xl md:text-4xl lg:text-5xl"
+          style={{
+            fontWeight: 150,
+            color: "#ffffff",
+            lineHeight: 1.15,
+            letterSpacing: "0.01em",
+            textShadow: "1px 2px 5px rgba(0,0,0,0.25)",
+          }}
+        >
+          Premier
+        </p>
+
+        {/* ARCHITECTURE & */}
+        <h1
+          className="text-4xl text-white md:text-5xl lg:text-6xl"
+          style={{
+            fontWeight: 900,
+            letterSpacing: "0.12em",
+            lineHeight: 1.15,
+            WebkitTextStroke: "1px white",
+            textShadow: "1px 2px 6px rgba(0,0,0,0.3)",
+          }}
+        >
+          ARCHITECTURE &amp;
+        </h1>
+
+        {/* INTERIOR DESIGN */}
+        <h1
+          className="text-4xl text-white md:text-5xl lg:text-6xl"
+          style={{
+            fontWeight: 900,
+            letterSpacing: "0.12em",
+            lineHeight: 1.15,
+            WebkitTextStroke: "1px white",
+            textShadow: "1px 2px 6px rgba(0,0,0,0.3)",
+          }}
+        >
+          INTERIOR DESIGN
+        </h1>
+
+        {/* Firm in Malaysia */}
+        <p
+          className="text-3xl md:text-4xl lg:text-5xl"
+          style={{
+            fontWeight: 200,
+            color: "#ffffff",
+            letterSpacing: "0.01em",
+            lineHeight: 1.15,
+            textShadow: "1px 2px 5px rgba(0,0,0,0.25)",
+          }}
+        >
+          Firm in Malaysia
+        </p>
+      </div>
+
+      {/* Dot indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10">
         {indicators.map((i) => (
           <button
@@ -74,6 +137,7 @@ const HeroSlider = () => {
         ))}
       </div>
 
+      {/* Slide counter */}
       <span className="absolute bottom-6 right-6 text-[10px] tracking-[0.3em] text-background/60 z-10">
         {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
       </span>

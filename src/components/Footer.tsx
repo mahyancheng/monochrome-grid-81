@@ -61,14 +61,19 @@ const Footer = () => {
           {/* Contact / Address */}
           <div className="flex flex-col font-futura text-sm md:text-base text-foreground/80">
             <p className="text-foreground">Address:</p>
-            <p className="mt-1 leading-relaxed">
-              1, Jalan b iru 2, taman pelangi, 80400, johor bahru, johor, malaysia
-            </p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=1+Jalan+Biru+2+Taman+Pelangi+80400+Johor+Bahru+Johor+Malaysia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 leading-relaxed hover:text-foreground hover:underline underline-offset-2 transition-colors"
+            >
+              1, Jalan Biru 2, Taman Pelangi, 80400, Johor Bahru, Johor, Malaysia
+            </a>
             <p className="mt-6 text-foreground">
-              Tel : <a href="tel:+60167442330" className="hover:underline">016 - 744 2330</a>
+              Tel : <a href="tel:+60167442330" className="hover:underline underline-offset-2">016 - 744 2330</a>
             </p>
             <p className="mt-1 text-foreground">
-              Email : <a href="mailto:hidilin@gmail.com" className="hover:underline">hidilin@gmail.com</a>
+              Email : <a href="mailto:hidilin@gmail.com" className="hover:underline underline-offset-2">hidilin@gmail.com</a>
             </p>
           </div>
         </div>

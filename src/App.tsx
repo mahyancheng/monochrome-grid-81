@@ -16,6 +16,11 @@ import BlogDetail from "./pages/BlogDetail";
 import NotFound from "./pages/NotFound";
 const WhatsAppChatWidget = lazy(() => import("./components/WhatsAppChatWidget"));
 import Blog from "./pages/Blog";
+import ArchitecturalDesign from "./pages/services/ArchitecturalDesign";
+import InteriorDesign from "./pages/services/InteriorDesign";
+import AuthoritySubmissions from "./pages/services/AuthoritySubmissions";
+import PassionateCraftsmanship from "./pages/services/Craftsmanship";
+
 
 const queryClient = new QueryClient();
 
@@ -35,7 +40,10 @@ const App = () => (
             <Route path="/project/:id/" element={<ProjectDetail />} />
             <Route path="/blog/" element={<BlogPost />} />
             <Route path="/blog/:slug/" element={<BlogDetail />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/services/architectural-design" element={<ArchitecturalDesign />} />
+            <Route path="/services/interior-design" element={<InteriorDesign />} />
+            <Route path="/services/authority-submissions" element={<AuthoritySubmissions />} />
+            <Route path="/services/craftsmanship" element={<PassionateCraftsmanship />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Suspense fallback={null}>

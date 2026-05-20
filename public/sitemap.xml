@@ -21,6 +21,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://hidilauarchitect.com/services/architectural-design/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hidilauarchitect.com/services/interior-design/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hidilauarchitect.com/services/authority-submissions/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hidilauarchitect.com/services/craftsmanship/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://hidilauarchitect.com/project/ritz-carlton-langkawi/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

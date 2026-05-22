@@ -54,63 +54,55 @@ const Contact = () => {
       return;
     }
 
+    setIsSubmitting(true);
     const now = new Date();
     const submissionTime = now.toLocaleString('zh-CN', {
       year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit', second: '2-digit',
       hour12: false
     });
+
     try {
-      const payload = {
-        ...result.data,
-        submittedAt: submissionTime
-      };
+      const payload = { ...result.data, submittedAt: submissionTime };
       const response = await fetch(
-        "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjUwNTZkMDYzZjA0Mzc1MjZiNTUzMiI_3D_pc/IjU3NjcwNTZmMDYzZjA0M2M1MjZjNTUzNzUxMzci_pc", // 请务必重新复制一遍这个 URL
+        "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjUwNTZkMDYzZjA0Mzc1MjZiNTUzMiI_3D_pc/IjU3NjcwNTZmMDYzZjA0M2M1MjZjNTUzNzUxMzci_pc",
         {
           method: "POST",
-          headers: { 
-            "Content-Type": "application/json" 
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
-          // 彻底删掉 mode: "no-cors"
         }
       );
 
       if (response.ok) {
         toast({ title: "Message sent", description: `Successfully at ${submissionTime}` });
         setForm({ name: "", phone: "", email: "", message: "" });
+        setErrors({});
+
+        // Google Ads conversion tracking — fire ONLY on successful submission
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          (window as any).gtag("event", "conversion", {
+            send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq",
+          });
+        }
       } else {
         console.error("Pabbly error status:", response.status);
-      }
-      
-      toast({
-        title: "Message sent",
-      });
-
-      setForm({ name: "", phone: "", email: "", message: "" });
-      setErrors({});
-
-    } catch (error) {
-      console.error("Submission error:", error); // 在控制台打印具体报错
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please check your network or URL.",
-        variant: "destructive"
-      });
-        // Google Ads conversion tracking
-
-      if (typeof window !== "undefined" && (window as any).gtag) {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq",
+        toast({
+          title: "Error",
+          description: `Submission failed (status ${response.status}). Please try again.`,
+          variant: "destructive",
         });
       }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please check your network.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
-  // Google Ads conversion tracking
- 
 
 
 return (

@@ -36,7 +36,7 @@ const Header = ({ transparent = false }: HeaderProps) => {
               className="h-11 md:h-14 w-auto object-contain"
             />
           </span>
-          <h1 className={`font-fiona text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight transition-colors duration-500 ${transparent ? "text-white" : "text-foreground"}`}>
+          <h1 className={`font-futura text-base md:text-lg lg:text-xl tracking-[0.28em] uppercase font-normal leading-tight transition-colors duration-500 ${transparent ? "text-white" : "text-foreground"}`}>
             HIDI LAU ARCHITECT
           </h1>
         </Link>

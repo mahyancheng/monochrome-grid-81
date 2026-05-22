@@ -58,16 +58,16 @@ const HeroSlider = () => {
 
       {/* Title overlay */}
       <div
-        className="absolute left-32 top-1/2 -translate-y-1/2 z-10 max-w-3xl md:left-40 lg:left-48 font-futura"
+        className="absolute z-10 left-6 top-1/2 -translate-y-1/2 md:left-32 lg:left-48 max-w-[80vw] md:max-w-3xl font-futura"
       >
         {/* Premier */}
         <p
-          className="text-3xl md:text-4xl lg:text-5xl"
+          className="text-base sm:text-lg md:text-3xl lg:text-5xl"
           style={{
             fontWeight: 150,
             color: "#ffffff",
-            lineHeight: 1.15,
-            letterSpacing: "0.01em",
+            lineHeight: 1.2,
+            letterSpacing: "0.02em",
             textShadow: "1px 2px 5px rgba(0,0,0,0.25)",
           }}
         >
@@ -76,12 +76,13 @@ const HeroSlider = () => {
 
         {/* ARCHITECTURE & */}
         <h1
-          className="text-4xl text-white md:text-5xl lg:text-6xl"
+          className="text-[7.5vw] sm:text-3xl md:text-4xl lg:text-6xl whitespace-nowrap"
           style={{
             fontWeight: 900,
-            letterSpacing: "0.12em",
-            lineHeight: 1.15,
-            WebkitTextStroke: "1px white",
+            color: "#ffffff",
+            letterSpacing: "0.04em",
+            lineHeight: 1.2,
+            WebkitTextStroke: "0.5px white",
             textShadow: "1px 2px 6px rgba(0,0,0,0.3)",
           }}
         >
@@ -90,12 +91,13 @@ const HeroSlider = () => {
 
         {/* INTERIOR DESIGN */}
         <h1
-          className="text-4xl text-white md:text-5xl lg:text-6xl"
+          className="text-[7.5vw] sm:text-3xl md:text-4xl lg:text-6xl whitespace-nowrap"
           style={{
             fontWeight: 900,
-            letterSpacing: "0.12em",
-            lineHeight: 1.15,
-            WebkitTextStroke: "1px white",
+            color: "#ffffff",
+            letterSpacing: "0.04em",
+            lineHeight: 1.2,
+            WebkitTextStroke: "0.5px white",
             textShadow: "1px 2px 6px rgba(0,0,0,0.3)",
           }}
         >
@@ -104,12 +106,12 @@ const HeroSlider = () => {
 
         {/* Firm in Malaysia */}
         <p
-          className="text-3xl md:text-4xl lg:text-5xl"
+          className="text-base sm:text-lg md:text-3xl lg:text-5xl"
           style={{
             fontWeight: 200,
             color: "#ffffff",
-            letterSpacing: "0.01em",
-            lineHeight: 1.15,
+            letterSpacing: "0.02em",
+            lineHeight: 1.2,
             textShadow: "1px 2px 5px rgba(0,0,0,0.25)",
           }}
         >
@@ -117,30 +119,32 @@ const HeroSlider = () => {
         </p>
       </div>
 
-      {/* Dot indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10">
-        {indicators.map((i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className="group relative flex items-center justify-center"
-          >
-            <span
-              className={`block rounded-full border transition-all duration-300 ${
-                i === current
-                  ? "w-3 h-3 bg-background border-background"
-                  : "w-2.5 h-2.5 bg-background/40 border-background/60 hover:bg-background/70"
-              }`}
-            />
-          </button>
-        ))}
-      </div>
+      {/* Dot indicators + counter row */}
+      <div className="absolute bottom-5 left-0 right-0 z-10 flex items-center justify-center px-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {indicators.map((i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="group relative flex items-center justify-center"
+            >
+              <span
+                className={`block rounded-full border transition-all duration-300 ${
+                  i === current
+                    ? "w-3 h-3 bg-background border-background"
+                    : "w-2.5 h-2.5 bg-background/40 border-background/60 hover:bg-background/70"
+                }`}
+              />
+            </button>
+          ))}
 
-      {/* Slide counter */}
-      <span className="absolute bottom-6 right-6 text-[10px] tracking-[0.3em] text-background/60 z-10">
-        {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-      </span>
+          {/* Slide counter inline with dots */}
+          <span className="ml-2 text-[10px] tracking-[0.25em] text-background/70 whitespace-nowrap">
+            {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

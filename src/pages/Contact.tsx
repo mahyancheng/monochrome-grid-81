@@ -65,10 +65,12 @@ const Contact = () => {
     try {
       const payload = { ...result.data, submittedAt: submissionTime };
       const response = await fetch(
-        "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjUwNTZkMDYzZjA0Mzc1MjZiNTUzMiI_3D_pc/IjU3NjcwNTZmMDYzZjA0M2M1MjZjNTUzNzUxMzci_pc",
+        "https://script.google.com/macros/s/AKfycbwlDkN-YbS0rsIGSoOUgR-t_reNiC-_XNTZinQ6VTxAu4ey3q3zAl6ftqlK6yO10gxAwg/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          // Use text/plain to avoid a CORS preflight against script.google.com;
+          // the Apps Script endpoint reads e.postData.contents either way.
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload),
         }
       );

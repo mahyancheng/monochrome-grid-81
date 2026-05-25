@@ -32,6 +32,8 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
   const [isHovered, setIsHovered] = useState(false);
+  // Honeypot — invisible to humans, bots fill it and the server silently drops the submission.
+  const [honeypot, setHoneypot] = useState("");
 
   // 建议修改为：
   const handleChange = (field: keyof Omit<ContactForm, 'submittedAt'>, value: string) => {
@@ -63,7 +65,7 @@ const Contact = () => {
     });
 
     try {
-      const payload = { ...result.data, submittedAt: submissionTime };
+      const payload = { ...result.data, submittedAt: submissionTime, website: honeypot };
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwlDkN-YbS0rsIGSoOUgR-t_reNiC-_XNTZinQ6VTxAu4ey3q3zAl6ftqlK6yO10gxAwg/exec",
         {
@@ -192,6 +194,20 @@ return (
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot — visually and semantically hidden. Spam bots auto-fill it; humans never see it. */}
+                <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </label>
+                </div>
                 <div>
                   <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">
                     Name

@@ -79,34 +79,54 @@ const Header = ({ transparent = false }: HeaderProps) => {
       </div>
 
       {/* Mobile fullscreen menu */}
+      {/* Mobile fullscreen menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-50 flex flex-col bg-white">
-          {/* White header bar with logo and close */}
-          <div className="flex items-center justify-between px-6 py-5">
-            <Link to="/" className="flex items-center gap-4 group" onClick={() => setMobileOpen(false)}>
-              <span className="inline-flex shrink-0 items-center justify-center px-3 py-2.5">
-                <img src={logo} alt="HIDI LAU ARCHITECT" className="h-11 w-auto object-contain" />
-              </span>
-              <span className="text-base tracking-[0.28em] uppercase font-light leading-tight">
-                HIDI LAU ARCHITECT
-              </span>
+        <div className="md:hidden fixed inset-0 z-50 flex flex-col bg-[#0a0a0a]">
+          {/* 顶部栏：保持整洁 */}
+          <div className="flex items-center justify-between px-6 py-5 bg-white border-b border-[#e0e0e0]">
+            <Link to="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
+              <img src={logo} alt="Logo" className="h-9 w-auto" />
             </Link>
-            <button onClick={() => setMobileOpen(false)} className="text-foreground">
-              <X size={20} />
+            <button onClick={() => setMobileOpen(false)} className="text-black p-1">
+              <X size={24} strokeWidth={1.5} />
             </button>
           </div>
-          {/* Dark body with nav links */}
-          <div className="flex-1 bg-[#1a1a1a] px-6 pt-8 flex flex-col gap-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="block w-fit border border-white/70 px-5 py-2.5 font-futura font-bold text-xs tracking-[0.2em] uppercase text-white/70 hover:text-white hover:border-white transition-colors"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+
+          {/* 菜单主体：建筑设计感的排版 */}
+          <div className="flex-1 px-8 pt-16 flex flex-col gap-8">
+            {navItems.map((item, index) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="group flex items-center gap-6"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {/* 数字索引装饰 */}
+                  <span className="font-futura text-[10px] text-white/20 tracking-[0.2em]">
+                    0{index + 1}
+                  </span>
+
+                  {/* 文字标签，带动态 hover 线条 */}
+                  <div className="relative">
+                    <span className={`font-futura text-lg tracking-[0.3em] uppercase transition-all duration-500 ${isActive ? "text-white font-bold" : "text-white/60 group-hover:text-white"
+                      }`}>
+                      {item.label}
+                    </span>
+                    <div className={`h-[1px] bg-white transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* 底部装饰性元素：加入简洁的地址或联系方式提示 */}
+          <div className="px-8 pb-12 font-futura">
+            <div className="w-10 h-[1px] bg-white/20 mb-6" />
+            <p className="text-[9px] tracking-[0.2em] uppercase text-white/40">
+              Hidi Lau Architect <br /> Johor Bahru, Malaysia
+            </p>
           </div>
         </div>
       )}

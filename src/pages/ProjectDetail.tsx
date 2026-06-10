@@ -62,7 +62,7 @@ const ProjectDetail = () => {
         path={`/project/${project.id}`}
         image={project.cover}
         type="article"
-        schema={getProjectDetailSchema(project)}      />
+        schema={getProjectDetailSchema(project)} />
       <Header />
       <main className="flex-1">
         {/* Title bar */}
@@ -92,45 +92,53 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Project info */}
         {(project.description || project.client) && (
-          <div className="border-b border-border py-10 px-6">
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="border-b border-border py-12 px-6">
+            <div className="max-w-5xl mx-auto flex flex-col gap-10">
+
+              {/* Overview — full width on top */}
               {project.description && (
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-5">
                     <div className="w-4 h-px bg-foreground" />
                     <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
                       Overview
                     </span>
                   </div>
-                  <p className="text-xs leading-6 text-muted-foreground font-light pl-6">
+                  <p className="text-xs leading-7 text-muted-foreground font-light max-w-2xl pl-6">
                     {project.description}
                   </p>
                 </div>
               )}
-              <div className="space-y-3">
+
+              {/* Metadata grid — 2 columns on desktop */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0 pl-6">
                 {[
                   { label: "Client", value: project.client },
                   { label: "Location", value: project.location },
                   { label: "Duration", value: project.duration },
                   { label: "Architect", value: project.leadArchitect },
+                  { label: "Project Type", value: project.projectType },
+                  { label: "Scope", value: project.scope },
+                  { label: "Design Challenge", value: project.designChallenge },
+                  { label: "Outcome", value: project.outcome },
                 ]
                   .filter((item) => item.value)
                   .map((item, i) => (
-                    <div key={i} className="flex gap-4 items-baseline">
-                      <span className="text-[10px] tracking-[0.2em] uppercase text-foreground w-24 shrink-0 flex items-center gap-2">
-                        <span className="text-muted-foreground/30">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
+                    <div
+                      key={i}
+                      className="flex gap-6 py-4 border-b border-border/50 items-start"
+                    >
+                      <span className="text-[9px] tracking-[0.25em] uppercase text-foreground font-medium w-32 shrink-0 pt-0.5">
                         {item.label}
                       </span>
-                      <span className="text-[10px] tracking-[0.15em] text-muted-foreground">
+                      <span className="text-[11px] tracking-[0.08em] text-muted-foreground leading-relaxed">
                         {item.value}
                       </span>
                     </div>
                   ))}
               </div>
+
             </div>
           </div>
         )}
@@ -163,11 +171,10 @@ const ProjectDetail = () => {
                 <button
                   key={idx}
                   onClick={() => setCarouselIndex(idx)}
-                  className={`h-[3px] rounded-full transition-all duration-300 ${
-                    idx === carouselIndex
-                      ? "w-6 bg-primary"
-                      : "w-4 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                  }`}
+                  className={`h-[3px] rounded-full transition-all duration-300 ${idx === carouselIndex
+                    ? "w-6 bg-primary"
+                    : "w-4 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    }`}
                 />
               ))}
             </div>

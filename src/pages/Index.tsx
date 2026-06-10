@@ -7,7 +7,11 @@ import ConnectWithUs from "@/components/ConnectWithUs";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { getHomeSchema } from "@/lib/schema";
-import ContactSection from "@/components/ContactSection"; // 导入刚才创建的组件
+import ContactSection from "@/components/ContactSection";
+import CredentialsBar from "@/components/CredentialsBar";
+import IntentNav from "@/components/IntentNav";
+import FAQSection from "@/components/FAQSection"; // <-- 导入刚刚创建的 FAQ 组件
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -24,6 +28,8 @@ const Index = () => {
             <Header transparent />
           </div>
         </div>
+        <CredentialsBar />
+        <IntentNav />
 
         <ResidentialFeature />
 
@@ -33,8 +39,12 @@ const Index = () => {
           <ProjectGrid />
         </div>
 
+        {/* 插入 FAQ Section */}
+
         <ConnectWithUs />
-        <ContactSection /> 
+        <FAQSection />
+
+        <ContactSection />
         <Footer />
       </main>
     </div>

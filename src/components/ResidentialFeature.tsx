@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const featureImg = "/images/hero.jpg";
@@ -43,12 +44,12 @@ const ResidentialFeature = () => {
             </p>
           </div>
 
-          {/* 将 font-futura 替换为 font-['Helvetica'] */}
           <Link
             to="/contact/"
-            className="mt-10 inline-block w-fit border border-foreground/80 px-7 py-3 font-['Helvetica'] font-light text-xs tracking-[0.25em] uppercase text-foreground/80 hover:bg-foreground hover:text-background transition-colors"
+            className="mt-10 inline-flex items-center gap-3 font-futura font-bold text-xs tracking-[0.25em] uppercase text-foreground group"
           >
             Get Quote Now
+            <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </Link>
         </div>
       </div>

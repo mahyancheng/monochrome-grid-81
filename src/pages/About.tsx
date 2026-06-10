@@ -63,20 +63,35 @@ const About = () => {
               01
             </span>
           </div>
-          <div className="aspect-square flex flex-col justify-center px-8 lg:px-16 font-futura">
+          <div className="aspect-square flex flex-col justify-center px-8 lg:px-16 mt-4 md:mt-0 font-futura">
             <AnimatedLabel text="Principal" isActive={hidiHover} />
+
             <h2 className="text-xl md:text-2xl tracking-[0.15em] uppercase font-light text-foreground mt-6 mb-1">
               Ar. Hidi Lau Wei Lin
             </h2>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
-              A/L 465 · Principal · LAM Registered Architect
+
+            <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-4">
+              B. Env. Design (UWA) · M. Arch (Univ. Melb)
             </p>
-            <p className="text-[10px] tracking-[0.15em] text-muted-foreground mb-1">
-              B. Env. Design (UWA) · M. Arch (Univ. Melb) · Corporate Member of PAM
-            </p>
-            <p className="text-[10px] tracking-[0.15em] text-muted-foreground mb-6">
-              10+ Years Experience · PAM Silver Award Winner (2019)
-            </p>
+
+            {/* Added Credentials Tags */}
+            <div className="flex flex-wrap gap-2 mb-6 max-w-lg bold">
+              {[
+                "LAM Registered Architect",
+                "PAM Corporate Member",
+                "PAM Silver Award Project",
+                "10+ Year Experience",
+                "Based in Johor Bahru"
+              ].map((title, idx) => (
+                <span
+                  key={idx}
+                  className="text-[9px] md:text-[10px] tracking-[0.15em] uppercase font-bold border border-border px-3 py-1 text-foreground/90"
+                >
+                  {title}
+                </span>
+              ))}
+            </div>
+
             <p className="text-xs leading-6 text-muted-foreground font-light max-w-lg">
               Ar. Hidi Lau Wei Lin is a practicing Architect registered with Lembaga Arkitek Malaysia (LAM) —Board of Architects Malaysia. She is a corporate member of the Pertubuhan Akitek Malaysia (PAM) — Malaysian Institute of Architects.
               Hidi Lau Architect is a design-focused architectural firm in Johor Bahru, Malaysia known for creating well-crafted contemporary homes and spaces suited for tropical and modern living. The practice was established by Ar. Hidi Lau Wei Lin, who graduated with Master of Architecture from the University of Melbourne in 2014 and Bachelor of Environments from the University of Western Australia in 2011. She has worked at established architectural offices in Melbourne and Johor Bahru, handling international resorts and hotels, residential and interior projects for more than 10 years before starting her practice. Ar. Hidi Lau has extensive experience in both the architecture and interior design on residential landed house and exclusively in contemporary luxury homes, tropical luxury resort, commercial spaces and more.
@@ -86,7 +101,7 @@ const About = () => {
         </div>
       </main>
       <ContactSection />
-     <Footer />
+      <Footer />
     </div>
   );
 };

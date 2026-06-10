@@ -2,17 +2,38 @@ import { useState } from "react";
 import { ArrowUpRight, MapPin, Phone, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import heroImg from "@/Archive/Projects/courtyard-house_60.jpg";
 
-// 表单验证 Schema
+// 马来西亚州属列表
+const MALAYSIA_STATES = [
+  "Johor",
+  "Kedah",
+  "Kelantan",
+  "Melaka",
+  "Negeri Sembilan",
+  "Pahang",
+  "Perak",
+  "Perlis",
+  "Pulau Pinang",
+  "Sabah",
+  "Sarawak",
+  "Selangor",
+  "Terengganu",
+  "W.P. Kuala Lumpur",
+  "W.P. Labuan",
+  "W.P. Putrajaya",
+];
+
+// 已经更新为最新的表单验证 Schema
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   phone: z.string().trim().min(1, "Contact number is required").max(20),
   email: z.string().trim().email("Invalid email address").max(255),
-  message: z.string().trim().min(1, "Message is required").max(2000),
+  projectType: z.string().trim().min(1, "Please select a project type"),
+  propertyLocation: z.string().trim().min(1, "Please select a location"),
+  serviceCategory: z.string().trim().min(1, "Please select a category"),
   submittedAt: z.string().optional(),
 });
 
@@ -22,13 +43,18 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  
+  // 更新了默认 state
   const [form, setForm] = useState<ContactForm>({
     name: "",
     phone: "",
     email: "",
-    message: "",
+    projectType: "",
+    propertyLocation: "",
+    serviceCategory: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
+  
   // Honeypot — invisible to humans, bots fill it and the server silently drops the submission.
   const [honeypot, setHoneypot] = useState("");
 
@@ -62,11 +88,9 @@ const ContactSection = () => {
     try {
       const payload = { ...result.data, submittedAt: submissionTime, website: honeypot };
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwlDkN-YbS0rsIGSoOUgR-t_reNiC-_XNTZinQ6VTxAu4ey3q3zAl6ftqlK6yO10gxAwg/exec",
+        "https://script.google.com/macros/s/AKfycbwcKMzmjXypCo3--xJHv-mrBAIXNQ7IfwCr1JF8PgI7t9FzEEzJEnqVonCnG7m9AObd/exec",
         {
           method: "POST",
-          // Use text/plain to avoid a CORS preflight against script.google.com;
-          // the Apps Script endpoint reads e.postData.contents either way.
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload),
         }
@@ -74,7 +98,8 @@ const ContactSection = () => {
 
       if (response.ok) {
         toast({ title: "Message sent", description: `Successfully at ${submissionTime}` });
-        setForm({ name: "", phone: "", email: "", message: "" });
+        // 成功后清空表单
+        setForm({ name: "", phone: "", email: "", projectType: "", propertyLocation: "", serviceCategory: "" });
         setErrors({});
         
         // Google Ads conversion tracking
@@ -163,7 +188,7 @@ const ContactSection = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Honeypot — visually and semantically hidden. Spam bots auto-fill it; humans never see it. */}
+                {/* Honeypot */}
                 <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
                   <label>
                     Website
@@ -177,26 +202,29 @@ const ContactSection = () => {
                     />
                   </label>
                 </div>
-                <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">Name</label>
-                  <Input
-                    value={form.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                    className="bg-transparent border-border rounded-none text-sm focus-visible:ring-foreground"
-                    placeholder="Your name"
-                  />
-                  {errors.name && <p className="text-[10px] text-destructive mt-1">{errors.name}</p>}
-                </div>
 
-                <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">Contact No</label>
-                  <Input
-                    value={form.phone}
-                    onChange={(e) => handleChange("phone", e.target.value)}
-                    className="bg-transparent border-border rounded-none text-sm focus-visible:ring-foreground"
-                    placeholder="+60"
-                  />
-                  {errors.phone && <p className="text-[10px] text-destructive mt-1">{errors.phone}</p>}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">Name</label>
+                    <Input
+                      value={form.name}
+                      onChange={(e) => handleChange("name", e.target.value)}
+                      className="bg-transparent border-border rounded-none text-sm focus-visible:ring-foreground"
+                      placeholder="Your name"
+                    />
+                    {errors.name && <p className="text-[10px] text-destructive mt-1">{errors.name}</p>}
+                  </div>
+
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">Contact No</label>
+                    <Input
+                      value={form.phone}
+                      onChange={(e) => handleChange("phone", e.target.value)}
+                      className="bg-transparent border-border rounded-none text-sm focus-visible:ring-foreground"
+                      placeholder="+60"
+                    />
+                    {errors.phone && <p className="text-[10px] text-destructive mt-1">{errors.phone}</p>}
+                  </div>
                 </div>
 
                 <div>
@@ -211,26 +239,82 @@ const ContactSection = () => {
                   {errors.email && <p className="text-[10px] text-destructive mt-1">{errors.email}</p>}
                 </div>
 
+                {/* 更新 1：项目类型选择 */}
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">Message</label>
-                  <Textarea
-                    value={form.message}
-                    onChange={(e) => handleChange("message", e.target.value)}
-                    className="bg-transparent border-border rounded-none text-sm focus-visible:ring-foreground min-h-[100px]"
-                    placeholder="Tell us about your project"
-                  />
-                  {errors.message && <p className="text-[10px] text-destructive mt-1">{errors.message}</p>}
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">
+                    Project Type
+                  </label>
+                  <select
+                    value={form.projectType}
+                    onChange={(e) => handleChange("projectType", e.target.value)}
+                    className="flex h-10 w-full border border-border bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground rounded-none"
+                  >
+                    <option value="" disabled className="text-black">Select...</option>
+                    <option value="Landed" className="text-black">Landed</option>
+                    <option value="Hospitality" className="text-black">Hospitality</option>
+                    <option value="Bungalow" className="text-black">Bungalow</option>
+                  </select>
+                  {errors.projectType && (
+                    <p className="text-[10px] text-destructive mt-1">{errors.projectType}</p>
+                  )}
                 </div>
 
-                <Button
-                  type="submit"
-                  variant="outline"
-                  disabled={isSubmitting}
-                  className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background text-[10px] tracking-[0.3em] uppercase px-8 py-5 transition-colors duration-300 w-full"
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                  {!isSubmitting && <ArrowUpRight size={12} className="ml-2" />}
-                </Button>
+                {/* 更新 2：位置选择 */}
+                <div>
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">
+                    Property Location
+                  </label>
+                  <select
+                    value={form.propertyLocation}
+                    onChange={(e) => handleChange("propertyLocation", e.target.value)}
+                    className="flex h-10 w-full border border-border bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground rounded-none"
+                  >
+                    <option value="" disabled className="text-black">Select State...</option>
+                    {MALAYSIA_STATES.map((state) => (
+                      <option key={state} value={state} className="text-black">
+                        {state}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.propertyLocation && (
+                    <p className="text-[10px] text-destructive mt-1">{errors.propertyLocation}</p>
+                  )}
+                </div>
+
+                {/* 更新 3：工作范围 */}
+                <div>
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block mb-2">
+                    Scope of Work
+                  </label>
+                  <select
+                    value={form.serviceCategory}
+                    onChange={(e) => handleChange("serviceCategory", e.target.value)}
+                    className="flex h-10 w-full border border-border bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground rounded-none"
+                  >
+                    <option value="" disabled className="text-black">Select...</option>
+                    <option value="New Build" className="text-black">New Build</option>
+                    <option value="Renovation" className="text-black">Renovation</option>
+                    <option value="Interior Only" className="text-black">Interior Only</option>
+                  </select>
+                  {errors.serviceCategory && (
+                    <p className="text-[10px] text-destructive mt-1">{errors.serviceCategory}</p>
+                  )}
+                </div>
+
+                <div className="pt-2">
+                  <p className="text-[11px] leading-relaxed text-muted-foreground mb-4">
+                    After Submitting, Our Team will review your project detail and contact you for more information.
+                  </p>
+                  <Button
+                    type="submit"
+                    variant="outline"
+                    disabled={isSubmitting}
+                    className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background text-[10px] tracking-[0.3em] uppercase px-8 py-5 transition-colors duration-300 w-full"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {!isSubmitting && <ArrowUpRight size={12} className="ml-2" />}
+                  </Button>
+                </div>
               </form>
             </div>
           </div>

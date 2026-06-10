@@ -1,11 +1,10 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams, useLocation, useNavigate } from "react-router-dom";
 import { projects } from "@/data/projects";
 import { getProjectListSchema } from "@/lib/schema";
 import SEO from "./SEO";
 
-const categories = ["All", "Residential", "Commercial", "Hospitality"];
-
+const categories = ["All", "Landed", "Bungalow", "Hospitality"];
 const isCoarsePointer =
   typeof window !== "undefined" &&
   window.matchMedia &&
@@ -28,7 +27,7 @@ const ProjectTile = ({
   // 两个 img ref，交替充当"current"和"incoming"
   const slotA = useRef<HTMLImageElement>(null);
   const slotB = useRef<HTMLImageElement>(null);
-  const activeSlot = useRef<"a" | "b">("a"); // 哪个 slot 是当前显示的
+  const activeSlot = useRef<"a" | "b">("a");
 
   const intervalMs = (isCoarsePointer ? 6000 : 3000) + (index % 5) * 400;
 
@@ -49,13 +48,11 @@ const ProjectTile = ({
     return () => clearInterval(id);
   }, [isVisible, images.length, intervalMs]);
 
-  // currentImg 变化时，用 DOM 直接做滑动，不依赖 React re-render timing
   useLayoutEffect(() => {
     const current = activeSlot.current === "a" ? slotA.current : slotB.current;
     const incoming = activeSlot.current === "a" ? slotB.current : slotA.current;
     if (!current || !incoming) return;
 
-    // 首张图：直接显示，不做动画
     if (currentImg === 0 && activeSlot.current === "a") {
       current.src = images[0];
       current.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;transform:translateX(0);transition:none;";
@@ -63,16 +60,13 @@ const ProjectTile = ({
       return;
     }
 
-    // 1. incoming 图片换成新的，瞬间放到右侧（无 transition）
     incoming.src = images[currentImg];
     incoming.style.transition = "none";
     incoming.style.zIndex = "2";
     incoming.style.transform = "translateX(100%)";
 
-    // 2. 强制 flush layout，让浏览器认可上面的起始位置
     incoming.getBoundingClientRect();
 
-    // 3. 开启 transition，两张图同时滑动
     const ease = "transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)";
     incoming.style.transition = ease;
     incoming.style.transform = "translateX(0)";
@@ -81,14 +75,12 @@ const ProjectTile = ({
     current.style.zIndex = "1";
     current.style.transform = "translateX(-100%)";
 
-    // 4. 动画结束后，旧图退到右侧待机（为下一次做准备）
     const t = setTimeout(() => {
       current.style.transition = "none";
       current.style.transform = "translateX(100%)";
       current.style.zIndex = "1";
     }, 850);
 
-    // 5. 切换 active slot
     activeSlot.current = activeSlot.current === "a" ? "b" : "a";
 
     return () => clearTimeout(t);
@@ -109,7 +101,6 @@ const ProjectTile = ({
           transition: "transform 0.7s ease",
         }}
       >
-        {/* Slot A */}
         <img
           ref={slotA}
           src={images[0]}
@@ -124,7 +115,6 @@ const ProjectTile = ({
             objectFit: "cover", zIndex: 2, transform: "translateX(0)",
           }}
         />
-        {/* Slot B — 待机在右侧，看不见 */}
         <img
           ref={slotB}
           src={images[1] ?? images[0]}
@@ -150,10 +140,51 @@ const ProjectTile = ({
 
 const ProjectGrid = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState("All");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const urlCategory = searchParams.get("category");
+  const initialCategory = urlCategory && categories.includes(urlCategory) ? urlCategory : "All";
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
+
+  useEffect(() => {
+    if (urlCategory && categories.includes(urlCategory)) {
+      setActiveCategory(urlCategory);
+    } else if (!urlCategory) {
+      setActiveCategory("All");
+    }
+
+    if (location.hash === "#projects") {
+      const el = document.getElementById("projects");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+          const currentParams = searchParams.toString();
+          const newUrl = currentParams ? `${location.pathname}?${currentParams}` : location.pathname;
+          navigate(newUrl, { replace: true });
+        }, 150);
+      }
+    }
+  }, [urlCategory, location.hash, location.pathname, searchParams, navigate]);
 
   const handleHover = useCallback((id: string) => () => setHoveredId(id), []);
   const handleLeave = useCallback(() => setHoveredId(null), []);
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+
+    const newParams = new URLSearchParams(searchParams);
+    if (cat === "All") {
+      newParams.delete("category");
+    } else {
+      newParams.set("category", cat);
+    }
+    setSearchParams(newParams, { replace: true, preventScrollReset: true });
+  };
 
   const filtered =
     activeCategory === "All"
@@ -162,18 +193,25 @@ const ProjectGrid = () => {
 
   return (
     <div>
-      <SEO 
+      <SEO
         title="Architect Firm | Interior Architect Malaysia | Hidi Lau Architect"
         description="Explore our portfolio of award-winning residential, commercial and hospitality projects."
-        path="/projects" // 或者根据你路由的实际情况
-        schema={getProjectListSchema(projects)} // 自动生成包含所有项目的列表索引
+        path="/projects"
+        schema={getProjectListSchema(projects)}
       />
-      <div className="flex justify-start md:justify-center gap-6 md:gap-8 py-6 px-4 md:px-0 border-b border-border overflow-x-auto scrollbar-hide">
+
+      {/* 调整分类栏布局 */}
+      <div className="flex justify-start md:justify-center gap-6 md:gap-12 py-6 px-6 md:px-16 border-b border-border overflow-x-auto scrollbar-hide">
         {categories.map((cat) => (
-          <button key={cat} onClick={() => setActiveCategory(cat)} className="relative group">
-            <span className={`text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] uppercase transition-colors whitespace-nowrap ${
-              activeCategory === cat ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-            }`}>{cat}</span>
+          <button
+            key={cat}
+            onClick={() => handleCategoryChange(cat)}
+            className="relative group shrink-0" // 增加 shrink-0 确保手机端文字不被压缩
+          >
+            <span className={`text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] uppercase transition-colors whitespace-nowrap ${activeCategory === cat ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}>
+              {cat}
+            </span>
             <div
               className="absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300"
               style={{ width: activeCategory === cat ? "100%" : "0%" }}
@@ -182,18 +220,30 @@ const ProjectGrid = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-10 px-4 md:px-16 py-6 md:py-10">
-        {filtered.map((project, i) => (
-          <ProjectTile
-            key={project.id}
-            project={project}
-            index={i}
-            isHovered={hoveredId === project.id}
-            onHover={handleHover(project.id)}
-            onLeave={handleLeave}
-          />
-        ))}
-      </div>
+      {/* Grid 布局：确保在手机、iPad、桌面端均整齐排列 */}
+      {filtered.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-6 px-6 md:px-16 py-10 md:py-16">
+          {filtered.map((project, i) => (
+            <ProjectTile
+              key={project.id}
+              project={project}
+              index={i}
+              isHovered={hoveredId === project.id}
+              onHover={handleHover(project.id)}
+              onLeave={handleLeave}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-24 px-6">
+          <span className="font-futura text-sm tracking-[0.2em] uppercase text-foreground">
+            Projects coming soon
+          </span>
+          <p className="text-xs text-muted-foreground mt-4 tracking-[0.1em] text-center max-w-sm">
+            We are currently updating our portfolio for this category. Please check back later.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

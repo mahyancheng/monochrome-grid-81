@@ -48,8 +48,12 @@
     }
   </script>
 
-  <!-- Google tag (gtag.js) 动态加载逻辑 -->
+  <!-- Google tag (gtag.js) 性能优化加载逻辑 -->
   <script>
+    // 定义全局 gtag 函数以防止未加载完成时报错
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
     window.addEventListener('load', function () {
       const initGTM = function () {
         if (window.gtmInitialized) return;
@@ -61,11 +65,7 @@
         document.head.appendChild(script);
 
         script.onload = function () {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
-
-          // 使用新的跟踪 ID
           gtag('config', 'GT-57SQ5RG3');
         };
       };

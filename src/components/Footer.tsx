@@ -70,7 +70,22 @@ const Footer = () => {
               1, Jalan Biru 2, Taman Pelangi, 80400, Johor Bahru, Johor, Malaysia
             </a>
             <p className="mt-6 text-foreground">
-              Tel : <a href="tel:+60167442330" className="hover:underline underline-offset-2">016 - 744 2330</a>
+              Tel :{" "}
+              <a
+                href="tel:+60167442330"
+                className="hover:underline underline-offset-2"
+                onClick={() => {
+                  // 👇 Google Ads 拨打电话追踪逻辑
+                  if (typeof window !== "undefined" && (window as any).gtag) {
+                    (window as any).gtag("event", "conversion", {
+                      // ⚠️ 注意：这里填入的是“电话转化”的专属 Label，不要和 WhatsApp 的弄混了
+                      send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq", 
+                    });
+                  }
+                }}
+              >
+                016 - 744 2330
+              </a>
             </p>
             <p className="mt-1 text-foreground">
               Email : <a href="mailto:hidilin@gmail.com" className="hover:underline underline-offset-2">hidilin@gmail.com</a>

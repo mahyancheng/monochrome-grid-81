@@ -21,9 +21,9 @@ const processItems = [
 ];
 
 const otherServices = [
-  { num: "01", title: "Architectural Design", href: "/services/architectural-design" },
-  { num: "03", title: "Authority Submissions", href: "/services/authority-submissions" },
-  { num: "04", title: "Passionate Craftsmanship", href: "/services/craftsmanship" },
+  { num: "01", title: "Architectural Design", href: "/services/architectural-design/" },
+  { num: "03", title: "Authority Submissions", href: "/services/authority-submissions/" },
+  { num: "04", title: "Passionate Craftsmanship", href: "/services/craftsmanship/" },
 ];
 
 const InteriorDesign = () => {

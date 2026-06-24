@@ -13,7 +13,7 @@ const SITE_URL = "https://hidilauarchitect.com";
 const DEFAULT_IMAGE = "https://hidilauarchitect.com/assets/logo-CP_OYl3M.png";
 
 const SEO = ({ title, description, path, image, type = "website", schema }: SEOProps) => {
-  const url = path ? `${SITE_URL}${path}` : SITE_URL;
+  const url = path ? `${SITE_URL}${path}/` : SITE_URL;
   const img = image || DEFAULT_IMAGE;
 
   return (

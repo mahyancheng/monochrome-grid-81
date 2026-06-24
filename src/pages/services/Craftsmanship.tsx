@@ -20,9 +20,9 @@ const processItems = [
 ];
 
 const otherServices = [
-  { num: "01", title: "Architectural Design", href: "/services/architectural-design" },
-  { num: "02", title: "Interior Design", href: "/services/interior-design" },
-  { num: "03", title: "Authority Submissions", href: "/services/authority-submissions" },
+  { num: "01", title: "Architectural Design", href: "/services/architectural-design/" },
+  { num: "02", title: "Interior Design", href: "/services/interior-design/" },
+  { num: "03", title: "Authority Submissions", href: "/services/authority-submissions/" },
 ];
 
 const PassionateCraftsmanship = () => {

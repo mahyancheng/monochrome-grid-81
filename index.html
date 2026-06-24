@@ -48,41 +48,18 @@
     }
   </script>
 
-  <!-- Google tag (gtag.js) 性能优化加载逻辑 -->
+  <!-- Google tag (gtag.js) 必须放在 <head> 内以确保转化能被记录 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PBQHDG583"></script>
   <script>
-    // 定义全局 gtag 函数以防止未加载完成时报错
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // 1. Google Analytics 4 追踪 (流量分析)
+    gtag('config', 'G-5PBQHDG583');
     
-    window.addEventListener('load', function () {
-      const initGTM = function () {
-        if (window.gtmInitialized) return;
-        window.gtmInitialized = true;
-
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=GT-57SQ5RG3";
-        document.head.appendChild(script);
-
-        script.onload = function () {
-          gtag('js', new Date());
-          gtag('config', 'GT-57SQ5RG3');
-        };
-      };
-
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => initGTM(), { timeout: 3000 });
-      } else {
-        const triggerLoader = () => {
-          initGTM();
-          window.removeEventListener('scroll', triggerLoader);
-          window.removeEventListener('click', triggerLoader);
-        };
-        window.addEventListener('scroll', triggerLoader, { passive: true });
-        window.addEventListener('click', triggerLoader, { passive: true });
-        setTimeout(initGTM, 5000);
-      }
-    });
+    // 2. Google Ads 追踪 (核心！用来接收你 WhatsApp 和表单的转化数据)
+    gtag('config', 'AW-11342839562'); 
   </script>
 </head>
 

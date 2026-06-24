@@ -58,6 +58,15 @@ export default function WhatsAppChatWidget({
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white py-2.5 text-sm font-semibold hover:opacity-90"
+              onClick={() => {
+                // Google Ads Conversion Tracking
+                if (typeof window !== "undefined" && (window as any).gtag) {
+                  (window as any).gtag("event", "conversion", {
+                    // ⚠️ 注意：上线前请务必把 PASTE_WHATSAPP_LABEL 换成 Google Ads 后台给你的真实标签
+                    send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq", 
+                  });
+                }
+              }}
             >
               Continue on WhatsApp
             </a>

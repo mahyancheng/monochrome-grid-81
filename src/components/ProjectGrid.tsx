@@ -1,8 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { Link, useSearchParams, useLocation, useNavigate } from "react-router-dom";
 import { projects } from "@/data/projects";
-import { getProjectListSchema } from "@/lib/schema";
-import SEO from "./SEO";
 
 const categories = ["All", "Landed", "Bungalow", "Hospitality"];
 const isCoarsePointer =
@@ -193,13 +191,6 @@ const ProjectGrid = () => {
 
   return (
     <div>
-      <SEO
-        title="Architect Firm | Interior Architect Malaysia | Hidi Lau Architect"
-        description="Explore our portfolio of award-winning residential, commercial and hospitality projects."
-        path="/projects"
-        schema={getProjectListSchema(projects)}
-      />
-
       {/* 调整分类栏布局 */}
       <div className="flex justify-start md:justify-center gap-6 md:gap-12 py-6 px-6 md:px-16 border-b border-border overflow-x-auto scrollbar-hide">
         {categories.map((cat) => (

@@ -13,7 +13,11 @@ const SITE_URL = "https://hidilauarchitect.com";
 const DEFAULT_IMAGE = "https://hidilauarchitect.com/assets/logo-CP_OYl3M.png";
 
 const SEO = ({ title, description, path, image, type = "website", schema }: SEOProps) => {
-  const url = path ? `${SITE_URL}${path}/` : SITE_URL;
+  // Normalize: strip any leading/trailing slashes from the page-supplied path,
+  // then build a single, canonical trailing-slash URL. Prevents "//" (when path
+  // already ends in "/") and a missing slash (when it doesn't).
+  const cleanPath = path ? path.replace(/^\/+|\/+$/g, "") : "";
+  const url = cleanPath ? `${SITE_URL}/${cleanPath}/` : `${SITE_URL}/`;
   const img = image || DEFAULT_IMAGE;
 
   return (

@@ -37,12 +37,11 @@ Specialising in contemporary luxury homes, tropical luxury resorts, and commerci
 | 7 | Horizon Hills | Residential |
 | 8 | Winter Pavillion | Residential |
 | 9 | AOR House | Residential |
-| 10 | The Rabbit Hole KL | Commercial |
-| 11 | Chica San Chen Puchong | Commercial |
-| 12 | Founder Penang | Commercial |
-| 13 | The Ritz-Carlton Langkawi | Hospitality |
-| 14 | Langkawi Kitchen | Hospitality |
-| 15 | Beach Grill Welcome Pavillion | Hospitality |
+| 10 | Chica San Chen Puchong | Commercial |
+| 11 | Founder Penang | Commercial |
+| 12 | The Ritz-Carlton Langkawi | Hospitality |
+| 13 | Langkawi Kitchen | Hospitality |
+| 14 | Beach Grill Welcome Pavillion | Hospitality |
 
 ---
 

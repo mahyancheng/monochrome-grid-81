@@ -1,18 +1,6 @@
 // Ritz-Carlton Langkawi (only 1211.jpg confirmed as RC on original site)
 import rc1 from "@/Archive/Projects/1211.jpg";
 
-// Rabbit Hole KL (original site uses 251... Facebook images under this project)
-import rh1 from "@/Archive/Projects/251110168_10159342382503405_581814993081392584_n.jpg";
-import rh2 from "@/Archive/Projects/251091607_10159342380188405_4895146675921201468_n.jpg";
-import rh3 from "@/Archive/Projects/251165924_10159342375818405_550065183752965898_n.jpg";
-import rh4 from "@/Archive/Projects/251035136_10159342373913405_2417157340936658523_n.jpg";
-import rh5 from "@/Archive/Projects/250526748_10159342380633405_2259336461777566916_n.jpg";
-import rh6 from "@/Archive/Projects/251442818_10159342380158405_5696660661752359975_n.jpg";
-import rh7 from "@/Archive/Projects/251188620_10159342374503405_2670654478474171162_n.jpg";
-import rh8 from "@/Archive/Projects/251103735_10159342374268405_3999431533295215239_n.jpg";
-import rh9 from "@/Archive/Projects/251346907_10159342374483405_3351278085386977258_n.jpg";
-import rh10 from "@/Archive/Projects/251405139_10159342374243405_3409712618637940921_n.jpg";
-
 // Courtyard House
 import ch1 from "@/Archive/Projects/courtyard-house_40-min.jpg";
 import ch2 from "@/Archive/Projects/courtyard-house_51-min.jpg";
@@ -87,23 +75,6 @@ import hh4 from "@/Archive/Projects/16-horizon-hills--min.jpg";
 import hh5 from "@/Archive/Projects/1-min1.jpg";
 import hh6 from "@/Archive/Projects/7-horizon-hills--min.jpg";
 import hh7 from "@/Archive/Projects/8-horizon-hills--min.jpg";
-
-// CHICHA San Chen
-import cc1 from "@/Archive/Projects/07.jpg";
-import cc2 from "@/Archive/Projects/01(1).jpg";
-import cc3 from "@/Archive/Projects/02.jpg";
-import cc4 from "@/Archive/Projects/03.jpg";
-import cc5 from "@/Archive/Projects/04.jpg";
-import cc6 from "@/Archive/Projects/05.jpg";
-import cc7 from "@/Archive/Projects/06.jpg";
-
-// CHICHA San Chen renders (carousel)
-import ccr1 from "@/Archive/Projects/CHICHASANCHEN/01-minchicharender.jpg";
-import ccr2 from "@/Archive/Projects/CHICHASANCHEN/02-minchicharender.jpg";
-import ccr3 from "@/Archive/Projects/CHICHASANCHEN/03-minchicharender.jpg";
-import ccr4 from "@/Archive/Projects/CHICHASANCHEN/04-minchicharender.jpg";
-import ccr5 from "@/Archive/Projects/CHICHASANCHEN/05-minchicharender.jpg";
-import ccr6 from "@/Archive/Projects/CHICHASANCHEN/06-minchicharender.jpg";
 
 // Winter Pavillion
 import wp1 from "@/Archive/Projects/sd_15-min.jpg";
@@ -219,19 +190,6 @@ export const projects: Project[] = [
     outcome: "A landmark hospitality destination that earned international recognition for its seamless integration of local craftsmanship and contemporary resort architecture, elevating the Ritz-Carlton Langkawi into one of Malaysia's most celebrated architectural achievements.",
   },
   {
-    id: "rabbit-hole-kl",
-    title: "The Rabbit Hole KL",
-    category: "Hospitality",
-    cover: rh1,
-    images: [rh1, rh2, rh3, rh4, rh5, rh6, rh7, rh8, rh9, rh10],
-    location: "Kuala Lumpur, Malaysia",
-    description: "The Rabbit Hole KL is a unique establishment that boasts the industry-leading concept of 'Cafe by day, Bar by night'. Our Architect, Lau Wei Sing as designer from concept to design development, has been a key role player to craft a one-of-a-kind, enchanting culinary space.",
-    projectType: "Commercial Interior Design",
-    scope: "Concept Design, Interior Design, Design Development",
-    designChallenge: "Creating a single space capable of functioning as a warm, inviting café by day and a vibrant bar by night — requiring a dual-identity design language that feels authentic to both moods without compromising either.",
-    outcome: "A distinctive dual-concept establishment that quickly became a landmark destination in KL's F&B scene, recognised for its enchanting atmosphere and thoughtful spatial storytelling.",
-  },
-  {
     id: "courtyard-house",
     title: "The Courtyard House",
     category: "Landed",
@@ -330,21 +288,6 @@ export const projects: Project[] = [
     outcome: "A premium contemporary home that reads as confident and composed within its Horizon Hills setting — a residence that embodies the understated luxury its owners sought, executed to an exacting standard of architectural craft.",
   },
   {
-    id: "chicha-san-chen",
-    title: "CHICHA San Chen Puchong",
-    category: "Hospitality",
-    cover: cc2,
-    images: [cc1, cc3, cc4, cc5, cc6, cc7],
-    carouselImages: [ccr1, ccr2, ccr3, ccr4, ccr5, ccr6],
-    location: "Puchong, Selangor, Malaysia",
-    leadArchitect: "Ar. Hidi Lau Wei Lin",
-    description: "An immersive commercial interior for the renowned Taiwanese tea brand CHICHA San Chen, located in Puchong. The design captures the brand's artisanal tea culture through a warm, layered spatial experience — blending natural textures, bespoke joinery, and carefully considered lighting to create an inviting destination for tea connoisseurs.",
-    projectType: "Commercial Interior Design",
-    scope: "Concept Design, Interior Design, Bespoke Joinery, Lighting Design",
-    designChallenge: "Translating the identity of a beloved Taiwanese artisan tea brand into a Malaysian commercial interior — capturing the brand's cultural essence and material warmth in a space that feels authentic, not merely decorative.",
-    outcome: "An immersive brand environment that resonates deeply with CHICHA San Chen's identity — a warmly crafted interior that has strengthened the brand's presence in the Malaysian market and drawn consistent recognition for its spatial quality.",
-  },
-  {
     id: "winter-pavillion",
     title: "Winter Pavillion",
     category: "Bungalow",
@@ -357,34 +300,6 @@ export const projects: Project[] = [
     scope: "Architecture, Interior Design, Material Specification",
     designChallenge: "Evoking a sense of stillness and seasonal calm — qualities associated with winter — within a tropical residential context, through material restraint and spatial composition rather than literal references.",
     outcome: "A contemplative residential retreat whose pared-back architecture and carefully considered materiality create an atmosphere of genuine calm — a home that offers its inhabitants a restorative counterpoint to the pace of modern life.",
-  },
-  {
-    id: "founders-penang",
-    title: "Founders Penang",
-    category: "Hospitality",
-    cover: fp1,
-    images: [fp1, fp2, fp3, fp4, fp7, fp8, fp9, fp10, fp11, fp12, fp13],
-    location: "Penang, Malaysia",
-    leadArchitect: "Ar. Hidi Lau Wei Lin",
-    description: "A character-rich commercial interior in the heart of Penang, designed to honour the spirit of the island's storied heritage. Raw textures, reclaimed elements, and a moody, atmospheric palette come together to create a space that feels both rooted in history and unmistakably contemporary.",
-    projectType: "Commercial Interior Design",
-    scope: "Concept Design, Interior Design, Material Curation, Bespoke Joinery",
-    designChallenge: "Honouring the layered heritage of Penang within a contemporary commercial interior — creating a space that feels rooted in place and history without lapsing into pastiche or superficial nostalgia.",
-    outcome: "A character-rich interior that has become an authentic expression of Penang's cultural identity — a well-regarded commercial space that draws both locals and visitors through its compelling atmosphere and spatial integrity.",
-  },
-  {
-    id: "aor-house",
-    title: "AOR House",
-    category: "Bungalow",
-    cover: aor1,
-    images: [aor1, aor2, aor3, aor4, aor5, aor6, aor7, aor8, aor9, aor10],
-    location: "Johor Bahru, Malaysia",
-    leadArchitect: "Ar. Hidi Lau Wei Lin",
-    description: "A modern residential home conceived around bold architectural geometry and a restrained material palette. AOR House balances sculptural exterior massing with warm, carefully detailed interiors — creating a home that makes a confident architectural statement while remaining entirely liveable and personal.",
-    projectType: "Residential Architecture & Interior Design",
-    scope: "Architecture, Interior Design, Facade Design, Landscape Coordination",
-    designChallenge: "Achieving a sculptural architectural form that makes a bold exterior statement while ensuring the resulting interior volumes remain warm, liveable, and intimately scaled for everyday family life.",
-    outcome: "A resolved residential work that proves architectural ambition and domestic comfort are not mutually exclusive — AOR House stands as one of the studio's clearest expressions of its design philosophy: confident geometry, warm materiality, and spaces that simply feel right to inhabit.",
   },
   {
     id: "langkawi-kitchen",

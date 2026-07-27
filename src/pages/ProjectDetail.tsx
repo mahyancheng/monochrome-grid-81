@@ -41,8 +41,16 @@ const ProjectDetail = () => {
   }, [project?.carouselImages]);
 
   if (!project) {
+    const label = (id || "project")
+      .split("-")
+      .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : w))
+      .join(" ");
     return (
       <div className="min-h-screen bg-background flex flex-col">
+        <SEO
+          title={`${label} — Project Not Found | Hidi Lau Architect`}
+          description={`We couldn't find the "${label}" project. Browse Hidi Lau Architect's full portfolio of architecture, interior design and hospitality projects across Johor Bahru and Malaysia.`}
+          path={`/project/${id}`} />
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">

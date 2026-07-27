@@ -1,6 +1,18 @@
 // Ritz-Carlton Langkawi (only 1211.jpg confirmed as RC on original site)
 import rc1 from "@/Archive/Projects/1211.jpg";
 
+// Rabbit Hole KL (original site uses 251... Facebook images under this project)
+import rh1 from "@/Archive/Projects/251110168_10159342382503405_581814993081392584_n.jpg";
+import rh2 from "@/Archive/Projects/251091607_10159342380188405_4895146675921201468_n.jpg";
+import rh3 from "@/Archive/Projects/251165924_10159342375818405_550065183752965898_n.jpg";
+import rh4 from "@/Archive/Projects/251035136_10159342373913405_2417157340936658523_n.jpg";
+import rh5 from "@/Archive/Projects/250526748_10159342380633405_2259336461777566916_n.jpg";
+import rh6 from "@/Archive/Projects/251442818_10159342380158405_5696660661752359975_n.jpg";
+import rh7 from "@/Archive/Projects/251188620_10159342374503405_2670654478474171162_n.jpg";
+import rh8 from "@/Archive/Projects/251103735_10159342374268405_3999431533295215239_n.jpg";
+import rh9 from "@/Archive/Projects/251346907_10159342374483405_3351278085386977258_n.jpg";
+import rh10 from "@/Archive/Projects/251405139_10159342374243405_3409712618637940921_n.jpg";
+
 // Courtyard House
 import ch1 from "@/Archive/Projects/courtyard-house_40-min.jpg";
 import ch2 from "@/Archive/Projects/courtyard-house_51-min.jpg";
@@ -188,6 +200,19 @@ export const projects: Project[] = [
     scope: "Architecture, Interior Design, Material Specification",
     designChallenge: "Designing a world-class resort that honours Langkawi's tropical heritage while meeting the exacting standards of an internationally recognised luxury brand — demanding absolute precision across every architectural detail and spatial sequence.",
     outcome: "A landmark hospitality destination that earned international recognition for its seamless integration of local craftsmanship and contemporary resort architecture, elevating the Ritz-Carlton Langkawi into one of Malaysia's most celebrated architectural achievements.",
+  },
+  {
+    id: "rabbit-hole-kl",
+    title: "The Rabbit Hole KL",
+    category: "Hospitality",
+    cover: rh1,
+    images: [rh1, rh2, rh3, rh4, rh5, rh6, rh7, rh8, rh9, rh10],
+    location: "Changkat Bukit Bintang, Kuala Lumpur, Malaysia",
+    description: "The Rabbit Hole KL is a landmark 'café by day, bar by night' venue on Changkat Bukit Bintang, Kuala Lumpur — a one-of-a-kind, enchanting F&B interior designed by Hidi Lau Architect, from concept through design development.",
+    projectType: "Commercial & Hospitality Interior Design",
+    scope: "Concept Design, Interior Design, Design Development",
+    designChallenge: "Designing a single Changkat Bukit Bintang venue that works as a warm, inviting café through the day and transforms into a vibrant Kuala Lumpur bar by night — a dual-identity interior that feels authentic to both moods without compromising either.",
+    outcome: "A distinctive dual-concept establishment that became one of Changkat's most recognisable café-and-bar destinations, celebrated across Kuala Lumpur's F&B and nightlife scene for its enchanting atmosphere and thoughtful spatial storytelling.",
   },
   {
     id: "courtyard-house",

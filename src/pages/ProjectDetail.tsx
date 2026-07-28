@@ -43,6 +43,11 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex flex-col">
+        <SEO
+          title={`Project Not Found - ${id || "unknown"} | Hidi Lau Architect`}
+          description={`The requested project "${id || "unknown"}" is not currently available. Explore architecture and interior design projects by Hidi Lau Architect.`}
+          path={`/project/${id || ""}`}
+        />
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">

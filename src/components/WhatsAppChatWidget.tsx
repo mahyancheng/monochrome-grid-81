@@ -14,10 +14,27 @@ export default function WhatsAppChatWidget() {
   const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   const handleTrackConversion = () => {
+    if (typeof window === "undefined") return;
+
     // Google Ads Conversion Tracking
-    if (typeof window !== "undefined" && (window as any).gtag) {
+    if ((window as any).gtag) {
       (window as any).gtag("event", "conversion", {
         send_to: "AW-11342839562/aySGCNSJiqAcEIr-16Aq",
+      });
+
+      // GA4 engagement event — the console counts on this exact event name
+      (window as any).gtag("event", "whatsapp_click", {
+        event_category: "engagement",
+        event_label: "whatsapp_button",
+      });
+    }
+
+    // GTM path, in case gtag.js is blocked or tags are managed in GTM
+    if (Array.isArray((window as any).dataLayer)) {
+      (window as any).dataLayer.push({
+        event: "whatsapp_click",
+        event_category: "engagement",
+        event_label: "whatsapp_button",
       });
     }
   };

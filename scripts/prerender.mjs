@@ -93,6 +93,34 @@ async function prerender() {
     // Wait a bit for any animations/lazy content
     await new Promise((r) => setTimeout(r, 1000));
 
+    /*
+     * Strip portal-rendered floating widgets before saving.
+     *
+     * WhatsAppChatWidget renders through createPortal into document.body, and it
+     * only appears after mount (`if (!mounted) return null`). Puppeteer runs a
+     * real browser, so the effect fires and the widget ends up baked into the
+     * captured HTML — as a direct child of <body>, outside React's root.
+     *
+     * On a real visit that static copy is served, React then hydrates and mounts
+     * its OWN copy, and the page ends up with TWO identical buttons stacked at
+     * the same fixed position. Measured live 2026-08-07: two <a> to wa.me, both
+     * z-index 9999, one with React props and one without.
+     *
+     * Today the tracked (React) copy happens to win, because equal z-index means
+     * the later DOM node paints on top and React's is appended after. That is
+     * luck, not design — flip the order and every WhatsApp click stops being
+     * counted while the button still works, which is exactly the kind of silent
+     * analytics failure that is invisible until someone asks why leads dropped.
+     *
+     * React re-creates the widget on mount regardless, so removing it here costs
+     * nothing and leaves exactly one button.
+     */
+    await page.evaluate(() => {
+      document
+        .querySelectorAll('body > a[aria-label="Contact us on WhatsApp"], body > div > a[href*="wa.me"]')
+        .forEach((el) => (el.closest('body > *') || el).remove());
+    });
+
     const html = await page.content();
 
     // Determine output path
